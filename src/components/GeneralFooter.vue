@@ -82,7 +82,7 @@
               <v-expansion-panel-text>
                 <v-btn rounded="pill" variant="text" class="btn-features pl-6"><v-icon color="primary">mdi-chevron-left</v-icon>پشتیبانی</v-btn>
                 <v-btn rounded="pill" variant="text" class="btn-features pl-6" :to="{ name: 'questions' }"><v-icon color="primary">mdi-chevron-left</v-icon>سوالات متداول</v-btn>
-                <v-btn rounded="pill" variant="text" class="btn-features pl-6"><v-icon color="primary">mdi-chevron-left</v-icon>بلاگ</v-btn>
+                <v-btn rounded="pill" variant="text" class="btn-features pl-6" :to="{ name: 'blog' }"><v-icon color="primary">mdi-chevron-left</v-icon>بلاگ</v-btn>
                 <v-btn rounded="pill" variant="text" class="btn-features pl-6"  :to="{ name: 'contact-us' }"><v-icon color="primary">mdi-chevron-left</v-icon>تماس با ما</v-btn>
                       </v-expansion-panel-text>
             </v-expansion-panel>
@@ -144,7 +144,7 @@
         <div class="features-title pr-5">جی دامین</div>
         <v-btn rounded="pill" variant="text" class="btn-features pl-6"><v-icon color="primary">mdi-chevron-left</v-icon>پشتیبانی</v-btn>
         <v-btn rounded="pill" variant="text" class="btn-features pl-6" :to="{ name: 'questions' }"><v-icon color="primary">mdi-chevron-left</v-icon>سوالات متداول</v-btn>
-        <v-btn rounded="pill" variant="text" class="btn-features pl-6"><v-icon color="primary">mdi-chevron-left</v-icon>بلاگ</v-btn>
+        <v-btn rounded="pill" variant="text" class="btn-features pl-6" :to="{ name: 'blog' }"><v-icon color="primary">mdi-chevron-left</v-icon>بلاگ</v-btn>
         <v-btn rounded="pill" variant="text" class="btn-features pl-6"  :to="{ name: 'contact-us' }"><v-icon color="primary">mdi-chevron-left</v-icon>تماس با ما</v-btn>
       </v-col>
     </v-row>
@@ -170,7 +170,6 @@ export default defineComponent({
 <style lang="scss">
 .f-container {
   padding: 65px 45px 0px 45px;
-  margin-top: 30px;
   border-top: 10px solid #4f80ff;
   font-size: 13px;
   line-height: 22px;

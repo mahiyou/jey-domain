@@ -49,7 +49,7 @@
           prepend-icon="mdi-post-outline"
           title="بلاگ"
           value="blog"
-          href="#"
+          :to="{ name: 'blog' }"
           class="mb-4">
         </v-list-item>
         <v-divider></v-divider>
