@@ -42,36 +42,36 @@
                 <v-row class="mb-10">
                     <template v-for="(post, key) in getPostsForTab(tabindex)" :key="key">
                         <v-col v-if="!key" cols="12">
-                            <a href="#" class="link">
+                            <a :href="'/post/'+ post.post.id" class="link">
                                 <div class="card">
                                     <v-row justify="center">
-                                        <v-col md="6" sm="9" cols="12" class="px-6"><v-img class="img" :src="post.picture" ></v-img></v-col>
+                                        <v-col md="6" sm="9" cols="12" class="px-6"><v-img class="img" :src="post.post.picture" ></v-img></v-col>
                                         <v-col md="6" sm="9" cols="12" class="px-6">
-                                            <p class="title">{{ post.title }}</p>
-                                            <p class="content">{{ post.content }}</p>
+                                            <p class="title">{{ post.post.title }}</p>
+                                            <p class="content">{{ post.post.description }}</p>
                                         </v-col>
                                     </v-row>  
                                 </div>
                             </a>
                         </v-col>
                         <v-col v-else md="4" sm="9" cols="12" class="card px-10">  
-                            <a href="#" class="link">
-                                <v-img class="img" :src="post.picture"></v-img>
+                            <a :href="'/post/'+ post.post.id" class="link">
+                                <v-img class="img" :src="post.post.picture"></v-img>
                                 <div>
-                                    <p class="title sub-card-title">{{ post.title }}</p>
-                                    <p class="content sub-card-content">{{ post.content }}</p>
+                                    <p class="title sub-card-title">{{ post.post.title }}</p>
+                                    <p class="content sub-card-content">{{ post.post.description }}</p>
                                 </div>
                                 <v-row class="mt-1">
                                     <v-col sm="6" align="right">
                                         <p class="text-grey-darken-3">
                                         <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-account-outline</v-icon>
-                                        {{ post.author.name }}
+                                        {{ post.post.author.name }}
                                         </p>
                                     </v-col>
                                     <v-col sm="6" align="right">
                                         <p class="text-grey-darken-3">
                                         <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-calendar-month-outline</v-icon>
-                                        {{ new Date(post.date).toLocaleDateString('fa-IR') }}
+                                        {{ new Date(post.post.date).toLocaleDateString('fa-IR') }}
                                         </p>
                                     </v-col>
                                 </v-row>
@@ -118,7 +118,7 @@ export default defineComponent({
                 if (tab.value === "all") {
                     return this.posts;
                 }
-                return this.posts.filter((p) => p.category.includes(tab.value));  
+                return this.posts.filter((p) => p.post.postCategory.includes(tab.value));  
             }   
         },
     },
