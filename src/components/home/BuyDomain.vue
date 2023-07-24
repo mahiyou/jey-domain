@@ -1,6 +1,7 @@
 <template>
   <v-container class="buy-domain-container">
     <p class="title">چگونه می توانیم دامنه بخریم؟</p>
+    <p class="content">مراحل ثبت دامنه های ملی و بین المللی در پنل جی دامین</p>
     <v-row>
       <v-col md="4" cols="12">
         <v-card class="card center">
@@ -56,7 +57,11 @@
   .title {
     font-weight: 900;
     font-size: 28px;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
+  }
+  .content {
+    font-size: 14px;
+    margin-bottom: 30px;
   }
   .card {
     text-align: center;

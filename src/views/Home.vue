@@ -4,7 +4,7 @@
     <Navigation v-model="navigation" />
     <div class="general-background">
       <HomeSlider />
-      <DomainRegistration />
+      <DomainRegistration :backgroundColor="DomainRegistrationBgColor" :selectDomainBackGround="DomainRegistrationSelectDomainBg"/>
       <Prices />
       <SuitableDomain />
       <PanelFeatures />
@@ -47,6 +47,8 @@ export default defineComponent({
   data() {
     return {
       navigation: false,
+      DomainRegistrationBgColor: "primary",
+      DomainRegistrationSelectDomainBg: "grey-lighten-4"
     };
   },
 });

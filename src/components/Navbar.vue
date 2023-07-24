@@ -65,7 +65,7 @@
       </div></a>
       <v-spacer></v-spacer>
       <v-btn class="toolbar-btn nav-btn-md" :to="{ name: 'home' }"> صفحه ی اصلی </v-btn>
-      <v-btn class="toolbar-btn nav-btn-md" href="#"> تعرفه ها </v-btn>
+      <v-btn class="toolbar-btn nav-btn-md" :to="{ name: 'prices' }"> تعرفه ها </v-btn>
       <v-btn class="toolbar-btn nav-btn-md" :to="{ name: 'questions' }"> سوالات متداول </v-btn>
       <v-btn class="toolbar-btn nav-btn-md" :to="{ name: 'contact-us' }">
         تماس با ما

@@ -1,23 +1,29 @@
 <template>
-  <v-container class="domain-container">
+  <v-container class="domain-container" :class="`bg-${backgroundColor}`">
     <p class="sentence1">
       همین حالا <span style="color: #ffa200">دامنه</span> مورد نظرتان را ثبت
-      کنید
+      کنید!
     </p>
     <p class="mb-8">
-      همین حالا دامنه ی مورد نظرتان را جستجو و در صورت آزاد بودن، اقدام به ثبت
-      آن کنید.
+      نام انتخابی خود برای دامنه را در کادر زیر وارد و جستجو نمایید. پس از چند لحظه می توانید وضعیت دامنه را با پسوندهای مختلف مشاهده نمایید.
     </p>
     <v-row class="justify-center">
       <v-col md="9" cols="12">
         <v-form>
+          <select v-model="selected" class="select-domain" :class="`bg-${selectDomainBackGround}`">
+            <option
+              :value="tlds[tld-1].tld"
+              v-for="tld in tlds.length"
+              :key="tld"> 
+              <v-btn>{{ `${tlds[tld-1].tld}.` }}</v-btn>
+            </option><span>gg</span>
+          </select>
           <v-text-field
             bg-color="white"
             variant="plain"
-            rounded="pill"
             density="compact"
             class="text-field"
-            placeholder="نام دامنه مورد نظر خود را وارد کنید">
+            placeholder="دامنه مورد نظر">
             <template v-slot:append-inner>
               <v-btn
                 type="submit"
@@ -26,23 +32,15 @@
                 rounded="pill"
                 density="comfortable"
                 float="left"
-                width="100px"
                 height="44px"
-                class="btn-confirm">
+                class="btn-confirm"
+                prepend-icon="mdi-magnify">
                 جستجو
               </v-btn>
             </template>
             <template v-slot:prepend-inner>
-              <select v-model="selected" class="select-domain" dir="ltr">
-                <option
-                  :value="tlds[tld-1].tld"
-                  v-for="tld in tlds.length"
-                  :key="tld">
-                  <v-btn>{{ `.${tlds[tld-1].tld}` }}</v-btn>
-                </option>
-              </select>
             </template>
-          </v-text-field>
+          </v-text-field>              
         </v-form>
       </v-col>
     </v-row>
@@ -60,6 +58,10 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
+  props:{
+    backgroundColor: String,
+    selectDomainBackGround: String,
+  },
   data() {
     return {
       tlds:[
@@ -91,25 +93,27 @@ export default defineComponent({
 <style lang="scss">
 .domain-container {
   max-width: 90%;
-  background: #4f80ff;
   border-radius: 15px;
   padding: 40px;
-  color: white;
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   .sentence1 {
     font-weight: 900;
     font-size: 20px;
     margin-bottom: 15px;
   }
   .select-domain {
-    background: rgb(235, 235, 235);
+    appearance: auto;
     padding: 14px;
     border-radius: 0px 40px 40px 0px;
-    width: 110px;
+    width: 90px;
     float: right;
     color: black;
     text-align: center;
+    height: 55.5px;
+    font-size: 18px;
+    border: 1px solid #4f80ff;
+    border-left: none;
   }
   .btn-confirm {
     font-family: IRANSans;
@@ -119,9 +123,13 @@ export default defineComponent({
     font-weight: 800;
     font-size: 14px;
     margin: 5px 7px;
+    width: 110px;
   }
   .text-field {
     .v-field {
+      border: 1px solid #4f80ff;
+      border-right: none;
+      border-radius:50px 0px 0px 50px;
       input {
         text-align: center;
         direction: ltr;
@@ -152,7 +160,7 @@ export default defineComponent({
   }
   .price {
     display: inline-block;
-    border-right: 1px solid white;
+    border-right: 1px solid;
     padding: 0 10px;
     &:last-child {
       border-right: 0;
@@ -162,7 +170,13 @@ export default defineComponent({
   @media (max-width: 600px) {
     .select-domain {
       width: 70px;
-    }
+      font-size: 15px;
+    }      
+    .btn-confirm {
+      padding: 0px;
+      font-size: 13px;
+      width: 90px;
+    } 
   }
   @media (max-width: 500px) {
     max-width: 100%;

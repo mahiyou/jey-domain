@@ -20,7 +20,7 @@
         </div>
       </v-col>
       <v-col md="6" cols="12">
-        <v-img src="@/assets/pics/girl1.gif" width="430px" class="center">
+        <v-img src="@/assets/pics/girl.svg" width="430px" class="center" transition="scroll-y-reverse-transition">
         </v-img>
       </v-col>
     </v-row>

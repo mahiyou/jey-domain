@@ -62,7 +62,7 @@
   }
   .content {
     font-size: 14px;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
   }
   .panel {
     padding: 6px;
