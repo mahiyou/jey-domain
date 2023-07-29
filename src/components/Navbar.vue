@@ -1,6 +1,6 @@
 <template>
   <v-container class="navbar-container" id="nav-container">
-    <v-toolbar class="nav-btn-md  mb-6" color="white">
+    <v-toolbar class="hidden-sm-and-down  mb-6" color="white">
       <div class="mt-5">
         <v-icon size="small" color="#faa930">mdi-bullseye</v-icon>
         <v-btn class="nav-btn" :to="{ name: '' }">پشتیبانی آنلاین</v-btn>
@@ -8,13 +8,7 @@
         <v-btn class="nav-btn" :to="{ name: '' }">۰۳۱-۳۴۴۲۰۳۰۱</v-btn>
       </div>
       <v-form class="search-form">
-        <v-text-field
-          placeholder="جستجو"
-          variant="plain"
-          bg-color="#f3f3f9"
-          color="#a6a9ba"
-          class="search"
-          rounded="pill"
+        <v-text-field placeholder="جستجو" variant="plain" bg-color="#f3f3f9" color="#a6a9ba" class="search" rounded="pill"
           density="compact">
           <template v-slot:prepend-inner>
             <v-btn type="submit" variant="text" rounded="pill">
@@ -37,15 +31,21 @@
             persianNumber(user.numberOfNotifications)
           }}</span>
         </v-btn>
-        <v-btn class="nav-btn mr-2">
-          <v-img
-            class="rounded-circle"
-            :src="user.avatar"
-            width="27px"
-            height="27px"></v-img>
-          <span class="mr-2">{{ user.name }}</span>
-          <v-icon class="mr-2">mdi-chevron-down</v-icon>
-        </v-btn>
+        <v-menu offset-y class="nav-dropdown-menu">
+          <template v-slot:activator="{ props }">
+            <v-btn v-bind="props" class="nav-btn mr-2">
+              <v-img class="rounded-circle" :src="user.avatar" width="27px" height="27px"></v-img>
+              <span class="mr-2">{{ user.name }}</span>
+              <v-icon class="mr-2">mdi-chevron-down</v-icon>
+            </v-btn>
+          </template>
+          <v-list>
+            <v-list-item v-for="(item, index) in items" :key="index" :href="item.href">
+              <v-list-item-title id="menu-item"><v-icon class="ml-2">mdi-chevron-left</v-icon>{{ item.title
+              }}</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
       </div>
       <div v-if="!userState" class="mt-5">
         <v-btn>
@@ -55,23 +55,25 @@
           }}</span>
         </v-btn>
         <v-btn class="login-register-btn" :to="{ name: 'logIn' }"> ورود </v-btn>
-        <v-btn density="comfortable" variant="flat" rounded="pill" color="primary" class="login-register-btn ml-8" :to="{ name: 'register' }"> ثبت نام </v-btn>
+        <v-btn density="comfortable" variant="flat" rounded="pill" color="primary" class="login-register-btn ml-8"
+          :to="{ name: 'register' }"> ثبت نام </v-btn>
       </div>
     </v-toolbar>
     <v-toolbar color="white">
-      <a href="/"><div class="logo-size">
-        <v-img
-          :src="JeyDomain"></v-img>
-      </div></a>
+      <a href="/">
+        <div class="logo-size">
+          <v-img :src="JeyDomain"></v-img>
+        </div>
+      </a>
       <v-spacer></v-spacer>
-      <v-btn class="toolbar-btn nav-btn-md" :to="{ name: 'home' }"> صفحه ی اصلی </v-btn>
-      <v-btn class="toolbar-btn nav-btn-md" :to="{ name: 'prices' }"> تعرفه ها </v-btn>
-      <v-btn class="toolbar-btn nav-btn-md" :to="{ name: 'questions' }"> سوالات متداول </v-btn>
-      <v-btn class="toolbar-btn nav-btn-md" :to="{ name: 'contact-us' }">
+      <v-btn class="toolbar-btn hidden-sm-and-down" :to="{ name: 'home' }"> صفحه ی اصلی </v-btn>
+      <v-btn class="toolbar-btn hidden-sm-and-down" :to="{ name: 'prices' }"> تعرفه ها </v-btn>
+      <v-btn class="toolbar-btn hidden-sm-and-down" :to="{ name: 'questions' }"> سوالات متداول </v-btn>
+      <v-btn class="toolbar-btn hidden-sm-and-down" :to="{ name: 'contact-us' }">
         تماس با ما
       </v-btn>
-      <v-btn class="toolbar-btn nav-btn-md" :to="{ name: 'blog' }"> بلاگ </v-btn>
-      <v-app-bar-nav-icon class="nav-icon-xs-sm" @click="$emit('clickOnNavBtn')"> </v-app-bar-nav-icon>
+      <v-btn class="toolbar-btn hidden-sm-and-down" :to="{ name: 'blog' }"> بلاگ </v-btn>
+      <v-app-bar-nav-icon class="hidden-md-and-up" @click="$emit('clickOnNavBtn')"> </v-app-bar-nav-icon>
     </v-toolbar>
   </v-container>
 </template>
@@ -80,13 +82,18 @@
 import { defineComponent } from "vue";
 import DefaultUserImage from "@/assets/pics/user.jpg";
 import JeyDomain from "@/assets/pics/JeyDomain.svg";
-import {useUserState} from "@/stores/UserState"
-import { mapState } from "pinia";  
+import { useUserState } from "@/stores/UserState"
+import { mapState } from "pinia";
 export default defineComponent({
   emits: ["clickOnNavBtn"],
   data() {
     return {
-      JeyDomain:JeyDomain,
+      JeyDomain: JeyDomain,
+      items: [
+        { title: 'پنل کاربری', href: '/user-panel' },
+        { title: 'مشاهده پروفایل', href: '' },
+        { title: 'خروج از حساب', href: '' },
+      ],
       user: {
         id: 1,
         name: "کاربر تست",
@@ -110,17 +117,25 @@ export default defineComponent({
       return n;
     },
   },
-  computed:{
-   ...mapState (useUserState,{userState: "userState"})
+  computed: {
+    ...mapState(useUserState, { userState: "userState" })
   }
 });
 </script>
 
 <style lang="scss">
-#nav-container{
+#nav-container {
   padding-bottom: 0px;
   padding-top: 0px;
 }
+
+.nav-dropdown-menu {
+  .v-list-item-title {
+    font-size: 12px;
+  }
+
+}
+
 .navbar-container {
   .nav-btn {
     letter-spacing: 0;
@@ -130,6 +145,7 @@ export default defineComponent({
     margin-right: -10px;
     --v-theme-overlay-multiplier: 0;
   }
+
   .circle {
     width: 20px;
     height: 20px;
@@ -138,58 +154,52 @@ export default defineComponent({
     color: white !important;
     margin: -33px -10px 0px 0px;
   }
+
   .search-form {
     width: 200px;
     height: 30px;
     padding: 5px;
     margin: 10px 30px;
+
     .v-fiels {
       height: 10px;
     }
+
     .v-field--variant-plain.v-field {
       --v-field-padding-top: 0px;
       --v-field-input-padding-top: 0px;
       font-size: 12px;
     }
+
     .v-input--density-compact {
       --v-input-padding-top: 8px;
       --v-field-padding-top: 0px;
     }
+
     .v-field.v-field--variant-plain {
       .v-field__prepend-inner {
         padding-top: 0px;
       }
     }
   }
+
   .logo-size {
     width: 170px;
   }
+
   .login-register-btn {
     letter-spacing: 0;
     font-size: 13px;
     font-weight: 300;
     --v-theme-overlay-multiplier: 0;
   }
+
   .toolbar-btn {
     letter-spacing: 0;
     font-size: 14px;
     margin: auto 15px;
     font-weight: 500;
     --v-theme-overlay-multiplier: 0;
-  }
-  .nav-btn-md {
-    display: block;
-  }
-  .nav-icon-xs-sm {
-    display: none;
-  }
-  @media (max-width: 960px) {
-    .nav-btn-md {
-      display: none;
-    }
-    .nav-icon-xs-sm {
-      display: block;
-    }
   }
 }
 </style>

@@ -16,7 +16,7 @@
               v-for="tld in tlds.length"
               :key="tld"> 
               <v-btn>{{ `${tlds[tld-1].tld}.` }}</v-btn>
-            </option><span>gg</span>
+            </option>
           </select>
           <v-text-field
             bg-color="white"
