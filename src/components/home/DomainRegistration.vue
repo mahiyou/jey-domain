@@ -1,92 +1,92 @@
 <template>
-  <v-container class="domain-container" :class="`bg-${backgroundColor}`">
-    <p class="sentence1">
-      همین حالا <span style="color: #ffa200">دامنه</span> مورد نظرتان را ثبت
-      کنید!
-    </p>
-    <p class="mb-8">
-      نام انتخابی خود برای دامنه را در کادر زیر وارد و جستجو نمایید. پس از چند لحظه می توانید وضعیت دامنه را با پسوندهای مختلف مشاهده نمایید.
-    </p>
-    <v-row class="justify-center">
-      <v-col md="9" cols="12">
-        <v-form>
-          <select v-model="selected" class="select-domain" :class="`bg-${selectDomainBackGround}`">
-            <option
-              :value="tlds[tld-1].tld"
-              v-for="tld in tlds.length"
-              :key="tld"> 
-              <v-btn>{{ `${tlds[tld-1].tld}.` }}</v-btn>
-            </option>
-          </select>
-          <v-text-field
-            bg-color="white"
-            variant="plain"
-            density="compact"
-            class="text-field"
-            placeholder="دامنه مورد نظر">
-            <template v-slot:append-inner>
-              <v-btn
-                type="submit"
-                variant="flat"
-                color="#ffa200"
-                rounded="pill"
-                density="comfortable"
-                float="left"
-                height="44px"
-                class="btn-confirm"
-                prepend-icon="mdi-magnify">
-                جستجو
-              </v-btn>
-            </template>
-            <template v-slot:prepend-inner>
-            </template>
-          </v-text-field>              
-        </v-form>
-      </v-col>
-    </v-row>
-    <div class="featured-tlds">
-      <div dir="ltr" class="prices">
-        <div class="price" v-for="tld in tlds.length" :key="tld">
-          {{`.${tlds[tld-1].tld}`}}
-          <span>{{ persianNumber(tlds[tld-1].registration.toLocaleString()) }}</span>
+    <v-container class="domain-container" :class="`bg-${backgroundColor}`">
+        <p class="sentence1">
+            همین حالا <span style="color: #ffa200">دامنه</span> مورد نظرتان را ثبت
+            کنید!
+        </p>
+        <p class="mb-8">
+            نام انتخابی خود برای دامنه را در کادر زیر وارد و جستجو نمایید. پس از چند لحظه می توانید وضعیت دامنه را با پسوندهای مختلف مشاهده نمایید.
+        </p>
+        <v-row class="justify-center">
+            <v-col md="9" cols="12">
+                <v-form>
+                    <select v-model="selected" class="select-domain" :class="`bg-${selectDomainBackGround}`">
+                        <option
+                            :value="tlds[tld-1].tld"
+                            v-for="tld in tlds.length"
+                            :key="tld"> 
+                            <v-btn>{{ `${tlds[tld-1].tld}.` }}</v-btn>
+                        </option>
+                    </select>
+                    <v-text-field
+                        bg-color="white"
+                        variant="plain"
+                        density="compact"
+                        class="text-field"
+                        placeholder="دامنه مورد نظر">
+                        <template v-slot:append-inner>
+                            <v-btn
+                                type="submit"
+                                variant="flat"
+                                color="#ffa200"
+                                rounded="pill"
+                                density="comfortable"
+                                float="left"
+                                height="44px"
+                                class="btn-confirm"
+                                prepend-icon="mdi-magnify">
+                                جستجو
+                            </v-btn>
+                        </template>
+                        <template v-slot:prepend-inner>
+                        </template>
+                    </v-text-field>              
+                </v-form>
+            </v-col>
+        </v-row>
+        <div class="featured-tlds">
+            <div dir="ltr" class="prices">
+                <div class="price" v-for="tld in tlds.length" :key="tld">
+                    {{`.${tlds[tld-1].tld}`}}
+                    <span>{{ persianNumber(tlds[tld-1].registration.toLocaleString()) }}</span>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </v-container>
+    </v-container>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  props:{
-    backgroundColor: String,
-    selectDomainBackGround: String,
-  },
-  data() {
-    return {
-      tlds:[
-        {tld:"com",registration:603000},
-        {tld:"ir",registration:48000},
-        {tld:"org",registration:503000},
-        {tld:"net",registration:703000},
-      ],
-      selected: "com",
-    };
-  },
-  methods:{
-    persianNumber(n : string) {
-      n = n.toString();
-      const nlength = n.length;
-      const farsiNum = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
-      for (let i = 0; i < 10; i++) {
-        for (let j = 0; j < nlength; j++) {
-          const istring = i.toString();
-          n = n.replace(istring, farsiNum[i]);
-        }
-      }
-      return n;
+    props:{
+        backgroundColor: String,
+        selectDomainBackGround: String,
     },
-  }
+    data() {
+        return {
+            tlds:[
+                {tld:"com",registration:603000},
+                {tld:"ir",registration:48000},
+                {tld:"org",registration:503000},
+                {tld:"net",registration:703000},
+            ],
+            selected: "com",
+        };
+    },
+    methods:{
+        persianNumber(n : string) {
+            n = n.toString();
+            const nlength = n.length;
+            const farsiNum = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+            for (let i = 0; i < 10; i++) {
+                for (let j = 0; j < nlength; j++) {
+                    const istring = i.toString();
+                    n = n.replace(istring, farsiNum[i]);
+                }
+            }
+            return n;
+        },
+    }
 });
 </script>
 

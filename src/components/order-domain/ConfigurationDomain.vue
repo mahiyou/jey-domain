@@ -1,192 +1,192 @@
 <template>
-  <v-containr class="config-domain-container">
-    <div>
-      شما می توانید در زیر وضعیت دامنه مورد نظر خود و سایر پسوندها را مشاهده کنید.
-    </div>
-    <div class="sentence-2">
-      {{ domain }}
-      <a class="link" href="#"> ثبت یکساله </a>
-      <div class="dotted-line"></div>
-    </div>
-    <div class="gray-box">
-      برای ثبت این دامنه به مالکیت شما نیاز است تا بعد از پرداخت صورتحساب
-      بازگزدید و پنل ثبت کننده دامنه را (از طریق دکمه پیکربندی مقابل محصول
-      دامنه) مشخص کنید.
-    </div>
-    <v-form @submit.prevent="onSubmit" v-model="valid" class="form">
-      <div class="title">Name Server ها</div>
-      <div>
-        اگر مایل به استفاده از Name Server های سرویس دیگری هستید آنها را در
-        اینجا وارد کنید. به صورت پیش فرض روی دامنه های جدید، Name Server های ما
-        تنظیم می شود.
-      </div>
-      <v-row class="mt-7">
-        <v-col sm="6" cols="12">
-          <div>Name Server 1</div>
-          <v-text-field
-            variant="outlined"
-            class="text-field"
-            v-model="nameServer1"
-            :rules="nameServerRules"
-            required/>
-        </v-col>
-        <v-col sm="6" cols="12">
-          <div>Name Server 2</div>
-          <v-text-field
-            variant="outlined"
-            class="text-field"
-            v-model="nameServer2"
-            :rules="nameServerRules"
-            required/>
-        </v-col>
-      </v-row>
-      <v-row class="mt-3 border-bottom">
-        <v-col sm="6" cols="12">
-          <div>Name Server 3</div>
-          <v-text-field
-            variant="outlined"
-            class="text-field"
-            v-model="nameServer3"
-            :rules="nameServerRules"
-            required/>
-        </v-col>
-        <v-col sm="6" cols="12">
-          <div>Name Server 4</div>
-          <v-text-field
-            variant="outlined"
-            class="text-field"
-            v-model="nameServer4"
-            :rules="nameServerRules"
-            required/>
-        </v-col>
-      </v-row>
-      <div>
-        شما می توانید در این قسمت اطلاعات مربوط به WHOIS دامنه ی خود را مشخص
-        کنید:
-      </div>
-      <div class="yellow-box">
-        توجه داشته باشید اطلاعات زیر را حتما به صورت انگلیسی وارد نمایید!
-      </div>
-      <v-row class="mt-3">
-        <v-col sm="6" cols="12">
-          <div>نام<span class="star-color">*</span></div>
-          <v-text-field
-            variant="outlined"
-            class="text-field"
-            v-model="name"
-            :rules="nameRules"
-            required/>
-        </v-col>
-        <v-col sm="6" cols="12">
-          <div>نام خانوادگی<span class="star-color">*</span></div>
-          <v-text-field
-            variant="outlined"
-            class="text-field"
-            v-model="lastName"
-            :rules="lastNameRules"
-            required/>
-        </v-col>
-      </v-row>
-      <v-row class="mt-6">
-        <v-col sm="6" cols="12">
-          <div>شرکت</div>
-          <v-text-field
-            variant="outlined"
-            class="text-field"
-            v-model="company"/>
-        </v-col>
-        <v-col sm="6" cols="12">
-          <div>ایمیل<span class="star-color">*</span></div>
-          <v-text-field
-            variant="outlined"
-            class="text-field"
-            v-model="email"
-            :rules="emailRules"
-            required/>
-        </v-col>
-      </v-row>
-      <div class="text-center">
-        <v-btn
-          type="submit"
-          :loading="loading"
-          variant="flat"
-          color="#5cb85c"
-          rounded="pill"
-          width="45%"
-          class="btn-continue">
-          <v-icon>mdi-chevron-left</v-icon>
-          ادامه
-        </v-btn>
-      </div>
-    </v-form>
-  </v-containr>
+    <v-containr class="config-domain-container">
+        <div>
+            شما می توانید در زیر وضعیت دامنه مورد نظر خود و سایر پسوندها را مشاهده کنید.
+        </div>
+        <div class="sentence-2">
+            {{ domain }}
+            <a class="link" href="#"> ثبت یکساله </a>
+            <div class="dotted-line"></div>
+        </div>
+        <div class="gray-box">
+            برای ثبت این دامنه به مالکیت شما نیاز است تا بعد از پرداخت صورتحساب
+            بازگزدید و پنل ثبت کننده دامنه را (از طریق دکمه پیکربندی مقابل محصول
+            دامنه) مشخص کنید.
+        </div>
+        <v-form @submit.prevent="onSubmit" v-model="valid" class="form">
+            <div class="title">Name Server ها</div>
+            <div>
+                اگر مایل به استفاده از Name Server های سرویس دیگری هستید آنها را در
+                اینجا وارد کنید. به صورت پیش فرض روی دامنه های جدید، Name Server های ما
+                تنظیم می شود.
+            </div>
+            <v-row class="mt-7">
+                <v-col sm="6" cols="12">
+                    <div>Name Server 1</div>
+                    <v-text-field
+                        variant="outlined"
+                        class="text-field"
+                        v-model="nameServer1"
+                        :rules="nameServerRules"
+                        required/>
+                </v-col>
+                <v-col sm="6" cols="12">
+                    <div>Name Server 2</div>
+                    <v-text-field
+                        variant="outlined"
+                        class="text-field"
+                        v-model="nameServer2"
+                        :rules="nameServerRules"
+                        required/>
+                </v-col>
+            </v-row>
+            <v-row class="mt-3 border-bottom">
+                <v-col sm="6" cols="12">
+                    <div>Name Server 3</div>
+                    <v-text-field
+                        variant="outlined"
+                        class="text-field"
+                        v-model="nameServer3"
+                        :rules="nameServerRules"
+                        required/>
+                </v-col>
+                <v-col sm="6" cols="12">
+                    <div>Name Server 4</div>
+                    <v-text-field
+                        variant="outlined"
+                        class="text-field"
+                        v-model="nameServer4"
+                        :rules="nameServerRules"
+                        required/>
+                </v-col>
+            </v-row>
+            <div>
+                شما می توانید در این قسمت اطلاعات مربوط به WHOIS دامنه ی خود را مشخص
+                کنید:
+            </div>
+            <div class="yellow-box">
+                توجه داشته باشید اطلاعات زیر را حتما به صورت انگلیسی وارد نمایید!
+            </div>
+            <v-row class="mt-3">
+                <v-col sm="6" cols="12">
+                    <div>نام<span class="star-color">*</span></div>
+                    <v-text-field
+                        variant="outlined"
+                        class="text-field"
+                        v-model="name"
+                        :rules="nameRules"
+                        required/>
+                </v-col>
+                <v-col sm="6" cols="12">
+                    <div>نام خانوادگی<span class="star-color">*</span></div>
+                    <v-text-field
+                        variant="outlined"
+                        class="text-field"
+                        v-model="lastName"
+                        :rules="lastNameRules"
+                        required/>
+                </v-col>
+            </v-row>
+            <v-row class="mt-6">
+                <v-col sm="6" cols="12">
+                    <div>شرکت</div>
+                    <v-text-field
+                        variant="outlined"
+                        class="text-field"
+                        v-model="company"/>
+                </v-col>
+                <v-col sm="6" cols="12">
+                    <div>ایمیل<span class="star-color">*</span></div>
+                    <v-text-field
+                        variant="outlined"
+                        class="text-field"
+                        v-model="email"
+                        :rules="emailRules"
+                        required/>
+                </v-col>
+            </v-row>
+            <div class="text-center">
+                <v-btn
+                    type="submit"
+                    :loading="loading"
+                    variant="flat"
+                    color="#5cb85c"
+                    rounded="pill"
+                    width="45%"
+                    class="btn-continue">
+                    <v-icon>mdi-chevron-left</v-icon>
+                    ادامه
+                </v-btn>
+            </div>
+        </v-form>
+    </v-containr>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  data() {
-    return {
-      domain: "rion.com",
-      loading: false,
-      valid: false,
-      nameServer1: "",
-      nameServer2: "",
-      nameServer3: "",
-      nameServer4: "",
-      name: "",
-      lastName: "",
-      company: "",
-      email: "",
-      nameRules: [
-        (value) => {
-          if (value) return true;
-          return "وارد کردن نام الزامی است.";
-        },
-        (value) => {
-          if (value?.length <= 20) return true;
-          return "نام شما باید کمتر از 20 کاراکتر باشد.";
-        },
-      ],
-      nameServerRules: [],
-      lastNameRules: [
-        (value) => {
-          if (value) return true;
-          return "وارد کردن نام خانوادگی الزامی است.";
-        },
-        (value) => {
-          if (value?.length <= 20) return true;
-          return "نام خانوادگی شما باید کمتر از 20 کاراکتر باشد.";
-        },
-      ],
-      companyRules: [
-        (value) => {
-          if (value?.length <= 30) return true;
-          return "نام شرکت شما باید کمتر از 30 کاراکتر باشد.";
-        },
-      ],
-      emailRules: [
-        (value) => {
-          if (
-            !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
-              value
-            )
-          ) {
-            return "ایمیل وارد شده معتبر نمی باشد";
-          }
-          return true;
-        },
-      ],
-    };
-  },
-  methods: {
-    onSubmit() {
-      this.loading = true;
-      setTimeout(() => {
-        this.loading = false;
-      }, 2000);
+    data() {
+        return {
+            domain: "rion.com",
+            loading: false,
+            valid: false,
+            nameServer1: "",
+            nameServer2: "",
+            nameServer3: "",
+            nameServer4: "",
+            name: "",
+            lastName: "",
+            company: "",
+            email: "",
+            nameRules: [
+                (value) => {
+                    if (value) return true;
+                    return "وارد کردن نام الزامی است.";
+                },
+                (value) => {
+                    if (value?.length <= 20) return true;
+                    return "نام شما باید کمتر از 20 کاراکتر باشد.";
+                },
+            ],
+            nameServerRules: [],
+            lastNameRules: [
+                (value) => {
+                    if (value) return true;
+                    return "وارد کردن نام خانوادگی الزامی است.";
+                },
+                (value) => {
+                    if (value?.length <= 20) return true;
+                    return "نام خانوادگی شما باید کمتر از 20 کاراکتر باشد.";
+                },
+            ],
+            companyRules: [
+                (value) => {
+                    if (value?.length <= 30) return true;
+                    return "نام شرکت شما باید کمتر از 30 کاراکتر باشد.";
+                },
+            ],
+            emailRules: [
+                (value) => {
+                    if (
+                        !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+                            value
+                        )
+                    ) {
+                        return "ایمیل وارد شده معتبر نمی باشد";
+                    }
+                    return true;
+                },
+            ],
+        };
     },
-  },
+    methods: {
+        onSubmit() {
+            this.loading = true;
+            setTimeout(() => {
+                this.loading = false;
+            }, 2000);
+        },
+    },
 });
 </script>
 

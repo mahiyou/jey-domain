@@ -1,27 +1,27 @@
 <template>
-  <v-container class="complete-order-container">
-    <div>
-      برای تکمیل سفارش خرید دامنه خود نیاز است مشخصات خود را وارد نمایید:
-    </div>
-    <v-radio-group v-model="authType" class="mt-3">
-      <v-radio
-        label="کاربر جدید هستم"
-        value="newUser"
-        color="primary"
-      ></v-radio>
-      <v-radio
-        label="قبلا ثبت نام کرده ام"
-        value="oldUser"
-        color="primary"
-      ></v-radio>
-    </v-radio-group>
-    <div v-if="authType == 'newUser'">
-        <OrderRegisterForm />
-    </div>
-    <div v-if="authType == 'oldUser'">
-        <OrderLoginForm />
-    </div>
-  </v-container>
+    <v-container class="complete-order-container">
+        <div>
+            برای تکمیل سفارش خرید دامنه خود نیاز است مشخصات خود را وارد نمایید:
+        </div>
+        <v-radio-group v-model="authType" class="mt-3">
+            <v-radio
+                label="کاربر جدید هستم"
+                value="newUser"
+                color="primary"
+            ></v-radio>
+            <v-radio
+                label="قبلا ثبت نام کرده ام"
+                value="oldUser"
+                color="primary"
+            ></v-radio>
+        </v-radio-group>
+        <div v-if="authType == 'newUser'">
+            <OrderRegisterForm />
+        </div>
+        <div v-if="authType == 'oldUser'">
+            <OrderLoginForm />
+        </div>
+    </v-container>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
@@ -29,17 +29,17 @@ import OrderRegisterForm from "@/components/order-domain/OrderRegisterForm.vue";
 import OrderLoginForm from "@/components/order-domain/OrderLoginForm.vue";
 export default defineComponent({
     components:{
-      OrderRegisterForm,
-      OrderLoginForm,
+        OrderRegisterForm,
+        OrderLoginForm,
     },
-  data() {
-    return {
-      authType: "newUser",
-    };
-  },
-  methods:{
+    data() {
+        return {
+            authType: "newUser",
+        };
+    },
+    methods:{
 
-  }
+    }
 });
 </script>
 

@@ -5,7 +5,7 @@
             <v-row>
                 <v-col md="8" cols="12" class="align-center">
                     <div>برای راه اندازی وبسایت خود اولین قدم را با ثبت دامنه بردارید<v-icon
-                            class="mr-2">mdi-arrow-left-thin</v-icon></div>
+                        class="mr-2">mdi-arrow-left-thin</v-icon></div>
                     <v-btn variant="flat" color="#faa930" class="start-btn">شروع کنید!</v-btn>
                 </v-col>
                 <v-col md="4" cols="12"><v-img height="170px" src="@/assets/pics/Domain-names-pana.svg"></v-img></v-col>
@@ -23,7 +23,7 @@
                             <div class="hidden-xs rounded-circle background">
                                 <v-icon class="icon" color="primary">mdi-newspaper-variant-outline</v-icon>
                             </div>
-                           <v-btn variant="tonal" rounded="pill" color="#0AB39C" class="btn mt-sm-13 mt-0" prepend-icon="mdi-plus">خرید دامنه ی جدید</v-btn>
+                            <v-btn variant="tonal" rounded="pill" color="#0AB39C" class="btn mt-sm-13 mt-0" prepend-icon="mdi-plus">خرید دامنه ی جدید</v-btn>
                         </v-col>
                     </v-row>
                 </v-card>

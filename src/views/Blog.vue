@@ -1,90 +1,90 @@
 <template>
-  <v-locale-provider rtl>
-    <Navbar @clickOnNavBtn="navigation = true" />
-    <Navigation v-model="navigation" />
-    <GeneralHeader>
-      <template v-slot:title>
-        <p>بلاگ</p>
-      </template>
-      <template v-slot:content>
-        <p>صفحه اصلی > بلاگ</p>
-      </template>
-    </GeneralHeader>
-    <div class="general-background">
-      <v-container class="blog-container" align="center">
-        <v-form class="search-form">
-            <v-text-field
-                placeholder="جستجو"
-                variant="plain"
-                bg-color="white"
-                rounded="pill"
-                density="compact">
-                <template v-slot:prepend-inner>
-                    <v-btn type="submit" variant="text" rounded="pill" icon="mdi-magnify" color="#a6a9ba" density="comfortable" />
-                </template>
-            </v-text-field>
-        </v-form>
-        <div class="mt-15" v-if="!posts && !error" align="center">
-            <v-progress-circular indeterminate color="primary"></v-progress-circular>
-        </div> 
-        <v-tabs v-model="tab"  align-tabs="center" show-arrows class="article-tab">  
-            <v-tab v-for="tabindex in tabs" :value="tabindex" :key="tabindex">{{ tabindex.name }}</v-tab>
-        </v-tabs>
-        <v-snackbar v-model="serverSnackbar" multi-line>خطای سرور
-            <template v-slot:actions>
-                <v-btn color="red" variant="text" @click="serverSnackbar = false">
-                بستن
-                </v-btn>
+    <v-locale-provider rtl>
+        <Navbar @clickOnNavBtn="navigation = true" />
+        <Navigation v-model="navigation" />
+        <GeneralHeader>
+            <template v-slot:title>
+                <p>بلاگ</p>
             </template>
-            </v-snackbar>
-        <v-window v-model="tab">
-            <v-window-item v-for="tabindex in tabs" :key="tabindex" :value="tabindex">
-                <v-row class="mb-10">
-                    <template v-for="(post, key) in getPostsForTab(tabindex)" :key="key">
-                        <v-col v-if="!key" cols="12">
-                            <a :href="'/post/'+ post.post.id" class="link">
-                                <div class="card">
-                                    <v-row justify="center">
-                                        <v-col md="6" sm="9" cols="12" class="px-6"><v-img class="img" :src="post.post.picture" ></v-img></v-col>
-                                        <v-col md="6" sm="9" cols="12" class="px-6">
-                                            <p class="title">{{ post.post.title }}</p>
-                                            <p class="content">{{ post.post.description }}</p>
-                                        </v-col>
-                                    </v-row>  
-                                </div>
-                            </a>
-                        </v-col>
-                        <v-col v-else md="4" sm="9" cols="12" class="card px-10">  
-                            <a :href="'/post/'+ post.post.id" class="link">
-                                <v-img class="img" :src="post.post.picture"></v-img>
-                                <div>
-                                    <p class="title sub-card-title">{{ post.post.title }}</p>
-                                    <p class="content sub-card-content">{{ post.post.description }}</p>
-                                </div>
-                                <v-row class="mt-1">
-                                    <v-col sm="6" align="right">
-                                        <p class="text-grey-darken-3">
-                                        <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-account-outline</v-icon>
-                                        {{ post.post.author.name }}
-                                        </p>
-                                    </v-col>
-                                    <v-col sm="6" align="right">
-                                        <p class="text-grey-darken-3">
-                                        <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-calendar-month-outline</v-icon>
-                                        {{ new Date(post.post.date).toLocaleDateString('fa-IR') }}
-                                        </p>
-                                    </v-col>
-                                </v-row>
-                            </a>
-                        </v-col>
+            <template v-slot:content>
+                <p>صفحه اصلی > بلاگ</p>
+            </template>
+        </GeneralHeader>
+        <div class="general-background">
+            <v-container class="blog-container" align="center">
+                <v-form class="search-form">
+                    <v-text-field
+                        placeholder="جستجو"
+                        variant="plain"
+                        bg-color="white"
+                        rounded="pill"
+                        density="compact">
+                        <template v-slot:prepend-inner>
+                            <v-btn type="submit" variant="text" rounded="pill" icon="mdi-magnify" color="#a6a9ba" density="comfortable" />
+                        </template>
+                    </v-text-field>
+                </v-form>
+                <div class="mt-15" v-if="!posts && !error" align="center">
+                    <v-progress-circular indeterminate color="primary"></v-progress-circular>
+                </div> 
+                <v-tabs v-model="tab"  align-tabs="center" show-arrows class="article-tab">  
+                    <v-tab v-for="tabindex in tabs" :value="tabindex" :key="tabindex">{{ tabindex.name }}</v-tab>
+                </v-tabs>
+                <v-snackbar v-model="serverSnackbar" multi-line>خطای سرور
+                    <template v-slot:actions>
+                        <v-btn color="red" variant="text" @click="serverSnackbar = false">
+                            بستن
+                        </v-btn>
                     </template>
-                </v-row>
-            </v-window-item>
-        </v-window>
-      </v-container>
-    </div>
-    <GeneralFooter />
-  </v-locale-provider>
+                </v-snackbar>
+                <v-window v-model="tab">
+                    <v-window-item v-for="tabindex in tabs" :key="tabindex" :value="tabindex">
+                        <v-row class="mb-10">
+                            <template v-for="(post, key) in getPostsForTab(tabindex)" :key="key">
+                                <v-col v-if="!key" cols="12">
+                                    <a :href="'/post/'+ post.post.id" class="link">
+                                        <div class="card">
+                                            <v-row justify="center">
+                                                <v-col md="6" sm="9" cols="12" class="px-6"><v-img class="img" :src="post.post.picture" ></v-img></v-col>
+                                                <v-col md="6" sm="9" cols="12" class="px-6">
+                                                    <p class="title">{{ post.post.title }}</p>
+                                                    <p class="content">{{ post.post.description }}</p>
+                                                </v-col>
+                                            </v-row>  
+                                        </div>
+                                    </a>
+                                </v-col>
+                                <v-col v-else md="4" sm="9" cols="12" class="card px-10">  
+                                    <a :href="'/post/'+ post.post.id" class="link">
+                                        <v-img class="img" :src="post.post.picture"></v-img>
+                                        <div>
+                                            <p class="title sub-card-title">{{ post.post.title }}</p>
+                                            <p class="content sub-card-content">{{ post.post.description }}</p>
+                                        </div>
+                                        <v-row class="mt-1">
+                                            <v-col sm="6" align="right">
+                                                <p class="text-grey-darken-3">
+                                                    <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-account-outline</v-icon>
+                                                    {{ post.post.author.name }}
+                                                </p>
+                                            </v-col>
+                                            <v-col sm="6" align="right">
+                                                <p class="text-grey-darken-3">
+                                                    <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-calendar-month-outline</v-icon>
+                                                    {{ new Date(post.post.date).toLocaleDateString('fa-IR') }}
+                                                </p>
+                                            </v-col>
+                                        </v-row>
+                                    </a>
+                                </v-col>
+                            </template>
+                        </v-row>
+                    </v-window-item>
+                </v-window>
+            </v-container>
+        </div>
+        <GeneralFooter />
+    </v-locale-provider>
 </template>
 <script lang="ts">
 import Navbar from "@/components/Navbar.vue";
@@ -92,7 +92,7 @@ import GeneralHeader from "@/components/GeneralHeader.vue";
 import Navigation from "@/components/Navigation.vue";
 import GeneralFooter from "@/components/GeneralFooter.vue";
 import { call } from "@/mocks/API";
-import {getBlogIndex} from "@/mocks/Blog"
+import {getBlogIndex} from "@/mocks/Blog";
 import { defineComponent } from "vue";
 export default defineComponent({
     components: {
@@ -127,7 +127,7 @@ export default defineComponent({
             const response = await call(getBlogIndex,[]);
             this.posts = response[1];
             this.tabs = response[0];
-            this.tab = response[0][0]
+            this.tab = response[0][0];
         } catch (e) {
             this.serverSnackbar = true;
             this.error = true;

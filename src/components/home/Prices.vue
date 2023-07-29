@@ -1,83 +1,83 @@
 <template>
-  <v-container class="prices-container">
-    <div class="prices-title">تعرفه های ثبت دامنه</div>
-    <div>
-      تعرفه های دامنه بسته به تعداد دامنه های ثبت شده مشتربان گرامی در پنل جی
-      سرور قیمت گذاری می شوند.
-    </div>
-    <div>
-      هرچه تعداد دامنه های ثبت شده شما بیشتر باشد هزینه ثبت دامنه شامل تخفیف
-      بیتر یخواهد شد.
-    </div>
-    <div class="tab-in-small-screen">
-      <v-tabs
-        v-model="tab"
-        direction="vertical"
-        align-tabs="center"
-        class="mb-5 mt-5 customer-tab">  
-        <v-tab value="1">
-          <div class="customer-tab-title">مشتریان <span class="bronze-color">برنزی</span></div>
-        </v-tab>
-        <v-tab value="2">
-          <div class="customer-tab-title">مشتریان <span class="silver-color">نقره ای</span></div>
-        </v-tab>
-        <v-tab value="3">
-          <div class="customer-tab-title">مشتریان <span class="golden-color">طلایی</span></div>
-        </v-tab>
-      </v-tabs>
-    </div>
-    <div class="tab-in-big-screen">
-      <v-tabs
-        v-model="tab"
-        show-arrows
-        align-tabs="center"
-        class=" mb-12  mt-15 customer-tab">
-        <v-row>
-          <v-col cols="4">      
-            <v-tab value="1">
-              <div>
-                <div class="customer-tab-title">مشتریان <span class="bronze-color">برنزی</span></div>
-                <div class="customer-tab-sen ">
-                ثبت ۱ تا ۹۹ دامنه در پنل جی دامین
-                </div>
-              </div>
-            </v-tab>
-          </v-col>
-          <v-col cols="4">
-            <v-tab value="2" >
-              <div>
-                <div class="customer-tab-title">مشتریان <span class="silver-color">نقره ای</span></div>
-                <div class="customer-tab-sen ">
-                ثبت ۱۰۰ تا ۹۹۹ دامنه در پنل جی دامین
-                </div>
-              </div>
-            </v-tab>
-          </v-col>
-          <v-col cols="4"> 
-            <v-tab value="3" >
-              <div>
-                <div class="customer-tab-title">مشتریان <span class="golden-color">طلایی</span></div>
-                <div class="customer-tab-sen ">
-                ثبت بیشتر از ۹۹۹ دامنه در پنل جی دامین
-                </div>
-              </div>
-            </v-tab>
-          </v-col>
-        </v-row> 
-      </v-tabs>
-    </div>
-    <v-window v-model="tab">
-      <v-window-item value="1">
-        <PricesBronzeCustomers />
-      </v-window-item>
-      <v-window-item value="2">
-        <PricesSilverCustomers />
-      </v-window-item>
-      <v-window-item value="3">
-        <PricesGoldenCustomers />
-      </v-window-item>
-    </v-window>
-  </v-container>
+    <v-container class="prices-container">
+        <div class="prices-title">تعرفه های ثبت دامنه</div>
+        <div>
+            تعرفه های دامنه بسته به تعداد دامنه های ثبت شده مشتربان گرامی در پنل جی
+            سرور قیمت گذاری می شوند.
+        </div>
+        <div>
+            هرچه تعداد دامنه های ثبت شده شما بیشتر باشد هزینه ثبت دامنه شامل تخفیف
+            بیتر یخواهد شد.
+        </div>
+        <div class="tab-in-small-screen">
+            <v-tabs
+                v-model="tab"
+                direction="vertical"
+                align-tabs="center"
+                class="mb-5 mt-5 customer-tab">  
+                <v-tab value="1">
+                    <div class="customer-tab-title">مشتریان <span class="bronze-color">برنزی</span></div>
+                </v-tab>
+                <v-tab value="2">
+                    <div class="customer-tab-title">مشتریان <span class="silver-color">نقره ای</span></div>
+                </v-tab>
+                <v-tab value="3">
+                    <div class="customer-tab-title">مشتریان <span class="golden-color">طلایی</span></div>
+                </v-tab>
+            </v-tabs>
+        </div>
+        <div class="tab-in-big-screen">
+            <v-tabs
+                v-model="tab"
+                show-arrows
+                align-tabs="center"
+                class=" mb-12  mt-15 customer-tab">
+                <v-row>
+                    <v-col cols="4">      
+                        <v-tab value="1">
+                            <div>
+                                <div class="customer-tab-title">مشتریان <span class="bronze-color">برنزی</span></div>
+                                <div class="customer-tab-sen ">
+                                    ثبت ۱ تا ۹۹ دامنه در پنل جی دامین
+                                </div>
+                            </div>
+                        </v-tab>
+                    </v-col>
+                    <v-col cols="4">
+                        <v-tab value="2" >
+                            <div>
+                                <div class="customer-tab-title">مشتریان <span class="silver-color">نقره ای</span></div>
+                                <div class="customer-tab-sen ">
+                                    ثبت ۱۰۰ تا ۹۹۹ دامنه در پنل جی دامین
+                                </div>
+                            </div>
+                        </v-tab>
+                    </v-col>
+                    <v-col cols="4"> 
+                        <v-tab value="3" >
+                            <div>
+                                <div class="customer-tab-title">مشتریان <span class="golden-color">طلایی</span></div>
+                                <div class="customer-tab-sen ">
+                                    ثبت بیشتر از ۹۹۹ دامنه در پنل جی دامین
+                                </div>
+                            </div>
+                        </v-tab>
+                    </v-col>
+                </v-row> 
+            </v-tabs>
+        </div>
+        <v-window v-model="tab">
+            <v-window-item value="1">
+                <PricesBronzeCustomers />
+            </v-window-item>
+            <v-window-item value="2">
+                <PricesSilverCustomers />
+            </v-window-item>
+            <v-window-item value="3">
+                <PricesGoldenCustomers />
+            </v-window-item>
+        </v-window>
+    </v-container>
 </template>
 
 <script lang="ts">
@@ -86,14 +86,14 @@ import PricesBronzeCustomers from "@/components/home/PricesBronzeCustomers.vue";
 import PricesSilverCustomers from "@/components/home/PricesSilverCustomers.vue";
 import PricesGoldenCustomers from "@/components/home/PricesGoldenCustomers.vue";
 export default defineComponent({
-  components:{
-    PricesBronzeCustomers,
-    PricesSilverCustomers,
-    PricesGoldenCustomers
-  },
-  data: () => ({
-    tab: null,
-  }),
+    components:{
+        PricesBronzeCustomers,
+        PricesSilverCustomers,
+        PricesGoldenCustomers
+    },
+    data: () => ({
+        tab: null,
+    }),
 });
 </script>
 <style lang="scss">

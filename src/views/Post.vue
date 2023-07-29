@@ -17,7 +17,7 @@
             <v-snackbar v-model="serverSnackbar" multi-line>خطای سرور
                 <template v-slot:actions>
                     <v-btn color="red" variant="text" @click="serverSnackbar = false">
-                    بستن
+                        بستن
                     </v-btn>
                 </template>
             </v-snackbar>
@@ -28,14 +28,14 @@
                         <v-row>
                             <v-col lg="2" md="3" cols="12">
                                 <p class="text-grey-darken-1">
-                                <v-icon class="ml-1" color="#4f80ff">mdi-account-outline</v-icon>
-                                {{ post.post.author.name }}
+                                    <v-icon class="ml-1" color="#4f80ff">mdi-account-outline</v-icon>
+                                    {{ post.post.author.name }}
                                 </p>
                             </v-col>
                             <v-col lg="2" md="3" cols="12">
                                 <p class="text-grey-darken-1">
-                                <v-icon class="ml-1" color="#4f80ff">mdi-calendar-month-outline</v-icon>
-                                {{ new Date(post.post.date).toLocaleDateString('fa-IR') }}
+                                    <v-icon class="ml-1" color="#4f80ff">mdi-calendar-month-outline</v-icon>
+                                    {{ new Date(post.post.date).toLocaleDateString('fa-IR') }}
                                 </p>
                             </v-col>
                         </v-row>
@@ -69,26 +69,26 @@
                     <p class="comments-title mb-6">نظرات ({{ post.comments.length }})</p>
                     <div v-if="post.comments.length>0">
                         <v-row class="my-10" v-for="comment in post.comments.length" :key="comment">
-                                <v-col md="1" cols="2" v-if="comment%2!=0" align="left">
-                                    <v-img v-if="post.comments[comment-1].author.avatar" class="rounded-circle"  :src="post.comments[comment-1].author.avatar" width="60px"></v-img>
-                                    <v-img v-if="!post.comments[comment-1].author.avatar" class="rounded-circle"  :src="defaultUserImage" width="60px"></v-img>
-                                </v-col>
-                                <v-col md="11" cols="10" class="comment-frame" v-if="comment%2!=0">
-                                    <p class="comment-author">{{post.comments[comment-1].author.name}}</p>
-                                    <p class="text-grey-darken-1">{{ new Date(post.comments[comment-1].date).toLocaleDateString('fa-IR')}}</p>
-                                    <p>{{post.comments[comment-1].content}}</p>
-                                    <v-btn variant="text" rounded="pill" color="primary" class="letter-spacing-btn float-left" prepend-icon=" mdi-comment-multiple-outline" href="#">پاسخ دادن</v-btn>
-                                </v-col>
-                                <v-col md="11" cols="10" class="comment-frame" v-if="comment%2==0">
-                                    <p class="comment-author">{{post.comments[comment-1].author.name}}</p>
-                                    <p class="text-grey-darken-1">{{ new Date(post.comments[comment-1].date).toLocaleDateString('fa-IR')}}</p>
-                                    <p>{{post.comments[comment-1].content}}</p>
-                                    <v-btn variant="text" rounded="pill" color="primary" class="letter-spacing-btn float-left" prepend-icon=" mdi-comment-multiple-outline" href="#">پاسخ دادن</v-btn>
-                                </v-col>
-                                <v-col md="1" cols="2" v-if="comment%2==0">
-                                    <v-img v-if="post.comments[comment-1].author.avatar" class="rounded-circle"  :src="post.comments[comment-1].author.avatar" width="60px"></v-img>
-                                    <v-img v-if="!post.comments[comment-1].author.avatar" class="rounded-circle"  :src="defaultUserImage" width="60px"></v-img>
-                                </v-col>
+                            <v-col md="1" cols="2" v-if="comment%2!=0" align="left">
+                                <v-img v-if="post.comments[comment-1].author.avatar" class="rounded-circle"  :src="post.comments[comment-1].author.avatar" width="60px"></v-img>
+                                <v-img v-if="!post.comments[comment-1].author.avatar" class="rounded-circle"  :src="defaultUserImage" width="60px"></v-img>
+                            </v-col>
+                            <v-col md="11" cols="10" class="comment-frame" v-if="comment%2!=0">
+                                <p class="comment-author">{{post.comments[comment-1].author.name}}</p>
+                                <p class="text-grey-darken-1">{{ new Date(post.comments[comment-1].date).toLocaleDateString('fa-IR')}}</p>
+                                <p>{{post.comments[comment-1].content}}</p>
+                                <v-btn variant="text" rounded="pill" color="primary" class="letter-spacing-btn float-left" prepend-icon=" mdi-comment-multiple-outline" href="#">پاسخ دادن</v-btn>
+                            </v-col>
+                            <v-col md="11" cols="10" class="comment-frame" v-if="comment%2==0">
+                                <p class="comment-author">{{post.comments[comment-1].author.name}}</p>
+                                <p class="text-grey-darken-1">{{ new Date(post.comments[comment-1].date).toLocaleDateString('fa-IR')}}</p>
+                                <p>{{post.comments[comment-1].content}}</p>
+                                <v-btn variant="text" rounded="pill" color="primary" class="letter-spacing-btn float-left" prepend-icon=" mdi-comment-multiple-outline" href="#">پاسخ دادن</v-btn>
+                            </v-col>
+                            <v-col md="1" cols="2" v-if="comment%2==0">
+                                <v-img v-if="post.comments[comment-1].author.avatar" class="rounded-circle"  :src="post.comments[comment-1].author.avatar" width="60px"></v-img>
+                                <v-img v-if="!post.comments[comment-1].author.avatar" class="rounded-circle"  :src="defaultUserImage" width="60px"></v-img>
+                            </v-col>
                         </v-row>
                     </div>
                 </div>
@@ -96,14 +96,14 @@
                     <div class="form-title">افزودن دیدگاه</div>
                     <div>آدرس ایمیل شما منتشر نخواهد شد. قسمت های ضروری که با <span class="mr-1 star-color">*</span> مشخص شده اند را کامل کنید. </div>
                     <div class="mt-8 mb-4">
-                    <p class="input-title">دیدگاه شما<span class="mr-1 star-color">*</span></p>
-                    <v-textarea
-                        class="my-3"
-                        rows="2"
-                        v-model="comment"
-                        variant="outlined"
-                        :rules="commentRules">
-                    </v-textarea>
+                        <p class="input-title">دیدگاه شما<span class="mr-1 star-color">*</span></p>
+                        <v-textarea
+                            class="my-3"
+                            rows="2"
+                            v-model="comment"
+                            variant="outlined"
+                            :rules="commentRules">
+                        </v-textarea>
                     </div>
                     <v-row>
                         <v-col sm="4" cols=12>
@@ -127,10 +127,10 @@
                         <v-col sm="4" cols=12>
                             <p class="input-title">وبسایت</p>
                             <v-text-field
-                            variant="outlined"
-                            class="my-3"
-                            v-model="site"
-                            required/>
+                                variant="outlined"
+                                class="my-3"
+                                v-model="site"
+                                required/>
                         </v-col>
                     </v-row>
                     <div class="btn-align">
@@ -151,26 +151,26 @@
                 <v-row v-if="post.relatedPosts.length>0" class="mt-5 mb-12">
                     <v-col v-for="index in 3" :key="index" sm="4" cols="12" class="card px-7 mt-6">
                         <a :href="'/post/'+ post.relatedPosts[index-1].post.id" class="link">
-                                <v-img class="img" :src="post.relatedPosts[index-1].post.picture"></v-img>
-                                <div>
-                                    <p class="card-title">{{ post.relatedPosts[index-1].post.title }}</p>
-                                    <p class="card-content">{{ post.relatedPosts[index-1].post.description }}</p>
-                                </div>
-                                <v-row class="mt-1">
-                                    <v-col sm="6" align="right">
-                                        <p class="text-grey-darken-3">
+                            <v-img class="img" :src="post.relatedPosts[index-1].post.picture"></v-img>
+                            <div>
+                                <p class="card-title">{{ post.relatedPosts[index-1].post.title }}</p>
+                                <p class="card-content">{{ post.relatedPosts[index-1].post.description }}</p>
+                            </div>
+                            <v-row class="mt-1">
+                                <v-col sm="6" align="right">
+                                    <p class="text-grey-darken-3">
                                         <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-account-outline</v-icon>
                                         {{ post.relatedPosts[index-1].post.author.name }}
-                                        </p>
-                                    </v-col>
-                                    <v-col sm="6" align="right">
-                                        <p class="text-grey-darken-3">
+                                    </p>
+                                </v-col>
+                                <v-col sm="6" align="right">
+                                    <p class="text-grey-darken-3">
                                         <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-calendar-month-outline</v-icon>
                                         {{ new Date(post.relatedPosts[index-1].post.date).toLocaleDateString('fa-IR') }}
-                                        </p>
-                                    </v-col>
-                                </v-row>
-                            </a>
+                                    </p>
+                                </v-col>
+                            </v-row>
+                        </a>
                     </v-col>
                 </v-row>
             </v-container>
@@ -187,7 +187,7 @@ import DefaultUserImage from "@/assets/pics/unknownUser.jpg";
 
 import { defineComponent } from "vue";
 import { call } from "@/mocks/API";
-import {getPost} from "@/mocks/Blog"
+import {getPost} from "@/mocks/Blog";
 
 export default defineComponent({
     components: {
@@ -211,37 +211,37 @@ export default defineComponent({
             comment:"",
             commentRules:[
                 (value) => {
-                if (value) return true;
-                return "وارد کردن دیدگاه الزامی است.";
+                    if (value) return true;
+                    return "وارد کردن دیدگاه الزامی است.";
                 },
             ],
             nameRules: [
                 (value) => {
-                if (value) return true;
-                return "وارد کردن نام الزامی است.";
+                    if (value) return true;
+                    return "وارد کردن نام الزامی است.";
                 },
                 (value) => {
-                if (value?.length <= 20) return true;
-                return "نام شما باید کمتر از 20 کاراکتر باشد.";
+                    if (value?.length <= 20) return true;
+                    return "نام شما باید کمتر از 20 کاراکتر باشد.";
                 },
             ],
             emailRules: [
                 (value) => {
-                if (value) return true;
-                return "وارد کردن ایمیل الزامی است.";
+                    if (value) return true;
+                    return "وارد کردن ایمیل الزامی است.";
                 },
                 (value) => {
-                if (
-                    !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
-                    value
-                    )
-                ) {
-                    return "ایمیل وارد شده معتبر نمی باشد";
-                }
-                return true;
+                    if (
+                        !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+                            value
+                        )
+                    ) {
+                        return "ایمیل وارد شده معتبر نمی باشد";
+                    }
+                    return true;
                 },
             ],
-        }
+        };
     },
     methods:{
         onSubmit() {
@@ -249,10 +249,7 @@ export default defineComponent({
                 return;
             }
             this.loading = true;
-            setTimeout(()=>{
-                this.loading = false;
-            }
-            ,2000)
+            setTimeout(()=>{this.loading = false;},2000);
         }
     },
     async mounted(){
@@ -264,7 +261,7 @@ export default defineComponent({
             this.error = true;
         }
     }
-})
+});
 </script>
 <style lang="scss">
     .post-container{

@@ -1,8 +1,8 @@
 <template>
-  <div class="contact-us-container">
-    <div class="title"><slot name="title"></slot></div>
-    <slot name="content"></slot>
-  </div>
+    <div class="contact-us-container">
+        <div class="title"><slot name="title"></slot></div>
+        <slot name="content"></slot>
+    </div>
 </template>
 <style lang="scss">
 .contact-us-container {
