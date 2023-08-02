@@ -90,7 +90,7 @@ export default defineComponent({
         return {
             JeyDomain: JeyDomain,
             items: [
-                { title: 'پنل کاربری', href: '/user-panel' },
+                { title: 'پنل کاربری', href: '/user-panel/dashboard' },
                 { title: 'مشاهده پروفایل', href: '' },
                 { title: 'خروج از حساب', href: '' },
             ],

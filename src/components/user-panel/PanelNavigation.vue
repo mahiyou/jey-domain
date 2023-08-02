@@ -6,7 +6,7 @@
         <div>منو</div>
         <v-list density="compact" nav>
             <div v-for="index in tabs.length" :key="index">
-                <v-list-item v-if="tabs[index-1].options.length == 0" :prepend-icon="tabs[index-1].icon" :title="tabs[index-1].title" :value="tabs[index-1].value" :href = "`user-panel/${tabs[index-1].value}`"></v-list-item>
+                <v-list-item v-if="tabs[index-1].options.length == 0" :prepend-icon="tabs[index-1].icon" :title="tabs[index-1].title" :value="tabs[index-1].value" :href = "tabs[index-1].value"></v-list-item>
                 <v-list-item v-else>
                     <v-expansion-panels>
                         <v-expansion-panel class="bg-primary">
