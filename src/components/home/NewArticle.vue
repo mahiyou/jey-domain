@@ -8,7 +8,7 @@
                 </p>
                 <a href="#" class="link">
                     <v-card class="card">
-                        <v-img :src="articles[0].picture" width="530px">
+                        <v-img :src="articles[0].picture" width="540px">
                             <v-card class="inside-card">
                                 <p class="mb-3">{{ articles[0].title }}</p>
                                 <v-row>

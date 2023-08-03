@@ -15,7 +15,7 @@
                         می‌کنند.
                     </p>
                     <div class="price-btn">
-                        <v-btn class="header-btn">مشاهده ی تعرفه ها</v-btn>
+                        <v-btn class="header-btn" :to="{ name: 'prices' }">مشاهده ی تعرفه ها</v-btn>
                     </div>
                 </div>
             </v-col>
@@ -52,7 +52,6 @@
     background: #4f80ff;
     border-radius: 25px;
     color: white;
-    letter-spacing: 0;
     margin: 20px 0px 60px 0px;
     margin-right: 110px;
   }

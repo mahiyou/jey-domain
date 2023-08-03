@@ -139,6 +139,7 @@ import { defineComponent } from "vue";
 import DefaultUserImage from "@/assets/pics/user.jpg";
 import JeyDomain from "@/assets/pics/JeyDomain.svg";
 import {useUserState} from "@/stores/UserState";
+import { persianNumber } from "@/utilities";
 import { mapState } from "pinia";  
 
 export default defineComponent({
@@ -148,6 +149,11 @@ export default defineComponent({
             type: Boolean,
             require: true,
         },
+    },
+    setup(){
+        return{
+            persianNumber
+        }
     },
     data(){
         return{
@@ -164,18 +170,6 @@ export default defineComponent({
     methods: {
         onUpdate(newValue) {
             this.$emit("update:model-value", newValue);
-        },
-        persianNumber(n) {
-            n = n.toString();
-            const nlength = n.length;
-            const farsiNum = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
-            for (let i = 0; i < 10; i++) {
-                for (let j = 0; j < nlength; j++) {
-                    const istring = i.toString();
-                    n = n.replace(istring, farsiNum[i]);
-                }
-            }
-            return n;
         },
     },
     computed:{

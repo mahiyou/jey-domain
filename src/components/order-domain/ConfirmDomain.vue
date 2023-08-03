@@ -127,8 +127,14 @@ import { getCartItems } from "@/mocks/Cart";
 import { deletCartItem } from "@/mocks/Cart";
 import { applyDiscount } from "@/mocks/Cart";
 import { call } from "@/mocks/API";
+import { persianNumber } from "@/utilities";
 
 export default defineComponent({
+    setup() {
+        return {
+            persianNumber
+        };
+    },
     data() {
         return {
             cartItems: undefined,
@@ -149,18 +155,6 @@ export default defineComponent({
         };
     },
     methods: {
-        persianNumber(n) {
-            n = n.toString();
-            const nlength = n.length;
-            const farsiNum = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
-            for (let i = 0; i < 10; i++) {
-                for (let j = 0; j < nlength; j++) {
-                    const istring = i.toString();
-                    n = n.replace(istring, farsiNum[i]);
-                }
-            }
-            return n;
-        },
         deletCartItemForUser(id) {
             if (this.cartItems) {
                 const itemWithId = this.cartItems.findIndex((item) => item.id === id);
@@ -262,17 +256,13 @@ export default defineComponent({
     text-align: left;
   }
   .btn-discount {
-    font-family: IRANSans;
     font-size: 13px;
-    letter-spacing: 0;
     padding: 10px;
     border-color: #bbbcbf;
     margin-top: 5px;
   }
   .btns {
-    font-family: IRANSans;
     font-size: 15px;
-    letter-spacing: 0;
     padding: 7px;
     margin: 60px 10px;
   }

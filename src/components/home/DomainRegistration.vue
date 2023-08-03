@@ -55,12 +55,18 @@
     </v-container>
 </template>
 <script lang="ts">
+import { persianNumber } from "@/utilities";
 import { defineComponent } from "vue";
 
 export default defineComponent({
     props:{
         backgroundColor: String,
         selectDomainBackGround: String,
+    },
+    setup(){
+        return{
+            persianNumber
+        }
     },
     data() {
         return {
@@ -73,20 +79,6 @@ export default defineComponent({
             selected: "com",
         };
     },
-    methods:{
-        persianNumber(n : string) {
-            n = n.toString();
-            const nlength = n.length;
-            const farsiNum = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
-            for (let i = 0; i < 10; i++) {
-                for (let j = 0; j < nlength; j++) {
-                    const istring = i.toString();
-                    n = n.replace(istring, farsiNum[i]);
-                }
-            }
-            return n;
-        },
-    }
 });
 </script>
 
@@ -116,10 +108,8 @@ export default defineComponent({
     border-left: none;
   }
   .btn-confirm {
-    font-family: IRANSans;
     color: white;
     padding: 10px;
-    letter-spacing: 0;
     font-weight: 800;
     font-size: 14px;
     margin: 5px 7px;

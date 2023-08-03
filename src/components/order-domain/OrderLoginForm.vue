@@ -134,9 +134,7 @@ export default defineComponent({
     color: #4f80ff;
   }
   .btn-confirm {
-    font-family: IRANSans;
     font-size: 16px;
-    letter-spacing: 0;
     color: white;
     padding: 5px;
     margin: 50px auto;

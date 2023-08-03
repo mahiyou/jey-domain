@@ -250,9 +250,7 @@ export default defineComponent({
       text-align: center;
     }
     .btn-continue {
-      font-family: IRANSans;
       font-size: 16px;
-      letter-spacing: 0;
       color: white;
       padding: 7px;
       margin: 60px auto 0px auto;

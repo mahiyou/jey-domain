@@ -87,7 +87,6 @@
   }
   .order-tabs-handler {
     margin-bottom: 1em;
-    letter-spacing: 0px;
     margin-right: 15px;
   }
   .num-border {

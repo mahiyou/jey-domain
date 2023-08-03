@@ -36,7 +36,6 @@
         margin: 0 auto;
     }
     .back-btn{
-        letter-spacing: 0;
         font-weight: 900;
     }
     .content{

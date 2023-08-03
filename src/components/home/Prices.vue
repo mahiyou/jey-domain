@@ -127,11 +127,8 @@ export default defineComponent({
       background: white;
     }  
     .customer-tab-title {
-      font-family: IRANSans;
-      letter-spacing: 0;
       font-weight: 900;
       font-size: 25px;
-      color: #242849;
       line-height: 70px;
     }
     .bronze-color{
@@ -144,8 +141,6 @@ export default defineComponent({
       color: #f4d327;
     }
     .customer-tab-sen {
-      font-family: IRANSans;
-      letter-spacing: 0;
       color: #3e415f;
     }
   }

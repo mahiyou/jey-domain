@@ -193,10 +193,8 @@ export default defineComponent({
       font-weight: 600;
     }
     .btn-continue {
-      font-family: IRANSans;
       font-size: 16px;
       font-weight: 700;
-      letter-spacing: 0;
       color: white;
       padding: 6px;
       margin: 40px auto;

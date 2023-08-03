@@ -268,15 +268,11 @@ export default defineComponent({
     color: #4f80ff;
   }
   .rights-btn{
-    font-family: IRANSans;
     font-weight: 800;
-    letter-spacing: 0;
     padding: 0px 3px;
   }
   .btn-confirm {
-    font-family: IRANSans;
     font-size: 16px;
-    letter-spacing: 0;
     color: white;
     padding: 5px;
     margin: 20px auto 50px auto;

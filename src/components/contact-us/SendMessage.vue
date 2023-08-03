@@ -170,9 +170,7 @@ export default defineComponent({
     text-align: center;
     font-size: 15px;
     margin-top: 15px;
-    font-family: IRANSans;
     color: white;
-    letter-spacing: 0;
   }
   .contact-img {
     margin: 90px auto 10px auto;
