@@ -2,66 +2,36 @@
     <v-container class="order-nav-container">
         <v-row>
             <v-col sm="4" cols="12">
-                <v-tabs
-                    center-active
-                    :align-tabs="alignTabs"
-                    :model-value="modelValue"
-                    @update:model-value="onTabChanged"
-                    :direction="tabsDirection"
-                    hide-slider
-                    color="primary"
-                    class="nav-tabs">
-                    <v-tab
-                        value="checkDomain"
-                        class="order-tabs-handler"
-                        :border="false"
-                        rounded="lg"
-                        variant="flat">
+                <v-tabs center-active :align-tabs="alignTabs" :model-value="modelValue" @update:model-value="onTabChanged"
+                    :direction="tabsDirection" hide-slider color="primary" class="nav-tabs" disabled="true">
+                    <v-tab value="checkDomain" class="order-tabs-handler" :border="false" rounded="lg" variant="flat">
                         <span class="num-border">۱</span>
                         بررسی دامنه
                     </v-tab>
-                    <v-tab
-                        value="configuration"
-                        class="order-tabs-handler"
-                        :border="false"
-                        rounded="lg"
-                        variant="flat">
+                    <v-tab value="configuration" class="order-tabs-handler" :border="false" rounded="lg" variant="flat">
                         <span class="num-border">۲</span>
                         پیکربندی
                     </v-tab>
-                    <v-tab
-                        value="confirmDomain"
-                        class="order-tabs-handler"
-                        :border="false"
-                        rounded="lg"
-                        variant="flat">
+                    <v-tab value="confirmDomain" class="order-tabs-handler" :border="false" rounded="lg" variant="flat">
                         <span class="num-border">۳</span>
                         تایید دامنه
                     </v-tab>
-                    <v-tab
-                        value="completeOrder"
-                        class="order-tabs-handler"
-                        :border="false"
-                        rounded="lg"
-                        variant="flat">
+                    <v-tab value="completeOrder" class="order-tabs-handler" :border="false" rounded="lg" variant="flat">
                         <span class="num-border">۴</span>
                         تکمیل سفارش
                     </v-tab>
                 </v-tabs>
             </v-col>
             <v-col sm="8" cols="12">
-                <v-window
-                    :touch="false"
-                    :model-value="modelValue"
-                    @update:model-value="onTabChanged">
+                <v-window :touch="false" :model-value="modelValue" @update:model-value="onTabChanged">
                     <v-window-item value="checkDomain">
-                        <CheckDomain />
+                        <CheckDomain @tabValue="onTabChanged" />
                     </v-window-item>
                     <v-window-item value="configuration">
-                        <ConfigurationDomain />
+                        <ConfigurationDomain @tabValue="onTabChanged" :cartItemDomain="cartItem" :cost="cost" />
                     </v-window-item>
                     <v-window-item value="confirmDomain">
-                        <ConfirmDomain />
+                        <ConfirmDomain @tabValue="onTabChanged" :cartItemDomain="cartItem" />
                     </v-window-item>
                     <v-window-item value="completeOrder">
                         <CompleteOrder />
@@ -74,26 +44,31 @@
 
 <style lang="scss">
 .order-nav-container {
-  min-width: 90%;
-  padding-top: 50px;
-  .nav-tabs {
-    .v-btn--disabled.v-btn--variant-elevated,
-    .v-btn--disabled.v-btn--variant-flat {
-      color: rgb(var(--v-theme-on-surface));
-      .v-btn__overlay {
-        opacity: 0;
-      }
+    min-width: 90%;
+    padding-top: 50px;
+
+    .nav-tabs {
+
+        .v-btn--disabled.v-btn--variant-elevated,
+        .v-btn--disabled.v-btn--variant-flat {
+            color: rgb(var(--v-theme-on-surface));
+
+            .v-btn__overlay {
+                opacity: 0;
+            }
+        }
     }
-  }
-  .order-tabs-handler {
-    margin-bottom: 1em;
-    margin-right: 15px;
-  }
-  .num-border {
-    border-left: 1px solid;
-    margin-left: 10px;
-    padding-left: 10px;
-  }
+
+    .order-tabs-handler {
+        margin-bottom: 1em;
+        margin-right: 15px;
+    }
+
+    .num-border {
+        border-left: 1px solid;
+        margin-left: 10px;
+        padding-left: 10px;
+    }
 }
 </style>
 <script lang="ts">
@@ -123,9 +98,19 @@ export default defineComponent({
             required: true,
         },
     },
+    data() {
+        return {
+            cartItem: undefined,
+            cost: { amount: 0, currency: { title: "تومان" } }
+        }
+
+    },
     methods: {
         onTabChanged(newTab) {
-            this.$emit("update:modelValue", newTab);
+            this.$emit("update:modelValue", newTab.tab);
+            this.cartItem = newTab.cartItem;
+            this.cost = newTab.cost;
+
         },
     },
     computed: {

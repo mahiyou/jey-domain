@@ -33,9 +33,10 @@ const routes = [
                 component: ContactusView,
             },
             {
-                path: "/order/domain",
+                path: "/order/domain/:step",
                 name: "order-domain",
                 component: OrderDomain,
+
             },
             {
                 path: "/register",

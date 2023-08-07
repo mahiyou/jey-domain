@@ -19,23 +19,23 @@
             </v-form>
             <v-spacer></v-spacer>
             <div v-if="userState" class="mt-5">
-                <v-btn color="secondary">
+                <v-btn color="secondary" class="overlay-btn" :to="{ path:'/order/domain/cartReview' }">
                     <v-icon size="large" color="#495057">mdi-shopping-outline</v-icon>
                     <span class="rounded-circle text-white bg-primary circle">{{
-                        persianNumber(user.numberOfBasletItems)
+                        persianNumber(cartStore.items.length)
                     }}</span>
                 </v-btn>
-                <v-btn color="secondary">
+                <v-btn color="secondary" class="overlay-btn">
                     <v-icon size="large" color="#495057">mdi-bell-outline</v-icon>
                     <span class="rounded-circle text-white bg-customYellow circle">{{
-                        persianNumber(user.numberOfNotifications)
+                        persianNumber(numberOfNotifications)
                     }}</span>
                 </v-btn>
                 <v-menu offset-y class="nav-dropdown-menu">
                     <template v-slot:activator="{ props }">
                         <v-btn v-bind="props" color="secondary" class="nav-btn mr-2">
                             <v-img class="rounded-circle" :src="user.avatar" width="27px" height="27px"></v-img>
-                            <span class="mr-2">{{ user.name }}</span>
+                            <span class="mr-2">{{ userStore.user.name}}</span>
                             <v-icon class="mr-2">mdi-chevron-down</v-icon>
                         </v-btn>
                     </template>
@@ -48,10 +48,10 @@
                 </v-menu>
             </div>
             <div v-if="!userState" class="mt-5">
-                <v-btn color="secondary">
+                <v-btn color="secondary" class="overlay-btn" :to="{ path:'/order/domain/cartReview' }">
                     <v-icon size="large" color="#495057">mdi-shopping-outline</v-icon>
                     <span class="rounded-circle text-white bg-primary circle">{{
-                        persianNumber(user.numberOfBasletItems)
+                        persianNumber(cartStore.items.length)
                     }}</span>
                 </v-btn>
                 <v-btn color="secondary" class="login-register-btn" :to="{ name: 'logIn' }"> ورود </v-btn>
@@ -66,7 +66,7 @@
                 </div>
             </a>
             <v-spacer></v-spacer>
-            <v-btn color="secondary" class="toolbar-btn hidden-sm-and-down" :to="{ name: 'home' }"> صفحه ی اصلی </v-btn>
+            <v-btn color="secondary" class="toolbar-btn hidden-sm-and-down" :to="{ name: 'home' }"> صفحه اصلی </v-btn>
             <v-btn color="secondary" class="toolbar-btn hidden-sm-and-down" :to="{ name: 'prices' }"> تعرفه ها </v-btn>
             <v-btn color="secondary" class="toolbar-btn hidden-sm-and-down" :to="{ name: 'questions' }"> سوالات متداول </v-btn>
             <v-btn color="secondary" class="toolbar-btn hidden-sm-and-down" :to="{ name: 'contact-us' }">
@@ -85,11 +85,15 @@ import JeyDomain from "@/assets/pics/JeyDomain.svg";
 import { useUserState } from "@/stores/UserState";
 import { mapState } from "pinia";
 import { persianNumber } from "@/utilities";
+import { useCartStore } from "@/stores/Cart";
+
 export default defineComponent({
     emits: ["clickOnNavBtn"],
     setup(){
         return{
-            persianNumber
+            persianNumber,
+            cartStore: useCartStore(),
+            userStore: useUserState()
         }
     },
     data() {
@@ -101,17 +105,14 @@ export default defineComponent({
                 { title: 'خروج از حساب', href: '' },
             ],
             user: {
-                id: 1,
-                name: "کاربر تست",
                 avatar: DefaultUserImage,
-                numberOfNotifications: 3,
-                numberOfBasletItems: 7,
             },
+            numberOfNotifications: 3,
         };
     },
     computed: {
         ...mapState(useUserState, { userState: "userState" })
-    }
+    },
 });
 </script>
 
@@ -135,8 +136,9 @@ export default defineComponent({
   .circle {
     width: 20px;
     height: 20px;
+    padding: 1.5px;
     font-size: 10px;
-    padding: 2px;
+    text-align: center;
     color: white !important;
     margin: -33px -10px 0px 0px;
   }
@@ -175,6 +177,9 @@ export default defineComponent({
     font-size: 13px;
     margin: auto 15px;
     font-weight: 600;
+    --v-theme-overlay-multiplier: 0;
+  }
+  .overlay-btn{
     --v-theme-overlay-multiplier: 0;
   }
 }
