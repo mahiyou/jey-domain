@@ -2,7 +2,7 @@
   <v-locale-provider rtl>
     <Toolbar @clickOnNavBtn="navigation = true" />
     <Navigation v-model="navigation" />
-    <div style="background: #fafbff" FIXME>
+    <div class="general-background">
       <HomeSlider />
       <DomainRegistration />
       <Prices />
@@ -51,3 +51,8 @@ export default defineComponent({
   },
 });
 </script>
+<style scoped>
+  .general-background{
+    background: #fafbff;
+  }
+</style>
