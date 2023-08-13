@@ -248,6 +248,7 @@ export default defineComponent({
     letter-spacing: 0;
     padding: 0px 3px;
     font-size: 12px;
+    --v-theme-overlay-multiplier: 0;
   }
   .v-expansion-panel{
     --v-border-opacity: 0;

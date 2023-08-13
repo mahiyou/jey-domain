@@ -1,85 +1,98 @@
 // Composables
 import { createRouter, createWebHistory } from "vue-router";
+import DefaultLayout from "@/layouts/default/Default.vue"
+import HomeView from "@/views/Home.vue"
+import ContactusView from "@/views/ContactUs.vue"
+import OrderDomain from "@/views/OrderDomain.vue"
+import Register from "@/views/Register.vue"
+import LogIn from "@/views/LogIn.vue"
+import Questions from "@/views/Questions.vue"
+import Conditions from "@/views/Conditions.vue"
+import Prices from "@/views/Prices.vue"
+import Blog from "@/views/Blog.vue"
+import Post from "@/views/Post.vue"
+import UserPanelLayout from "@/layouts/UserPanelLayout.vue"
+import Dashboard from "@/views/user-panel/Dashboard.vue"
+import Files from "@/views/user-panel/Files.vue"
+import NotFound from "@/views/NotFound.vue"
+
 
 const routes = [
     {
         path: "/",
-        component: () => import("@/layouts/default/Default.vue"),
+        component: DefaultLayout,
         children: [
             {
                 path: "",
                 name: "home",
-                // route level code-splitting
-                // this generates a separate chunk (about.[hash].js) for this route
-                // which is lazy-loaded when the route is visited.
-                component: () =>
-                    import(/* webpackChunkName: "home" */ "@/views/Home.vue"),
+                component: HomeView,
             },
             {
                 path: "/contact-us",
                 name: "contact-us",
-                component: () =>
-                    import(/* webpackChunkName: "home" */ "@/views/ContactUs.vue"),
+                component: ContactusView,
             },
             {
                 path: "/order/domain",
                 name: "order-domain",
-                component: () =>
-                    import(/* webpackChunkName: "home" */ "@/views/OrderDomain.vue"),
+                component: OrderDomain,
             },
             {
                 path: "/register",
                 name: "register",
-                component: () =>
-                    import(/* webpackChunkName: "home" */ "@/views/Register.vue"),
+                component: Register,
             },
             {
                 path: "/log-in",
                 name: "logIn",
-                component: () =>
-                    import(/* webpackChunkName: "home" */ "@/views/LogIn.vue"),
+                component: LogIn
             },
             {
                 path: "/questions",
                 name: "questions",
-                component: () =>
-                    import(/* webpackChunkName: "home" */ "@/views/Questions.vue"),
+                component: Questions
             },
             {
                 path: "/conditions",
                 name: "conditions",
-                component: () =>
-                    import(/* webpackChunkName: "home" */ "@/views/Conditions.vue"),
+                component: Conditions
             },
             {
                 path: "/prices",
                 name: "prices",
-                component: () =>
-                    import(/* webpackChunkName: "home" */ "@/views/Prices.vue"),
+                component: Prices
             },
             {
                 path: "/blog",
                 name: "blog",
-                component: () =>
-                    import(/* webpackChunkName: "home" */ "@/views/Blog.vue"),
+                component: Blog
             },
             {
                 path: "/post/:postId",
                 name: "post",
-                component: () =>
-                    import(/* webpackChunkName: "home" */ "@/views/Post.vue"),
+                component: Post
             },
             {
-                path: "/user-panel",
+                path: "",
                 name: "user-panel",
-                component: () =>
-                    import(/* webpackChunkName: "home" */ "@/views/UserPanel.vue"),
+                component: UserPanelLayout,
+                children: [
+                    {
+                        path: "/user-panel/dashboard",
+                        name: "dashboard",
+                        component: Dashboard
+                    },
+                    {
+                        path: "/user-panel/files",
+                        name: "files",
+                        component: Files
+                    },
+                ]
             },
             {
                 path: '/:pathMatch(.*)*', 
                 name: "notFound",
-                component: () =>
-                    import(/* webpackChunkName: "home" */ "@/views/NotFound.vue"),
+                component: NotFound
             }
         ],
     },

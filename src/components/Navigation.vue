@@ -88,7 +88,7 @@
                                 <v-list-item 
                                     title="پنل کاربری" 
                                     value="user-panel"
-                                    href=""
+                                    href='/user-panel/dashboard'
                                     prepend-icon="mdi-chevron-left">
                                 </v-list-item>
                                 <v-list-item 
@@ -103,7 +103,6 @@
                                     href=""
                                     prepend-icon="mdi-chevron-left">
                                 </v-list-item>
-
                             </v-expansion-panel-text>
                         </v-expansion-panel>
                     </v-expansion-panels> 
