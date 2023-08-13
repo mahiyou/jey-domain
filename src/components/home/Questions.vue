@@ -72,8 +72,8 @@
     text-align: right;
     .v-expansion-panel-title {
       line-height: 25px;
-      font-size: 15px;
-      font-weight: 500;
+      font-size: 14px;
+      font-weight: 600;
     }
     .v-expansion-panel__shadow {
       box-shadow: none;

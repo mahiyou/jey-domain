@@ -1,5 +1,5 @@
 <template >
-    <div class="general-background">
+    <div>
         <HomeSlider />
         <DomainRegistration :backgroundColor="DomainRegistrationBgColor" :selectDomainBackGround="DomainRegistrationSelectDomainBg"/>
         <Prices />
@@ -42,7 +42,4 @@ export default defineComponent({
 });
 </script>
 <style lang="scss">
-  .general-background{
-    background: #fafbff;
-  }
 </style>

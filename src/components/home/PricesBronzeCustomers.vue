@@ -229,8 +229,14 @@
     </div>
 </template>
 <script lang="ts">
+import { persianNumber } from "@/utilities";
 import { defineComponent } from "vue";
 export default defineComponent({
+    setup(){
+        return{
+            persianNumber
+        }
+    },
     data: () => ({
         tab: null,
         tlds: [
@@ -274,18 +280,6 @@ export default defineComponent({
                 return "td-background";
             }
         },
-        persianNumber(n: string) {
-            n = n.toString();
-            const nlength = n.length;
-            const farsiNum = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
-            for (let i = 0; i < 10; i++) {
-                for (let j = 0; j < nlength; j++) {
-                    const istring = i.toString();
-                    n = n.replace(istring, farsiNum[i]);
-                }
-            }
-            return n;
-        },
     },
 });
 </script>
@@ -295,7 +289,6 @@ export default defineComponent({
     background: #4f80ff;
     border-radius: 25px;
     color: white;
-    letter-spacing: 0;
     font-size: 14px;
     width: 100px;
     height: 30px;
@@ -320,8 +313,6 @@ export default defineComponent({
     color: #4f80ff;
   }
   .tab-style {
-    font-family: IRANSans;
-    letter-spacing: 0;
     margin-left: 10px;
     font-weight: 900;
     padding-bottom: 15px;

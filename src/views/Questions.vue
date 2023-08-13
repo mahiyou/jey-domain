@@ -7,36 +7,34 @@
             <p>صفحه اصلی > سوالات متداول</p>
         </template>
     </GeneralHeader>
-    <div class="general-background">
-        <v-container class= "asked-questions-container">
-            <div class="mt-5 mb-10">
-                تعدادی سوال متداولند، یعمی حتی برای ما در ابتدای کار این سوالات پیش می آمد
-                و هم اکنون ما می خواهیم قبل از پرسیده شدنشان پاسخ بدهیم! البته ممکن است
-                تعدادی از سوال ها را جا انداخته باشیم! چه خوب است که از طریق <a href="/contact-us" class="text-black">فرم تماس با ما</a>
-                آن ها را یادآوری کنید تا به اینجا اضافه شوند.
-            </div>
-            <v-expansion-panels>
-                <v-expansion-panel
-                    v-for="index in questions.length"
-                    :key="index"
-                    class="panel">
-                    <v-expansion-panel-title>{{ questions[index-1].question }}</v-expansion-panel-title>
-                    <v-expansion-panel-text>{{ questions[index-1].answer }}</v-expansion-panel-text>
-                </v-expansion-panel>
-            </v-expansion-panels>
-            <div class="more-questions">
-                <p class="title">هنوز هم سوال دارید؟</p>
-                <v-row>
-                    <v-col md="10" cols="12">
-                        <p>اگر هنوز سوالاتی دارید که پاسخ آن ها را در اینجا پیدا نکردید می توانید با ثبت نام در سایت در قسمت پشتیبانی از کارشناسان ما بپرسید و راهنمایی بگیرید!</p>
-                    </v-col>
-                    <v-col md="2" cols="12" align="center">
-                        <v-btn variant="flat" rounded="pill" color="primary" class="suport-btn" :to="{ name: 'contact-us' }">پشتیبانی</v-btn>
-                    </v-col>
-                </v-row>
-            </div>
-        </v-container>
-    </div>
+    <v-container class= "asked-questions-container">
+        <div class="mt-5 mb-10">
+            تعدادی سوال متداولند، یعمی حتی برای ما در ابتدای کار این سوالات پیش می آمد
+            و هم اکنون ما می خواهیم قبل از پرسیده شدنشان پاسخ بدهیم! البته ممکن است
+            تعدادی از سوال ها را جا انداخته باشیم! چه خوب است که از طریق <a href="/contact-us" class="text-black">فرم تماس با ما</a>
+            آن ها را یادآوری کنید تا به اینجا اضافه شوند.
+        </div>
+        <v-expansion-panels>
+            <v-expansion-panel
+                v-for="index in questions.length"
+                :key="index"
+                class="panel">
+                <v-expansion-panel-title>{{ questions[index-1].question }}</v-expansion-panel-title>
+                <v-expansion-panel-text>{{ questions[index-1].answer }}</v-expansion-panel-text>
+            </v-expansion-panel>
+        </v-expansion-panels>
+        <div class="more-questions">
+            <p class="title">هنوز هم سوال دارید؟</p>
+            <v-row>
+                <v-col md="10" cols="12">
+                    <p>اگر هنوز سوالاتی دارید که پاسخ آن ها را در اینجا پیدا نکردید می توانید با ثبت نام در سایت در قسمت پشتیبانی از کارشناسان ما بپرسید و راهنمایی بگیرید!</p>
+                </v-col>
+                <v-col md="2" cols="12" align="center">
+                    <v-btn variant="flat" rounded="pill" color="primary" class="suport-btn" :to="{ name: 'contact-us' }">پشتیبانی</v-btn>
+                </v-col>
+            </v-row>
+        </div>
+    </v-container>
 </template>
 <script lang="ts">
 import GeneralHeader from "@/components/GeneralHeader.vue";
@@ -131,7 +129,6 @@ export default defineComponent({
         font-weight: 900;
     }
     .suport-btn{
-        letter-spacing: 0px;
         font-weight: 800;
         font-size: 13px;
         padding: 9px 40px;

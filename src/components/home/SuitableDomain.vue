@@ -36,7 +36,6 @@
 <style lang="scss">
 .suitable-domain-container {
   max-width: 90%;
-  font-family: IRANSans;
   text-align: center;
   margin-bottom: 40px;
   .title {

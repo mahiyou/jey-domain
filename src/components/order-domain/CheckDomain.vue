@@ -108,6 +108,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref } from "vue";
+import { persianNumber } from "@/utilities";
 import { call } from "@/mocks/API";
 import { domainAvailabilityCheck } from "@/mocks/DomainAvailabilityCheck";
 
@@ -125,6 +126,7 @@ interface Suggestion {
 export default defineComponent({
     setup() {
         return {
+            persianNumber,
             checkDomainBox: ref<HTMLElement>(),
         };
     },
@@ -236,18 +238,6 @@ export default defineComponent({
             this.onSubmit();
             this.checkDomainBox?.scrollIntoView();
         },
-        persianNumber(n) {
-            n = n.toString();
-            const nlength = n.length;
-            const farsiNum = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
-            for (let i = 0; i < 10; i++) {
-                for (let j = 0; j < nlength; j++) {
-                    const istring = i.toString();
-                    n = n.replace(istring, farsiNum[i]);
-                }
-            }
-            return n;
-        },
     },
     computed: {
         visibility() {
@@ -281,7 +271,6 @@ export default defineComponent({
     .btn-confirm {
       height: calc(var(--v-btn-height) + -4px);
       margin-left: 10px;
-      letter-spacing: 0;
     }
   }
   .domain-search-available {
@@ -298,7 +287,6 @@ export default defineComponent({
       font-size: 16px;
     }
     .buy-btn {
-      letter-spacing: 0;
       width: 110px;
       margin-right: 20px;
       color: white;
@@ -349,14 +337,12 @@ export default defineComponent({
       margin-top: 10px;
       margin-bottom: 40px;
       .more-domain-btn {
-        letter-spacing: 0;
         font-weight: 600;
         --v-theme-overlay-multiplier: 0;
       }
     }
     .buy-btn-2 {
       color: white;
-      letter-spacing: 0;
       padding: 3px;
       width: 90px;
       margin-top: -7px;

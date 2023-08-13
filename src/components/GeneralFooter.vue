@@ -204,6 +204,7 @@ export default defineComponent({
 .f-container {
   padding: 65px 45px 0px 45px;
   border-top: 10px solid #4f80ff;
+  color: #242849;
   font-size: 13px;
   line-height: 22px;
   .footer-sen {
@@ -218,9 +219,7 @@ export default defineComponent({
     margin-top: 5px;
   }
   .btn-sites{
-    font-family: IRANSans;
     font-size: 13px;
-    letter-spacing: 0;
     width: 95%;
   }
   .features-title{
@@ -228,9 +227,7 @@ export default defineComponent({
     font-size: 18px;
   }
   .btn-features{
-    font-family: IRANSans;
     font-size: 13px;
-    letter-spacing: 0;
     width: 100%;
     justify-content: right;
     margin-top: 14px;
@@ -243,9 +240,7 @@ export default defineComponent({
     font-size: 12px;
   }
   .rights-btn{
-    font-family: IRANSans;
     font-size: 13px;
-    letter-spacing: 0;
     padding: 0px 3px;
     font-size: 12px;
     --v-theme-overlay-multiplier: 0;

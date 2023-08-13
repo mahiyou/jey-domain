@@ -86,7 +86,6 @@
           margin: 20px 0px 0px 0px;
           font-weight: 600;
           font-size: 13px;
-          letter-spacing: 0;
           width: 130px;
       }
   }
@@ -127,7 +126,6 @@
           background-color: rgba(240, 101, 72, 0.12);
       }
       .btn{
-          letter-spacing: 0;
           width: 380px;
           height: 30px;
           font-weight: 900;

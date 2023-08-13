@@ -249,16 +249,12 @@ export default defineComponent({
       font-size: 13px;
     }
     .rights-btn{
-      font-family: IRANSans;
       font-weight: 800;
-      letter-spacing: 0;
       padding: 0px 3px;
     }
     .btn-continue {
-      font-family: IRANSans;
       font-size: 16px;
       font-weight: 700;
-      letter-spacing: 0;
       color: white;
       padding: 6px;
       margin: 40px auto;

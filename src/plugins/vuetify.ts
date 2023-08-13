@@ -18,10 +18,12 @@ export default createVuetify({
         themes: {
             light: {
                 colors: {
+                    "on-surface":'#242849',
                     primary: '#4f80ff',
                     secondary: '#242849',
-                    customYellow: '#faa930'
+                    customYellow: '#faa930',
                 },
+                
             },
         },
     },
