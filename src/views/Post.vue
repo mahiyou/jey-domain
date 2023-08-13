@@ -230,12 +230,24 @@ export default defineComponent({
         };
     },
     methods:{
-        onSubmit() {
+        async onSubmit() {
             if (this.loading || !this.valid) {
                 return;
             }
             this.loading = true;
-            setTimeout(()=>{this.loading = false;},2000);
+            try {
+                const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/contact-us?ajax=1`, {
+                    method: "POST",
+                    body: JSON.stringify({
+                        name: this.name,
+                        email: this.email,
+                        comment: this.comment,
+                    }),
+                });
+            } catch (e) {
+            } finally {
+                this.loading = false;
+            }
         }
     },
     async mounted(){

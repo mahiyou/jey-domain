@@ -119,11 +119,24 @@ export default defineComponent({
         };
     },
     methods: {
-        onSubmit() {
+        async onSubmit() {
+            if (!this.valid || this.loading) {
+                return;
+            }
             this.loading = true;
-            setTimeout(() => {
+            try {
+                const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/contact-us?ajax=1`, {
+                    method: "POST",
+                    body: JSON.stringify({
+                        name: this.name,
+                        phone: this.phone,
+                        comment: this.comment,
+                    }),
+                });
+            } catch (e) {
+            } finally {
                 this.loading = false;
-            }, 2000);
+            }
         },
     },
 });
