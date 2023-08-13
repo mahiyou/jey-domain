@@ -65,11 +65,15 @@ import JeyDomain from "@/assets/pics/JeyDomain.svg";
 import { useUserState } from "@/stores/UserState";
 import { mapState } from "pinia";
 import { persianNumber } from "@/utilities";
+import { useCartStore } from "@/stores/Cart";
+
 export default defineComponent({
     emits: ["clickOnNavBtn"],
     setup(){
         return{
-            persianNumber
+            persianNumber,
+            cartStore: useCartStore(),
+            userStore: useUserState()
         }
     },
     data() {
@@ -81,17 +85,14 @@ export default defineComponent({
                 { title: 'خروج از حساب', href: '' },
             ],
             user: {
-                id: 1,
-                name: "کاربر تست",
                 avatar: DefaultUserImage,
-                numberOfNotifications: 3,
-                numberOfBasletItems: 7,
             },
+            numberOfNotifications: 3,
         };
     },
     computed: {
         ...mapState(useUserState, { userState: "userState" })
-    }
+    },
 });
 </script>
 
@@ -115,8 +116,9 @@ export default defineComponent({
   .circle {
     width: 20px;
     height: 20px;
+    padding: 1.5px;
     font-size: 10px;
-    padding: 2px;
+    text-align: center;
     color: white !important;
     margin: -33px -10px 0px 0px;
   }
@@ -172,5 +174,8 @@ export default defineComponent({
     }
   }
   --v-theme-overlay-multiplier: 0;
+  .overlay-btn{
+    --v-theme-overlay-multiplier: 0;
+  }
 }
 </style>

@@ -44,7 +44,7 @@
                                 {{ persianNumber(currentTransfer.toLocaleString()) }}
                             </td>
                             <td :class="getBackground(index)">
-                                <v-btn class="order-btn" href="/order/domain">سفارش</v-btn>
+                                <v-btn class="order-btn" href="/order/domain/order">سفارش</v-btn>
                             </td>
                         </tr>
                     </tbody>
@@ -79,7 +79,7 @@
                                 {{ persianNumber(currentTransfer.toLocaleString()) }}
                             </td>
                             <td :class="getBackground(index)">
-                                <v-btn class="order-btn" href="/order/domain">سفارش</v-btn>
+                                <v-btn class="order-btn" href="/order/domain/order">سفارش</v-btn>
                             </td>
                         </tr>
                     </tbody>
@@ -114,7 +114,7 @@
                                 {{ persianNumber(currentTransfer.toLocaleString()) }}
                             </td>
                             <td :class="getBackground(index)">
-                                <v-btn class="order-btn" href="/order/domain">سفارش</v-btn>
+                                <v-btn class="order-btn" href="/order/domain/order">سفارش</v-btn>
                             </td>
                         </tr>
                     </tbody>
@@ -149,7 +149,7 @@
                                 {{ persianNumber(currentTransfer.toLocaleString()) }}
                             </td>
                             <td :class="getBackground(index)">
-                                <v-btn class="order-btn" href="/order/domain">سفارش</v-btn>
+                                <v-btn class="order-btn" href="/order/domain/order">سفارش</v-btn>
                             </td>
                         </tr>
                     </tbody>
@@ -184,7 +184,7 @@
                                 {{ persianNumber(currentTransfer.toLocaleString()) }}
                             </td>
                             <td :class="getBackground(index)">
-                                <v-btn class="order-btn" href="/order/domain">سفارش</v-btn>
+                                <v-btn class="order-btn" href="/order/domain/order">سفارش</v-btn>
                             </td>
                         </tr>
                     </tbody>
@@ -219,7 +219,7 @@
                                 {{ persianNumber(currentTransfer.toLocaleString()) }}
                             </td>
                             <td :class="getBackground(index)">
-                                <v-btn class="order-btn" href="/order/domain">سفارش</v-btn>
+                                <v-btn class="order-btn" href="/order/domain/order">سفارش</v-btn>
                             </td>
                         </tr>
                     </tbody>

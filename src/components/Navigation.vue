@@ -109,11 +109,11 @@
                 </div>
                 <v-list-item
                     value="cart"
-                    href="#"
+                    href="/order/domain/cartReview"
                     prepend-icon="mdi-shopping-outline">
                     <v-list-item-title>سبد سفارشات        
                         <span class="rounded-circle bg-primary circle">{{
-                            persianNumber(user.cartItems)
+                            persianNumber(cartStore.items.length)
                         }}</span></v-list-item-title>
                 </v-list-item>
                 <v-list-item
@@ -141,6 +141,8 @@ import JeyDomain from "@/assets/pics/JeyDomain.svg";
 import {useUserState} from "@/stores/UserState";
 import { persianNumber } from "@/utilities";
 import { mapState } from "pinia";  
+import { useCartStore } from "@/stores/Cart";
+
 
 export default defineComponent({
     emits: ["update:model-value"],
@@ -152,7 +154,8 @@ export default defineComponent({
     },
     setup(){
         return{
-            persianNumber
+            persianNumber,
+            cartStore: useCartStore()
         }
     },
     data(){

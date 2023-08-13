@@ -49,8 +49,15 @@ export default defineComponent({
     },
     data() {
         return {
-            step: "checkDomain",
+            step: 'checkDomain',
         };
     },
+    mounted(){
+        if(this.$route.params.step == 'order'){
+            this.step= 'checkDomain'
+        }else if(this.$route.params.step == 'cartReview'){
+            this.step= 'confirmDomain'
+        }
+    }
 });
 </script>

@@ -96,7 +96,7 @@
         </div>
     </v-form>
     <v-snackbar v-model="serverErrorSnackbar" multi-line
-    >خطای سرور
+    >خطای سرور هنگام ورود کاربر
         <template v-slot:actions>
             <v-btn color="red" variant="text" @click="serverErrorSnackbar = false">
                 بستن
@@ -111,15 +111,28 @@
             </v-btn>
         </template>
     </v-snackbar>
+    <v-snackbar v-model="requestToSnackbar" multi-line>اطلاعات سبد خرید شما به سرور ارسال نشد.
+        <template v-slot:actions>
+            <v-btn color="red" variant="text" @click="requestToSnackbar = false"> بستن </v-btn>
+        </template>
+    </v-snackbar>
+    <v-snackbar v-model="logInSnakbar" multi-line
+    >با موفقیت وارد شدید.
+        <template v-slot:actions>
+            <v-btn color="green" variant="text" @click="logInSnakbar = false"> بستن </v-btn>
+        </template>
+    </v-snackbar>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
 import { useUserState } from "@/stores/UserState";
+import { useCartStore } from "@/stores/Cart";
 
 export default defineComponent({
     setup() {
         return {
-            store: useUserState(),
+            userStore: useUserState(),
+            cartStore: useCartStore()
         };
     },
     data() {
@@ -136,6 +149,8 @@ export default defineComponent({
             Checkbox: false,
             passwordSnackbar: false,
             serverErrorSnackbar: false,
+            requestToSnackbar: false,
+            logInSnakbar: false,
             nameRules: [
                 (value) => {
                     if (value) return true;
@@ -221,7 +236,7 @@ export default defineComponent({
                 return;
             }
             this.loading = true;
-            const registerPromis = this.store.register(
+            const registerPromis = this.userStore.register(
                 { username: this.phone, password: this.password },
                 this.email,
                 this.name,
@@ -229,6 +244,10 @@ export default defineComponent({
                 this.phone
             );
             registerPromis
+                .then(()=>{
+                   this.logInSnakbar = true; 
+                   this.sendRequestToServer();
+                })
                 .catch(() => {
                     this.serverErrorSnackbar = true;
                 })
@@ -236,6 +255,22 @@ export default defineComponent({
                     this.loading = false;
                 });
         },
+        async sendRequestToServer(){
+            try {
+                const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/order/domain?ajax=1`, {
+                    method: "POST",
+                    body: JSON.stringify({
+                        cart: this.cartStore.items,
+                        userCridentionals: {
+                            username: this.phone,
+                            password: this.password,
+                        }
+                    }),
+                });
+            } catch (e) {
+                this.requestToSnackbar = true;
+            }
+        }
     },
 });
 </script>
