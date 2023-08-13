@@ -93,6 +93,28 @@ export default defineComponent({
   },
   data: () => ({
     tab: null,
+    tlds:[
+      {tld:"com",registration:603000,extend:603000,transfer:603000},
+      {tld:"ir",registration:48000,extend:48000},
+      {tld:"org",registration:503000,extend:503000,transfer:503000},
+      {tld:"net",registration:703000,extend:703000,transfer:703000},
+      {tld:"biz",registration:603000,extend:603000,transfer:603000},
+      {tld:"work",registration:48000,extend:48000},
+      {tld:"gg",registration:43000,extend:53000,transfer:53000},
+      {tld:"cc",registration:18000,transfer:28000},
+    ],
+    tldsTypes:{
+      commercial:["com","net","org","biz","work"],
+      cheap:[],
+      round:[],
+      national:["ir"],
+      international:["com","net","org"],
+      country:["gg","cc"]
+    },
+    tldType:"commercial",
+    currentRegistration:undefined,
+    currentExtend:undefined,
+    currentTransfer:undefined
   }),
 });
 </script>

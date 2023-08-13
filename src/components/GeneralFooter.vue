@@ -12,6 +12,7 @@
           <v-col md="7" sm="8" cols="6">
             <div class="footer-sen">
               بزرگترین مرکز ثبت <span style="color: #4f80ff">دامنه</span>
+
             </div>
           </v-col>
         </v-row>
@@ -117,6 +118,7 @@
           </v-col>
         </v-row>
       </v-col>
+
     </v-row>
     <v-row class="mt-12 mb-12 features-btn-visibility-big-screen">
       <v-col cols="3">
