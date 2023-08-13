@@ -54,7 +54,7 @@ export function domainAvailabilityCheck(domain: string): DomainAvailableResponse
         },
         {
             domain:{
-                name:"vvgdw",
+                name:"dw",
                 tld:"com"
             },
             cost: {

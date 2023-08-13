@@ -1,7 +1,7 @@
 <template>
   <v-containr class="config-domain-container">
     <div>
-      شما می توانید در زیر وضعیت دامنهمورد نظر خود و سایر پسوندهارا مشاهده کنید.
+      شما می توانید در زیر وضعیت دامنه مورد نظر خود و سایر پسوندها را مشاهده کنید.
     </div>
     <div class="sentence-2">
       {{ domain }}
@@ -121,7 +121,7 @@
     </v-form>
   </v-containr>
 </template>
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
 
 export default defineComponent({
