@@ -8,22 +8,20 @@
         </p>
         <a href="#" class="link">
           <v-card class="card">
-            <v-img src="@/assets/pics/blog1.png" width="530px">
+            <v-img :src="articles[0].picture" width="530px">
               <v-card class="inside-card">
-                <p class="mb-3">
-                  ۱. لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است.
-                </p>
+                <p class="mb-3">{{ articles[0].title }}</p>
                 <v-row>
                   <v-col cols="6">
                     <p class="text-grey-darken-1">
                       <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-account-outline</v-icon>
-                      کاربر تست
+                      {{ articles[0].author.name }}
                     </p>
                   </v-col>
                   <v-col cols="6">
                     <p class="text-grey-darken-1">
                       <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-calendar-month-outline</v-icon>
-                      ۲۶ خرداد ۱۴۰۲
+                      {{ articles[0].date }}
                     </p>
                   </v-col>
                 </v-row>
@@ -37,23 +35,23 @@
           <v-card class="side-card card-responsive-mood">
             <v-row>
               <v-col sm="4" cols="12">
-                <v-img src="@/assets/pics/blog1.png"></v-img>
+                <v-img :src="articles[0].picture"></v-img>
               </v-col>
               <v-col sm="8" cols="12">
                 <p class="mb-4">
-                  ۱. لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است.
+                  {{ articles[0].title }}
                 </p>
                 <v-row>
                   <v-col cols="6">
                     <p class="text-grey-darken-1">
                       <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-account-outline</v-icon>
-                      کاربر تست
+                      {{ articles[0].author.name }}
                     </p>
                   </v-col>
                   <v-col cols="6">
                     <p class="text-grey-darken-1">
                       <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-calendar-month-outline</v-icon>
-                      ۲۶ خرداد ۱۴۰۲
+                      {{ articles[0].date }}
                     </p>
                   </v-col>
                 </v-row>
@@ -61,83 +59,29 @@
             </v-row>
           </v-card>
         </a>
-        <a href="#" class="link">
+        <a
+          href="#"
+          class="link"
+          v-for="article in articles.length - 1"
+          :key="article">
           <v-card class="side-card">
             <v-row>
               <v-col sm="4" cols="12">
-                <v-img src="@/assets/pics/blog1.png"></v-img>
+                <v-img :src="articles[article].picture"></v-img>
               </v-col>
               <v-col sm="8" cols="12">
-                <p class="mb-4">
-                  ۲. لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است.
-                </p>
+                <p class="mb-4">{{ articles[article].title }}</p>
                 <v-row>
                   <v-col cols="6">
                     <p class="text-grey-darken-1">
                       <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-account-outline</v-icon>
-                      کاربر تست
+                      {{ articles[article].author.name }}
                     </p>
                   </v-col>
                   <v-col cols="6">
                     <p class="text-grey-darken-1">
                       <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-calendar-month-outline</v-icon>
-                      ۲۶ خرداد ۱۴۰۲
-                    </p>
-                  </v-col>
-                </v-row>
-              </v-col>
-            </v-row>
-          </v-card>
-        </a>
-        <a href="#" class="link">
-          <v-card class="side-card">
-            <v-row>
-              <v-col sm="4" cols="12">
-                <v-img src="@/assets/pics/blog1.png"></v-img>
-              </v-col>
-              <v-col sm="8" cols="12">
-                <p class="mb-4">
-                  ۳. لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است.
-                </p>
-                <v-row>
-                  <v-col cols="6">
-                    <p class="text-grey-darken-1">
-                      <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-account-outline</v-icon>
-                      کاربر تست
-                    </p>
-                  </v-col>
-                  <v-col cols="6">
-                    <p class="text-grey-darken-1">
-                      <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-calendar-month-outline</v-icon>
-                      ۲۶ خرداد ۱۴۰۲
-                    </p>
-                  </v-col>
-                </v-row>
-              </v-col>
-            </v-row>
-          </v-card>
-        </a>
-        <a href="#" class="link">
-          <v-card class="side-card">
-            <v-row>
-              <v-col sm="4" cols="12">
-                <v-img src="@/assets/pics/blog1.png"></v-img>
-              </v-col>
-              <v-col sm="8" cols="12">
-                <p class="mb-4">
-                  ۴. لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است.
-                </p>
-                <v-row>
-                  <v-col cols="6">
-                    <p class="text-grey-darken-1">
-                      <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-account-outline</v-icon>
-                      کاربر تست
-                    </p>
-                  </v-col>
-                  <v-col cols="6">
-                    <p class="text-grey-darken-1">
-                      <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-calendar-month-outline</v-icon>
-                      ۲۶ خرداد ۱۴۰۲
+                      {{ articles[article].date }}
                     </p>
                   </v-col>
                 </v-row>
@@ -149,6 +93,50 @@
     </v-row>
   </v-container>
 </template>
+<script lang="ts">
+import { defineComponent} from "vue";
+import DefaultBlogImage from "@/assets/pics/blog1.png";
+export default defineComponent({
+  data(){
+    return{
+      articles:[
+        {
+          id:1,
+          permalink:"",
+          title:"۱. لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است.",
+          author:{id:1 ,name:"کاربر تست"},
+          picture: DefaultBlogImage,
+          date:"۲۶ خرداد ۱۴۰۲"
+        },
+        {
+          id:2,
+          permalink:"",
+          title:"۲. لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است.",
+          author:{id:"2" ,name:"کاربر تست"},
+          picture: DefaultBlogImage,
+          date:"۲۶ خرداد ۱۴۰۲"
+        },
+        {
+          id:3,
+          permalink:"",
+          title:"۳. لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است.",
+          author:{id:"2" ,name:"کاربر تست"},
+          picture: DefaultBlogImage,
+          date:"۲۶ خرداد ۱۴۰۲"
+        },
+        {
+          id:4,
+          permalink:"",
+          title:"۴. لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است.",
+          author:{id:"2" ,name:"کاربر تست"},
+          picture: DefaultBlogImage,
+          date:"۲۶ خرداد ۱۴۰۲"
+        }
+      ]
+    }
+  }
+})
+</script>
 <style lang="scss">
 .new-articles-container {
   max-width: 90%;

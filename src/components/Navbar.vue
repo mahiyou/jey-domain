@@ -1,24 +1,56 @@
 <template>
-  <v-container class="navbar-container" id="nav-container">
-    <v-toolbar class="nav-btn-md  mb-6" color="white">
-      <div class="mt-5">
-        <v-icon size="small" color="#faa930">mdi-bullseye</v-icon>
-        <v-btn class="nav-btn" :to="{ name: '' }">پشتیبانی آنلاین</v-btn>
-        <v-icon size="small" class="mr-2" color="primary">mdi-headset</v-icon>
-        <v-btn class="nav-btn" :to="{ name: '' }">۰۳۱-۳۴۴۲۰۳۰۱</v-btn>
-      </div>
-      <v-form class="search-form">
-        <v-text-field
-          placeholder="جستجو"
-          variant="plain"
-          bg-color="#f3f3f9"
-          color="#a6a9ba"
-          class="search"
-          rounded="pill"
-          density="compact">
-          <template v-slot:prepend-inner>
-            <v-btn type="submit" variant="text" rounded="pill">
-              <v-icon color="#a6a9ba">mdi-magnify</v-icon>
+  <v-container class="toolbar-container">
+    <v-toolbar density="compact" color="white">
+      <v-row>
+        <v-col sm="2" cols="6">
+          <div class="logo-size">
+            <router-link :to="{ name: 'home' }">
+              <v-img
+              src="@/assets/pics/JeyDomain.svg"
+              class="mt-4 mt-sm-2">
+              </v-img>
+            </router-link>
+          </div>
+        </v-col>
+        <v-col sm="7" cols="1">
+          <div class="visible">
+            <v-row>
+              <v-col cols="2">
+                <v-btn class="toolbar-btn" :to="{ name: 'home' }">
+                  صفحه ی اصلی
+                </v-btn>
+              </v-col>
+              <v-col cols="2">
+                <v-btn class="toolbar-btn" href="#"> تعرفه ها </v-btn>
+              </v-col>
+              <v-col cols="2">
+                <v-btn class="toolbar-btn" href="#"> سوالات متداول </v-btn>
+              </v-col>
+              <v-col cols="2">
+                <v-btn class="toolbar-btn" :to="{ name: 'contact-us' }">
+                  تماس با ما
+                </v-btn>
+              </v-col>
+              <v-col cols="2">
+                <v-btn class="toolbar-btn" href="#"> بلاگ </v-btn>
+              </v-col>
+            </v-row>
+          </div>
+        </v-col>
+        <v-col sm="3" cols="5">
+          <v-app-bar-nav-icon
+            class="float-left nav-icon-visible"
+            @click="$emit('clickOnNavBtn')">
+          </v-app-bar-nav-icon>
+          <div class="float-left visible">
+            <v-btn class="toolbar-btn" href="#"> ورود </v-btn>
+            <v-btn
+              class="toolbar-btn"
+              color="primary"
+              rounded="xl"
+              variant="flat"
+              href="#">
+              ثبت نام
             </v-btn>
           </template>
         </v-text-field>
@@ -191,5 +223,6 @@ export default defineComponent({
       display: block;
     }
   }
+  --v-theme-overlay-multiplier: 0;
 }
 </style>

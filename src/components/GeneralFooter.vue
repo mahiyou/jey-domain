@@ -3,11 +3,13 @@
     <v-row>
       <v-col sm="4" cols="12">
         <div>
-          <v-img
-            :src="darkJeyDomain"
-            width="170px"
-            class="footer-img1">
-          </v-img>
+          <router-link :to="{ name: 'home' }">
+            <v-img
+              src="@/assets/pics/dark-JeyDomain.svg"
+              width="170px"
+              class="footer-img1">
+            </v-img>
+          </router-link>
         </div>
         <div class="footer-sen">
           بزرگترین مرکز ثبت <span style="color: #4f80ff">دامنه</span> در ایران
@@ -17,7 +19,7 @@
         <v-row>
           <v-col sm="6" cols="12">
             <div class="mb-7">
-              <a href="#" class="link-style">جستجو دامنه</a>
+              <router-link :to="{ name: 'order-domain' }" class="link-style">جستجو دامنه</router-link>
             </div>
             <div class="mb-7">
               <a href="#" class="link-style">لیست دامنه ها</a>
@@ -26,7 +28,7 @@
           </v-col>
           <v-col sm="6" cols="12">
             <div class="mb-7">
-              <a href="/contact-us" class="link-style">تماس با ما</a>
+              <router-link :to="{ name: 'contact-us' }" class="link-style">تماس با ما</router-link>
             </div>
             <div class="mb-7">
               <a href="#" class="link-style">سوالات متداول</a>
@@ -35,9 +37,9 @@
           </v-col>
         </v-row>
       </v-col>
+      
       <v-col sm="4" cols="6">
-        <v-img :src="Enamad" class="footer-img2"></v-img>
-      </v-col>
+        <a href="https://trustseal.enamad.ir/?id=22081&Code=ulnW1nDLAeYM3cL2l9U3"><v-img src="@/assets/pics/Enamad.png" class="footer-img2"></v-img></a>      </v-col>
     </v-row>
   </div>
 </template>
