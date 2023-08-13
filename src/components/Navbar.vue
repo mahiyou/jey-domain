@@ -62,7 +62,7 @@
         تماس با ما
       </v-btn>
       <v-btn class="toolbar-btn nav-btn-md" href="#"> بلاگ </v-btn>
-      <v-btn class="toolbar-btn nav-btn-md" href="#"> ورود </v-btn>
+      <v-btn class="toolbar-btn nav-btn-md" :to="{ name: 'logIn' }"> ورود </v-btn>
       <v-btn class="toolbar-btn nav-btn-md" :to="{ name: 'register' }"> ثبت نام </v-btn>
       <v-app-bar-nav-icon class="nav-icon-xs-sm" @click="$emit('clickOnNavBtn')"> </v-app-bar-nav-icon>
     </v-toolbar>

@@ -4,13 +4,13 @@
         <Navigation v-model="navigation" />
         <GeneralHeader>
         <template v-slot:title>
-            <p>ثبت نام</p>
+            <p>ورود به پنل کاربری</p>
         </template>
         <template v-slot:content>
-            <p>صفحه اصلی > ثبت نام</p>
+            <p>صفحه اصلی > ورود</p>
         </template>
         </GeneralHeader>
-        <RegisterForm />
+        <LogInForm />
         <GeneralFooter />
     </v-locale-provider>
 </template>
@@ -19,7 +19,7 @@ import Navbar from "@/components/Navbar.vue";
 import GeneralHeader from "@/components/GeneralHeader.vue";
 import Navigation from "@/components/Navigation.vue";
 import GeneralFooter from "@/components/GeneralFooter.vue";
-import RegisterForm from "@/components/register/RegisterForm.vue";
+import LogInForm from "@/components/log-in/LogInForm.vue";
 
 import { defineComponent } from "vue";
 
@@ -27,7 +27,7 @@ export default defineComponent({
   components: {
     Navbar,
     GeneralHeader,
-    RegisterForm,
+    LogInForm,
     Navigation,
     GeneralFooter,
   },
