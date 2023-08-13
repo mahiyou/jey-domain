@@ -70,7 +70,7 @@
       <v-btn class="toolbar-btn nav-btn-md" :to="{ name: 'contact-us' }">
         تماس با ما
       </v-btn>
-      <v-btn class="toolbar-btn nav-btn-md" href="#"> بلاگ </v-btn>
+      <v-btn class="toolbar-btn nav-btn-md" :to="{ name: 'blog' }"> بلاگ </v-btn>
       <v-app-bar-nav-icon class="nav-icon-xs-sm" @click="$emit('clickOnNavBtn')"> </v-app-bar-nav-icon>
     </v-toolbar>
   </v-container>
