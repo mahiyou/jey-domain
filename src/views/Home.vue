@@ -51,7 +51,7 @@ export default defineComponent({
   },
 });
 </script>
-<style scoped>
+<style lang="scss">
   .general-background{
     background: #fafbff;
   }

@@ -1,20 +1,22 @@
 <template>
   <div class="panel-features-container">
-    <p class="title">امکانات پنل مدیریت دامنه</p>
-    <div class="content">
-        <v-row>
-          <v-col sm="3" cols="6">امکان ثبت دامنه فارسی IDN</v-col> 
-          <v-col sm="3" cols="6">امکان قفل دامین برای امنیت هرچه بیشتر</v-col>
-          <v-col sm="3" cols="6">امکان عدم نمایش اطلاعات مالک دامنه در Whois</v-col>
-          <v-col sm="3" cols="6">امکان تغییر Name Server های دامین توسط کاربر</v-col>
-        </v-row>
-        <v-row>
-          <v-col sm="3" cols="6">ارائه ی کنترل پنل مدیریت دامین</v-col> 
-          <v-col sm="3" cols="6">ثبت دامین به نام متقاضی و با مالکیت 100 درصد</v-col>
-          <v-col sm="3" cols="6">امکان ثبت و ایجاد Name Server های اختصاصی</v-col>
-          <v-col sm="3" cols="6">امکان ثبت دامنه در تمامی ساعات شبانه روز</v-col>
-        </v-row>
-    </div>
+    <v-row align="center">
+      <v-col md="4" cols="12">
+        <p class="title">امکانات پنل مدیریت دامنه</p>
+      </v-col>
+      <v-col md="4" sm="6" cols="12" class="py-0">
+        <div><v-icon class="icon">mdi-check-circle</v-icon>امکان قفل دامین برای امنیت هرچه بیشتر</div>
+        <div><v-icon class="icon">mdi-check-circle</v-icon>ثبت دامین به نام متقاضی و با مالکیت 100 درصد</div>
+        <div><v-icon class="icon">mdi-check-circle</v-icon>امکان تغییر Name Server های دامین توسط کاربر</div>
+        <div><v-icon class="icon">mdi-check-circle</v-icon>امکان ثبت دامنه در تمامی ساعات شبانه روز</div>
+      </v-col>
+      <v-col md="4" sm="6" cols="12" class="py-0">
+        <div><v-icon class="icon">mdi-check-circle</v-icon>امکان عدم نمایش اطلاعات مالک دامنه در Whois</div>
+        <div><v-icon class="icon">mdi-check-circle</v-icon>امکان ثبت و ایجاد Name Server های اختصاصی</div>
+        <div><v-icon class="icon">mdi-check-circle</v-icon>امکان ثبت دامنه فارسی IDN</div>
+        <div><v-icon class="icon">mdi-check-circle</v-icon>ارائه ی کنترل پنل مدیریت دامین</div>
+      </v-col>
+    </v-row>
   </div>
 </template>
 <style lang="scss">
@@ -25,18 +27,24 @@
   color: white;
   padding: 50px;
   margin-bottom: 50px;  
+  line-height: 45px;
+  text-align: right;
+  font-size: 13px;
   .title {
     font-weight: 900;
     font-size: 25px;
-    margin-bottom: 55px;
+    text-align: center;
   }
-  .content{
-    font-size: 12px;
-    font-weight: 700;
+  .icon{
+    font-size: 20px;
+    margin-left: 8px;
   }
-  @media (max-width: 500px) {
+  @media (max-width: 600px) {
     max-width: 100%;
-    padding: 30px 20px;
+    padding: 50px 20px;
+    .title {
+      margin-bottom: 15px;
+    }
   }
 }
 </style>

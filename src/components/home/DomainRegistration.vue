@@ -72,7 +72,7 @@ export default defineComponent({
     };
   },
   methods:{
-    persianNumber(n) {
+    persianNumber(n : string) {
       n = n.toString();
       const nlength = n.length;
       const farsiNum = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
@@ -125,12 +125,14 @@ export default defineComponent({
       input {
         text-align: center;
         direction: ltr;
+        padding: 12px;
       }
     }
   }
   .v-input--density-compact {
-    --v-input-padding-top: 8px;
+    --v-input-padding-top: 0px;
     --v-field-padding-top: 0px;
+    --v-field-padding-top--plain-underlined:0px
   }
   .v-field.v-field--variant-plain {
     .v-field__prepend-inner {

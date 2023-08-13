@@ -60,7 +60,7 @@
             class="mt-2"
             color="primary"
             :rules="checkboxRules">
-            <template v-slot:label>همه ی <a class="link" href="#">قوانین و شراط</a>
+            <template v-slot:label>همه ی <v-btn variant="text" color="primary" class="rights-btn" :to="{ name: 'conditions' }">قوانین و شرایط</v-btn>
                  را خوانده وپذیرفته ام.
             </template>
           </v-checkbox>
@@ -247,6 +247,12 @@ export default defineComponent({
     .v-label {
       --v-medium-emphasis-opacity: 1;
       font-size: 13px;
+    }
+    .rights-btn{
+      font-family: IRANSans;
+      font-weight: 800;
+      letter-spacing: 0;
+      padding: 0px 3px;
     }
     .btn-continue {
       font-family: IRANSans;

@@ -65,8 +65,8 @@
     margin-bottom: 30px;
   }
   .panel {
-    padding: 10px;
-    margin: 10px;
+    padding: 6px;
+    margin: 8px;
     font-size: 14px;
     line-height: 22px;
     text-align: right;
@@ -92,6 +92,10 @@
     .v-expansion-panel-title__overlay {
       background-color: transparent;
     }
+    
+  }
+  .v-expansion-panel{
+    --v-border-opacity: 0;
   }
   @media (max-width: 500px) {
     max-width: 100%;

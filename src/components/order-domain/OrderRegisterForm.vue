@@ -61,12 +61,6 @@
           :rules="passwordRules"
           required
         />
-        <v-checkbox v-model="Checkbox" color="primary" :rules="checkboxRules">
-          <template v-slot:label
-            >همه ی <a class="link" href="#">قوانین و شراط</a>
-            را خوانده وپذیرفته ام.
-          </template>
-        </v-checkbox>
       </v-col>
       <v-col sm="6" cols="12">
         <div>تکرار کلمه عبور<span class="star-color">*</span></div>
@@ -79,6 +73,12 @@
         />
       </v-col>
     </v-row>
+    <v-checkbox v-model="Checkbox" color="primary" :rules="checkboxRules">
+      <template v-slot:label>همه ی 
+        <v-btn variant="text" color="primary" class="rights-btn" :to="{ name: 'conditions' }">قوانین و شرایط</v-btn>
+        را خوانده وپذیرفته ام.
+      </template>
+    </v-checkbox>
 
     <div class="text-center">
       <v-btn
@@ -266,6 +266,12 @@ export default defineComponent({
     text-decoration: none;
     margin: 1px 5px 0px 5px;
     color: #4f80ff;
+  }
+  .rights-btn{
+    font-family: IRANSans;
+    font-weight: 800;
+    letter-spacing: 0;
+    padding: 0px 3px;
   }
   .btn-confirm {
     font-family: IRANSans;

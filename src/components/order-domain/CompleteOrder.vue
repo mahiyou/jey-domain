@@ -16,7 +16,7 @@
       ></v-radio>
     </v-radio-group>
     <div v-if="authType == 'newUser'">
-        <OrdeRegisterForm />
+        <OrderRegisterForm />
     </div>
     <div v-if="authType == 'oldUser'">
         <OrderLoginForm />
@@ -25,11 +25,11 @@
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
-import OrdeRegisterForm from "@/components/order-domain/OrdeRegisterForm.vue";
+import OrderRegisterForm from "@/components/order-domain/OrderRegisterForm.vue";
 import OrderLoginForm from "@/components/order-domain/OrderLoginForm.vue";
 export default defineComponent({
     components:{
-      OrdeRegisterForm,
+      OrderRegisterForm,
       OrderLoginForm,
     },
   data() {
