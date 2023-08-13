@@ -69,6 +69,12 @@ const routes = [
         component: () =>
           import(/* webpackChunkName: "home" */ "@/views/Post.vue"),
       },
+      {
+        path: '/:pathMatch(.*)*', 
+        name: "notFound",
+        component: () =>
+          import(/* webpackChunkName: "home" */ "@/views/NotFound.vue"),
+      }
     ],
   },
 ];
