@@ -54,8 +54,11 @@
             </v-btn>
             <v-btn color="secondary" class="toolbar-btn hidden-sm-and-down" :to="{ name: 'blog' }"> بلاگ </v-btn>
             <v-app-bar-nav-icon class="hidden-md-and-up" @click="$emit('clickOnNavBtn')"> </v-app-bar-nav-icon>
-        </v-toolbar>
-    </v-container>
+          </div>
+        </v-col>
+      </v-row>
+    </v-toolbar>
+  </v-container>
 </template>
 
 <script lang="ts">
