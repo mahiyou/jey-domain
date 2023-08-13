@@ -16,16 +16,14 @@
                 <v-row>
                   <v-col cols="6">
                     <p class="text-grey-darken-1">
-                      <v-icon class="ml-1 mb-1" color="#4f80ff"
-                        >mdi-account-outline</v-icon
-                      >کاربر تست
+                      <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-account-outline</v-icon>
+                      کاربر تست
                     </p>
                   </v-col>
                   <v-col cols="6">
                     <p class="text-grey-darken-1">
-                      <v-icon class="ml-1 mb-1" color="#4f80ff"
-                        >mdi-calendar-month-outline</v-icon
-                      >۲۶ خرداد ۱۴۰۲
+                      <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-calendar-month-outline</v-icon>
+                      ۲۶ خرداد ۱۴۰۲
                     </p>
                   </v-col>
                 </v-row>
@@ -48,16 +46,14 @@
                 <v-row>
                   <v-col cols="6">
                     <p class="text-grey-darken-1">
-                      <v-icon class="ml-1 mb-1" color="#4f80ff"
-                        >mdi-account-outline</v-icon
-                      >کاربر تست
+                      <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-account-outline</v-icon>
+                      کاربر تست
                     </p>
                   </v-col>
                   <v-col cols="6">
                     <p class="text-grey-darken-1">
-                      <v-icon class="ml-1 mb-1" color="#4f80ff"
-                        >mdi-calendar-month-outline</v-icon
-                      >۲۶ خرداد ۱۴۰۲
+                      <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-calendar-month-outline</v-icon>
+                      ۲۶ خرداد ۱۴۰۲
                     </p>
                   </v-col>
                 </v-row>
@@ -78,16 +74,14 @@
                 <v-row>
                   <v-col cols="6">
                     <p class="text-grey-darken-1">
-                      <v-icon class="ml-1 mb-1" color="#4f80ff"
-                        >mdi-account-outline</v-icon
-                      >کاربر تست
+                      <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-account-outline</v-icon>
+                      کاربر تست
                     </p>
                   </v-col>
                   <v-col cols="6">
                     <p class="text-grey-darken-1">
-                      <v-icon class="ml-1 mb-1" color="#4f80ff"
-                        >mdi-calendar-month-outline</v-icon
-                      >۲۶ خرداد ۱۴۰۲
+                      <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-calendar-month-outline</v-icon>
+                      ۲۶ خرداد ۱۴۰۲
                     </p>
                   </v-col>
                 </v-row>
@@ -108,16 +102,14 @@
                 <v-row>
                   <v-col cols="6">
                     <p class="text-grey-darken-1">
-                      <v-icon class="ml-1 mb-1" color="#4f80ff"
-                        >mdi-account-outline</v-icon
-                      >کاربر تست
+                      <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-account-outline</v-icon>
+                      کاربر تست
                     </p>
                   </v-col>
                   <v-col cols="6">
                     <p class="text-grey-darken-1">
-                      <v-icon class="ml-1 mb-1" color="#4f80ff"
-                        >mdi-calendar-month-outline</v-icon
-                      >۲۶ خرداد ۱۴۰۲
+                      <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-calendar-month-outline</v-icon>
+                      ۲۶ خرداد ۱۴۰۲
                     </p>
                   </v-col>
                 </v-row>
@@ -138,16 +130,14 @@
                 <v-row>
                   <v-col cols="6">
                     <p class="text-grey-darken-1">
-                      <v-icon class="ml-1 mb-1" color="#4f80ff"
-                        >mdi-account-outline</v-icon
-                      >کاربر تست
+                      <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-account-outline</v-icon>
+                      کاربر تست
                     </p>
                   </v-col>
                   <v-col cols="6">
                     <p class="text-grey-darken-1">
-                      <v-icon class="ml-1 mb-1" color="#4f80ff"
-                        >mdi-calendar-month-outline</v-icon
-                      >۲۶ خرداد ۱۴۰۲
+                      <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-calendar-month-outline</v-icon>
+                      ۲۶ خرداد ۱۴۰۲
                     </p>
                   </v-col>
                 </v-row>
@@ -163,7 +153,6 @@
 .new-articles-container {
   max-width: 90%;
   margin-bottom: 50px;
-
   .title {
     font-weight: 900;
     font-size: 28px;

@@ -7,8 +7,8 @@
             <v-img
               FIXME
               src="@/assets/pics/JeyDomain.svg"
-              class="mt-4 mt-sm-2"
-            ></v-img>
+              class="mt-4 mt-sm-2">
+            </v-img>
           </div>
         </v-col>
         <v-col sm="7" cols="1">
@@ -23,9 +23,7 @@
                 <v-btn class="toolbar-btn" href="#"> تعرفه ها </v-btn>
               </v-col>
               <v-col cols="2">
-                <v-btn class="toolbar-btn" href="#">
-                  سوالات متداول
-                </v-btn>
+                <v-btn class="toolbar-btn" href="#"> سوالات متداول </v-btn>
               </v-col>
               <v-col cols="2">
                 <v-btn class="toolbar-btn" :to="{ name: 'contact-us' }">
@@ -41,8 +39,8 @@
         <v-col sm="3" cols="5">
           <v-app-bar-nav-icon
             class="float-left nav-icon-visible"
-            @click="$emit('clickOnNavBtn')"
-          ></v-app-bar-nav-icon>
+            @click="$emit('clickOnNavBtn')">
+          </v-app-bar-nav-icon>
           <div class="float-left visible">
             <v-btn class="toolbar-btn" href="#"> ورود </v-btn>
             <v-btn
@@ -50,8 +48,7 @@
               color="primary"
               rounded="xl"
               variant="flat"
-              href="#"
-            >
+              href="#">
               ثبت نام
             </v-btn>
           </div>
@@ -76,7 +73,8 @@ export default defineComponent({
     letter-spacing: 0;
     font-size: 12px;
   }
-  .visible { // FIXME
+  .visible {
+    // FIXME
     display: block;
   }
   .nav-icon-visible {

@@ -1,4 +1,4 @@
-<template >
+<template>
   <v-locale-provider rtl>
     <Toolbar @clickOnNavBtn="navigation = true" />
     <Navigation v-model="navigation" />
@@ -23,7 +23,6 @@ import GeneralHeader from "@/components/GeneralHeader.vue";
 import SendMessage from "@/components/contact-us/SendMessage.vue";
 import Navigation from "@/components/Navigation.vue";
 import GeneralFooter from "@/components/GeneralFooter.vue";
-
 import { defineComponent } from "vue";
 
 export default defineComponent({

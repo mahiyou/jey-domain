@@ -17,8 +17,7 @@
             rounded="pill"
             density="compact"
             class="text-field"
-            placeholder="نام دامنه مورد نظر خود را وارد کنید"
-          >
+            placeholder="نام دامنه مورد نظر خود را وارد کنید">
             <template v-slot:append-inner>
               <v-btn
                 type="submit"
@@ -29,8 +28,7 @@
                 float="left"
                 width="100px"
                 height="44px"
-                class="btn-confirm"
-              >
+                class="btn-confirm">
                 جستجو
               </v-btn>
             </template>
@@ -39,8 +37,7 @@
                 <option
                   :value="domains[index - 1].value"
                   v-for="index in 4"
-                  :key="index"
-                >
+                  :key="index">
                   <v-btn>{{ domains[index - 1].tilte }}</v-btn>
                 </option>
               </select>
@@ -49,7 +46,6 @@
         </v-form>
       </v-col>
     </v-row>
-
     <div class="featured-tlds">
       <div dir="ltr" class="prices">
         <div class="price">.com <span>۶۰۳,۰۰۰</span></div>

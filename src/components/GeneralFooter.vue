@@ -6,10 +6,9 @@
           <v-img
             src="@/assets/pics/dark-JeyDomain.svg"
             width="170px"
-            class="footer-img1"
-          ></v-img>
+            class="footer-img1">
+          </v-img>
         </div>
-
         <div class="footer-sen">
           بزرگترین مرکز ثبت <span style="color: #4f80ff">دامنه</span> در ایران
         </div>

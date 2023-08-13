@@ -1,7 +1,7 @@
 <template >
   <v-locale-provider rtl>
-    <Toolbar @clickOnNavBtn="navigation = true;"/>
-    <Navigation v-model="navigation"/>
+    <Toolbar @clickOnNavBtn="navigation = true" />
+    <Navigation v-model="navigation" />
     <div style="background: #fafbff" FIXME>
       <HomeSlider />
       <DomainRegistration />
@@ -28,12 +28,10 @@ import Questions from "@/components/home/Questions.vue";
 import NewArticle from "@/components/home/NewArticle.vue";
 import GeneralFooter from "@/components/GeneralFooter.vue";
 import Navigation from "@/components/Navigation.vue";
-
-
-import { defineComponent } from "vue"
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  components:{
+  components: {
     Toolbar,
     HomeSlider,
     DomainRegistration,
@@ -44,13 +42,12 @@ export default defineComponent({
     Questions,
     NewArticle,
     GeneralFooter,
-    Navigation
+    Navigation,
   },
-  data(){
-    return{
-      navigation : false
-    }
-  }
-})
-
+  data() {
+    return {
+      navigation: false,
+    };
+  },
+});
 </script>

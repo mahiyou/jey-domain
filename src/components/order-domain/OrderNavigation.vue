@@ -10,16 +10,13 @@
           :direction="tabsDirection"
           hide-slider
           color="primary"
-         
-          class="nav-tabs"
-        >
+          class="nav-tabs">
           <v-tab
             value="checkDomain"
             class="order-tabs-handler"
             :border="false"
             rounded="lg"
-            variant="flat"
-          >
+            variant="flat">
             <span class="num-border">۱</span>
             بررسی دامنه
           </v-tab>
@@ -28,8 +25,7 @@
             class="order-tabs-handler"
             :border="false"
             rounded="lg"
-            variant="flat"
-          >
+            variant="flat">
             <span class="num-border">۲</span>
             پیکربندی
           </v-tab>
@@ -38,8 +34,7 @@
             class="order-tabs-handler"
             :border="false"
             rounded="lg"
-            variant="flat"
-          >
+            variant="flat">
             <span class="num-border">۳</span>
             تایید دامنه
           </v-tab>
@@ -48,22 +43,21 @@
             class="order-tabs-handler"
             :border="false"
             rounded="lg"
-            variant="flat"
-          >
+            variant="flat">
             <span class="num-border">۴</span>
             تکمیل سفارش
           </v-tab>
         </v-tabs>
       </v-col>
       <v-col sm="8" cols="12">
-        <v-window :touch="false" :model-value="modelValue" @update:model-value="onTabChanged">
-          <v-window-item
-            value="checkDomain"
-          >
+        <v-window
+          :touch="false"
+          :model-value="modelValue"
+          @update:model-value="onTabChanged">
+          <v-window-item value="checkDomain">
             <CheckDomain />
           </v-window-item>
-          <v-window-item value="configuration"
-          >
+          <v-window-item value="configuration">
             <ConfigurationDomain />
           </v-window-item>
           <v-window-item value="confirmDomain">
@@ -83,7 +77,8 @@
   min-width: 90%;
   padding-top: 50px;
   .nav-tabs {
-    .v-btn--disabled.v-btn--variant-elevated, .v-btn--disabled.v-btn--variant-flat {
+    .v-btn--disabled.v-btn--variant-elevated,
+    .v-btn--disabled.v-btn--variant-flat {
       color: rgb(var(--v-theme-on-surface));
       .v-btn__overlay {
         opacity: 0;
@@ -106,7 +101,6 @@
 import CheckDomain from "@/components/order-domain/CheckDomain.vue";
 import ConfigurationDomain from "@/components/order-domain/ConfigurationDomain.vue";
 import ConfirmDomain from "@/components/order-domain/ConfirmDomain.vue";
-
 import { defineComponent } from "vue";
 import { useDisplay } from "vuetify";
 

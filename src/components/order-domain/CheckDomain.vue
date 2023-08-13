@@ -12,8 +12,7 @@
           v-model="valid"
           @submit.prevent="onSubmit"
           ref="checkDomainBox"
-          class="justify-center pt-7"
-        >
+          class="justify-center pt-7">
           <v-text-field
             placeholder="نام دامنه مورد نظر خود را وارد کنید"
             variant="plain"
@@ -21,8 +20,7 @@
             rounded="pill"
             class="text-field"
             v-model="domain"
-            :rules="[validateInputDomain]"
-          >
+            :rules="[validateInputDomain]">
             <template v-slot:append-inner>
               <v-btn
                 type="submit"
@@ -31,8 +29,7 @@
                 density="comfortable"
                 class="btn-confirm"
                 rounded="pill"
-                :loading="loading"
-              >
+                :loading="loading">
                 جستجو
               </v-btn>
             </template>
@@ -41,14 +38,11 @@
       </v-col>
     </v-row>
     <div class="domain-search-resault">
-      <P class="mb-5"> دامنه ی rion.com در دسترس است. </P>
-      <w-row>
+      <P class="mb-5"> دامنه ی rion.com در دسترس است.</P>
+      <div>
         <span class="price">۶۰۳,۰۰۰ تومان</span>
-
-        <v-btn variant="flat" color="#5cb85c" rounded="pill" class="buy-btn"
-          >خرید دامنه</v-btn
-        >
-      </w-row>
+        <v-btn variant="flat" color="#5cb85c" rounded="pill" class="buy-btn">خرید دامنه</v-btn>
+      </div>
     </div>
     <div class="domain-sugestion">
       <div class="domain-sugestion-title">دامنه های پیشنهادی</div>
@@ -56,35 +50,33 @@
         <v-row
           class="sugestions"
           v-for="(suggestion, index) of suggestions.slice(0, maxSuggestion)"
-          :key="index"
-        >
-          <v-col md="8" cols="6"
-            >{{ suggestion.domain.name
-            }}<strong>.{{ suggestion.domain.tld }}</strong></v-col
-          >
-          <v-col md="2" cpls="3"
-            >{{ suggestion.registerCost.amount.toLocaleString() }}
-            {{ suggestion.registerCost.currency }}</v-col
-          >
-          <v-col md="2" cols="3"
-            ><v-btn
+          :key="index">
+          <v-col md="8" cols="6">
+            {{ suggestion.domain.name }}
+            <strong>.{{ suggestion.domain.tld }}</strong>
+          </v-col>
+          <v-col md="2" cpls="3">
+            {{ suggestion.registerCost.amount.toLocaleString() }}
+            {{ suggestion.registerCost.currency }}
+          </v-col>
+          <v-col md="2" cols="3">
+            <v-btn
               variant="flat"
               color="#4f80ff"
               rounded="pill"
               class="buy-btn-2"
-              @click="buySuggestion(suggestion)"
-              >خرید دامنه</v-btn
-            ></v-col
-          >
+              @click="buySuggestion(suggestion)">
+              خرید دامنه
+            </v-btn>
+          </v-col>
         </v-row>
       </div>
       <div
         class="domain-sugestion-last"
-        v-if="suggestions.length > 5 && maxSuggestion"
-      >
-        <a class="link" @click="maxSuggestion = undefined"
-          >مشاهده ی دامنه های پیشنهادی دیگر</a
-        >
+        v-if="suggestions.length > 5 && maxSuggestion">
+        <a class="link" @click="maxSuggestion = undefined">
+          مشاهده ی دامنه های پیشنهادی دیگر
+        </a>
       </div>
     </div>
   </div>
@@ -175,17 +167,14 @@ export default defineComponent({
             amount: 48000,
             currency: "تومان",
           },
-        },
-      ] as Suggestion[],
+        },] as Suggestion[],
       maxSuggestion: 5 as number | undefined,
     };
   },
   methods: {
     onSubmit() {
       this.loading = true;
-      setTimeout(() => {
-        this.loading = false;
-      }, 2000);
+      setTimeout(() => {this.loading = false;}, 2000);
     },
     validateInputDomain(input: string) {
       if (!/^[a-zA-Z0-9-]+\.[a-zA-Z]+/.test(input)) {

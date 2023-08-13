@@ -60,9 +60,15 @@
         </v-col>
       </v-row>
       <div class="text-center">
-        <v-btn variant="flat" color="#5cb85c" rounded="pill" width="45%" class="btn-continue"> ادامه </v-btn>
+        <v-btn
+          variant="flat"
+          color="#5cb85c"
+          rounded="pill"
+          width="45%"
+          class="btn-continue">
+          ادامه
+        </v-btn>
       </div>
-      
     </div>
   </v-containr>
 </template>
@@ -90,13 +96,11 @@
   .name-servers {
     margin-top: 40px;
     padding-bottom: 60px;
-
     .title {
       font-weight: 900;
       font-size: 16px;
       margin-bottom: 5px;
     }
-
     .inputs {
       padding: 10px;
       border: 1px solid #aeaeae;
@@ -109,17 +113,17 @@
       padding-bottom: 60px;
       margin-bottom: 60px;
     }
-    .text-center{
-        text-align: center;
+    .text-center {
+      text-align: center;
     }
     .btn-continue {
-    font-family: IRANSans;
-    font-size: 16px;
-    letter-spacing: 0;
-    color: white;
-    padding: 7px;
-    margin: 60px auto 0px auto;
-  }
+      font-family: IRANSans;
+      font-size: 16px;
+      letter-spacing: 0;
+      color: white;
+      padding: 7px;
+      margin: 60px auto 0px auto;
+    }
   }
 }
 </style>

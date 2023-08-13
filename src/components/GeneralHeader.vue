@@ -4,7 +4,7 @@
     <slot name="content"></slot>
   </div>
 </template>
-  <style lang="scss">
+<style lang="scss">
 .contact-us-container {
   background: #4f80ff;
   text-align: center;

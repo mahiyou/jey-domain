@@ -23,9 +23,9 @@
           <th id="t-body">۰ تومان</th>
           <th id="t-body">۶۰۳,۰۰۰ تومان</th>
           <th id="t-body">
-            <v-btn variant="text"
-              ><v-icon color="#dd3f4e">mdi-trash-can-outline</v-icon></v-btn
-            >
+            <v-btn variant="text">
+              <v-icon color="#dd3f4e">mdi-trash-can-outline</v-icon>
+            </v-btn>
           </th>
         </tr>
         <tr>
@@ -35,9 +35,9 @@
           <th>۰ تومان</th>
           <th>۶۰۳,۰۰۰ تومان</th>
           <th>
-            <v-btn variant="text"
-              ><v-icon color="#dd3f4e">mdi-trash-can-outline</v-icon></v-btn
-            >
+            <v-btn variant="text">
+              <v-icon color="#dd3f4e">mdi-trash-can-outline</v-icon>
+            </v-btn>
           </th>
         </tr>
       </tbody>
@@ -56,24 +56,33 @@
       </v-col>
       <v-col md="6" cols="12">
         <div class="gray-border px-4 py-6">
-          <v-row class="border-bottom pb-1"
-            ><v-col cols="6">قیمت کل:</v-col>
+          <v-row class="border-bottom pb-1">
+            <v-col cols="6">قیمت کل:</v-col>
             <v-col cols="6" class="align-left">۶۰۳,۰۰۰ تومان</v-col>
           </v-row>
-          <v-row class="border-bottom pb-1"
-            ><v-col cols="6">تخفیف:</v-col>
+          <v-row class="border-bottom pb-1">
+            <v-col cols="6">تخفیف:</v-col>
             <v-col cols="6" class="align-left">۰ تومان</v-col>
           </v-row>
-          <v-row class="bold-green-text"
-            ><v-col cols="6">مبلغ قابل پرداخت</v-col>
+          <v-row class="bold-green-text">
+            <v-col cols="6">مبلغ قابل پرداخت</v-col>
             <v-col cols="6" class="align-left">۱,۲۱۶,۰۰۰ تومان</v-col>
           </v-row>
         </div>
       </v-col>
     </v-row>
     <div align="center">
-      <v-btn variant="text" rounded="pill" min-width="40%" class="btns back"> بازگشت </v-btn>
-      <v-btn variant="flat" color="#5cb85c" rounded="pill" min-width="40%" class="btns confirm"> تایید نهایی </v-btn>
+      <v-btn variant="text" rounded="pill" min-width="40%" class="btns back">
+        بازگشت
+      </v-btn>
+      <v-btn
+        variant="flat"
+        color="#5cb85c"
+        rounded="pill"
+        min-width="40%"
+        class="btns confirm">
+        تایید نهایی
+      </v-btn>
     </div>
   </v-container>
 </template>
@@ -81,7 +90,6 @@
 .confirm-domain-container {
   padding: 25px 30px;
   font-size: 13px;
-
   .title {
     margin-bottom: 60px;
     font-size: 14px;
@@ -89,13 +97,13 @@
   .bold {
     font-weight: 900;
   }
-  #t-title{
-    color:black;
+  #t-title {
+    color: black;
     border: none;
     font-weight: 900;
     font-size: 14px;
   }
-  #t-body{
+  #t-body {
     border-bottom: 1px dashed #aeaeae;
   }
   .link {
@@ -130,7 +138,7 @@
     border: 1px solid #aeaeae;
   }
   .confirm {
-   color: white;
+    color: white;
   }
 }
 </style>

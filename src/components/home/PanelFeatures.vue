@@ -24,13 +24,11 @@
   background: #4f80ff;
   color: white;
   padding: 50px;
-  margin-bottom: 50px;
-  
+  margin-bottom: 50px;  
   .title {
     font-weight: 900;
     font-size: 25px;
     margin-bottom: 55px;
-
   }
   .content{
     font-size: 12px;

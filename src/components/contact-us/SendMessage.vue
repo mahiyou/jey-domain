@@ -20,11 +20,8 @@
             </div>
             <div>
               <p class="input-title">چگونه می توانیم به شما کمک کنیم؟</p>
-              <textarea
-                class="inputs"
-                rows="4"
-                placeholder="پیام شما"
-              ></textarea>
+              <textarea class="inputs" rows="4" placeholder="پیام شما">
+              </textarea>
             </div>
             <input class="submit-btn" type="submit" value="ارسال پیام" />
           </form>
@@ -34,8 +31,8 @@
         <v-img
           src="@/assets/pics/man-contactus.svg"
           class="contact-img"
-          max-width="640"
-        ></v-img>
+          max-width="640">
+        </v-img>
       </v-col>
     </v-row>
   </v-container>

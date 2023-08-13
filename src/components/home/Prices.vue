@@ -8,8 +8,7 @@
       color="#4f80ff"
       align-tabs="center"
       style="border-bottom: 1px solid rgb(215, 215, 215)"
-      class="mb-6"
-    >
+      class="mb-6">
       <v-tab :value="1" class="tab-style">دامنه های تجاری</v-tab>
       <v-tab :value="2" class="tab-style">دامنه های ارزان قیمت</v-tab>
       <v-tab :value="3" class="tab-style">دامنه های رند</v-tab>
@@ -44,7 +43,9 @@
               <td class="td-color">۴۸,۰۰۰</td>
               <td class="td-color">۴۸,۰۰۰</td>
               <td class="td-color">۴۸,۰۰۰</td>
-              <td><v-btn class="order-btn" href="/order/domain">سفارش</v-btn></td>
+              <td>
+                <v-btn class="order-btn" href="/order/domain">سفارش</v-btn>
+              </td>
             </tr>
             <tr>
               <td dir="ltr" class="td-background">.com</td>
@@ -60,7 +61,9 @@
               <td class="td-color">۴۸,۰۰۰</td>
               <td class="td-color">۴۸,۰۰۰</td>
               <td class="td-color">۴۸,۰۰۰</td>
-              <td><v-btn class="order-btn" href="/order/domain">سفارش</v-btn></td>
+              <td>
+                <v-btn class="order-btn" href="/order/domain">سفارش</v-btn>
+              </td>
             </tr>
             <tr>
               <td dir="ltr" class="td-background">.com</td>
@@ -76,7 +79,9 @@
               <td class="td-color">۴۸,۰۰۰</td>
               <td class="td-color">۴۸,۰۰۰</td>
               <td class="td-color">۴۸,۰۰۰</td>
-              <td><v-btn class="order-btn" href="/order/domain">سفارش</v-btn></td>
+              <td>
+                <v-btn class="order-btn" href="/order/domain">سفارش</v-btn>
+              </td>
             </tr>
             <tr>
               <td dir="ltr" class="td-background">.com</td>
@@ -92,7 +97,9 @@
               <td class="td-color">۴۸,۰۰۰</td>
               <td class="td-color">۴۸,۰۰۰</td>
               <td class="td-color">۴۸,۰۰۰</td>
-              <td><v-btn class="order-btn" href="/order/domain">سفارش</v-btn></td>
+              <td>
+                <v-btn class="order-btn" href="/order/domain">سفارش</v-btn>
+              </td>
             </tr>
           </tbody>
         </v-table>
@@ -100,6 +107,7 @@
     </v-window>
   </v-container>
 </template>
+
 <script>
 export default {
   data: () => ({
@@ -170,9 +178,9 @@ export default {
     }
     .tab-style {
       font-size: 12px;
-    margin-left: -13px;
-    font-weight: 600;
-  }
+      margin-left: -13px;
+      font-weight: 600;
+    }
   }
   @media (max-width: 500px) {
     max-width: 100%;

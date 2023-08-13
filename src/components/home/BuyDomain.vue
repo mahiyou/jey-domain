@@ -7,7 +7,7 @@
           <div class="img-background">
             <v-img class="card-img" src="@/assets/pics/domainname.svg"></v-img>
           </div>
-          
+
           <p class="card-title">انتخاب نام دامنه</p>
           <p class="card-content">
             پس از انتخاب نام دامنه مورد نظر خود بایستی آن را جستجو کرده تا از
@@ -19,8 +19,11 @@
       <v-col md="4" cols="12">
         <v-card class="card center">
           <div class="img-background">
-          <v-img class="card-img" src="@/assets/pics/configuration.svg"></v-img>
-        </div>
+            <v-img
+              class="card-img"
+              src="@/assets/pics/configuration.svg">
+            </v-img>
+          </div>
           <p class="card-title">پیکربندی دامنه</p>
           <p class="card-content">
             پس از انتخاب نام دامنه مورد نظر خود بایستی آن را جستجو کرده تا از
@@ -32,8 +35,8 @@
       <v-col md="4" cols="12">
         <v-card class="card center">
           <div class="img-background">
-          <v-img class="card-img" src="@/assets/pics/price.svg"></v-img>
-        </div>
+            <v-img class="card-img" src="@/assets/pics/price.svg"></v-img>
+          </div>
           <p class="card-title">پرداخت هزینه و ثبت دامنه</p>
           <p class="card-content">
             پس از انتخاب نام دامنه مورد نظر خود بایستی آن را جستجو کرده تا از
@@ -55,26 +58,26 @@
     font-size: 28px;
     margin-bottom: 50px;
   }
-  .card{
+  .card {
     text-align: center;
     align-content: center;
     padding: 30px 30px;
     box-shadow: none;
   }
-  .card-img{
+  .card-img {
     width: 47px;
     height: 47px;
   }
-  .card-title{
+  .card-title {
     font-weight: 700;
     font-size: 18px;
     margin-bottom: 12px;
   }
-  .card-content{
+  .card-content {
     font-weight: 400;
     font-size: 14px;
   }
-  .img-background{
+  .img-background {
     width: 67px;
     height: 62px;
     background: #4f80ff;
@@ -83,15 +86,15 @@
     margin-right: 37%;
     margin-bottom: 40px;
   }
-  .center{
+  .center {
     margin: auto;
   }
-  @media(max-width: 960px) {
-    .card{
+  @media (max-width: 960px) {
+    .card {
       max-width: 350px;
     }
   }
-  @media (max-width:500px) {
+  @media (max-width: 500px) {
     max-width: 100%;
   }
 }

@@ -3,8 +3,7 @@
     :model-value="modelValue"
     @update:model-value="onUpdate"
     temporary
-    class="transition nav-container"
-  >
+    class="transition nav-container">
     <v-list density="compact" nav>
       <div class="img-logo">
         <v-img src="@/assets/pics/JeyDomain.svg"></v-img>
@@ -13,26 +12,26 @@
         prepend-icon="mdi-home"
         title="صفحه اصلی"
         value="home"
-        href="#"
-      ></v-list-item>
+        href="#">
+      </v-list-item>
       <v-list-item
         prepend-icon="mdi-currency-usd"
         title="تعرفه ها"
         value="prices"
-        href="#"
-      ></v-list-item>
+        href="#">
+      </v-list-item>
       <v-list-item
         prepend-icon="mdi-chat-question-outline"
         title="سوالات متداول"
         value="questions"
-        href="#"
-      ></v-list-item>
+        href="#">
+      </v-list-item>
       <v-list-item
         prepend-icon="mdi-post-outline"
         title="بلاگ"
         value="blog"
-        href="#"
-      ></v-list-item>
+        href="#">
+      </v-list-item>
       <v-divider></v-divider>
       <div class="mr-2">
         <v-list-item title="ورود" value="log-in" href="#"></v-list-item>
@@ -40,13 +39,14 @@
           title="ثبت نام"
           value="sign-up"
           href="#"
-          class="signup-btn"
-        ></v-list-item>
+          class="signup-btn">
+        </v-list-item>
       </div>
     </v-list>
   </v-navigation-drawer>
 </template>
 <script>
+
 import { defineComponent } from "vue";
 
 export default defineComponent({
