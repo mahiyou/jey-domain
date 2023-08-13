@@ -33,7 +33,7 @@
       <v-col md="8" cols="12">
         <div class="form-style">
           <div class="title">پیامی برای ما بگذارید!</div>
-          <v-form @submit.prevent="onSubmit">
+          <v-form @submit.prevent="onSubmit"  v-model="valid">
             <div class="mb-4">
               <p class="input-title">نام و نام خانوادگی</p>
               <v-text-field

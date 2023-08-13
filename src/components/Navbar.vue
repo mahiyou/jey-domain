@@ -1,5 +1,5 @@
 <template>
-  <v-container class="navbar-container">
+  <v-container class="navbar-container" id="nav-container">
     <v-toolbar density="compact" color="white">
       <div class="mt-5">
         <v-icon size="small" color="#faa930">mdi-bullseye</v-icon>
@@ -103,8 +103,11 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+#nav-container{
+  padding-bottom: 4px;
+  padding-top: 7px;
+}
 .navbar-container {
-
   .nav-btn {
     letter-spacing: 0;
     --v-theme-overlay-multiplier: 0;
