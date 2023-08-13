@@ -82,18 +82,32 @@
         </v-form>
       </v-col>
     </v-row>
+    <v-snackbar v-model="snackbar" multi-line
+      >خطای سرور
+      <template v-slot:actions>
+        <v-btn color="red" variant="text" @click="snackbar = false">
+          بستن
+        </v-btn>
+      </template>
+    </v-snackbar>
   </div>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
 import {useUserState} from "@/stores/UserState"
-import { mapState } from "pinia";
+
 export default defineComponent({
+  setup(){
+    return{
+      store : useUserState()
+    }
+  },
   data() {
     return {
       valid: false,
       username: "",
       password: "",
+      snackbar: false,
       loading: false,
       usernameRules: [
         (value) => {
@@ -114,16 +128,17 @@ export default defineComponent({
     };
   },
   methods: {
-    onSubmit() {
+    async onSubmit() {
       if (this.loading || !this.valid) {
         return;
       }
-      this.loading = true;
-      setTimeout(() => {
-        this.loading = false;
-      }, 2000);
-      const store = useUserState()
-      store.login({username:this.username , password:this.password});
+      this.loading = true; 
+      const loginPromis = this.store.login({username:this.username , password:this.password});
+      loginPromis.catch(()=>{
+        this.snackbar = true;
+      }).finally(()=>{
+        this.loading = false
+      });
     },
   },
 });

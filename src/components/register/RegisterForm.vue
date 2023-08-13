@@ -104,17 +104,47 @@
         </v-form>
       </v-col>
     </v-row>
+    <v-snackbar v-model="serverErrorSnackbar" multi-line
+      >خطای سرور
+      <template v-slot:actions>
+        <v-btn color="red" variant="text" @click="serverErrorSnackbar = false">
+          بستن
+        </v-btn>
+      </template>
+    </v-snackbar>
+    <v-snackbar v-model="serverErrorSnackbar" multi-line
+      >خطای سرور
+      <template v-slot:actions>
+        <v-btn color="red" variant="text" @click="serverErrorSnackbar = false">
+          بستن
+        </v-btn>
+      </template>
+    </v-snackbar>
+    <v-snackbar v-model="passwordSnackbar" multi-line
+      >تکرار رمز عبور مطابقت ندارد 
+      <template v-slot:actions>
+        <v-btn color="red" variant="text" @click="passwordSnackbar = false">
+          بستن
+        </v-btn>
+      </template>
+    </v-snackbar>
   </div>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
 import {useUserState} from "@/stores/UserState"
-import { mapState } from "pinia";
 
 export default defineComponent({
+  setup(){
+    return{
+      store : useUserState()
+    }
+  },
   data() {
-    return {
+    return { 
       valid: false,
+      serverErrorSnackbar : false,
+      passwordSnackbar : false,
       username: "",
       password: "",
       passwordConfirm: "",
@@ -159,12 +189,17 @@ export default defineComponent({
       if (this.loading || !this.valid) {
         return;
       }
+      if(this.password != this.passwordConfirm){
+        this.passwordSnackbar = true;
+        return;
+      }
       this.loading = true;
-      setTimeout(() => {
+      const registerPromis = this.store.register({username:this.username , password:this.password},"mahi@gmai;","mai","you","09100000000");
+      registerPromis.catch(()=>{
+        this.serverErrorSnackbar = true;
+      }).finally(()=>{
         this.loading = false;
-      }, 2000);
-      const store = useUserState()
-      store.register({username:this.username , password:this.password},"","","","");
+      })
     },
   },
 });

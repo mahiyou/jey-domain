@@ -1,6 +1,6 @@
 <template>
   <v-container class="navbar-container" id="nav-container">
-    <v-toolbar density="compact" color="white">
+    <v-toolbar color="white">
       <div class="mt-5">
         <v-icon size="small" color="#faa930">mdi-bullseye</v-icon>
         <v-btn class="nav-btn" :to="{ name: '' }">پشتیبانی آنلاین</v-btn>
@@ -24,7 +24,7 @@
         </v-text-field>
       </v-form>
       <v-spacer></v-spacer>
-      <div class="mt-5">
+      <div v-if="userState" class="mt-5">
         <v-btn>
           <v-icon size="large" color="#495057">mdi-shopping-outline</v-icon>
           <span class="rounded-circle text-white bg-primary circle">{{
@@ -47,6 +47,16 @@
           <v-icon class="mr-2">mdi-chevron-down</v-icon>
         </v-btn>
       </div>
+      <div v-if="!userState" class="mt-5">
+        <v-btn>
+          <v-icon size="large" color="#495057">mdi-shopping-outline</v-icon>
+          <span class="rounded-circle text-white bg-primary circle">{{
+            persianNumber(user.numberOfBasletItems)
+          }}</span>
+        </v-btn>
+        <v-btn class="login-register-btn" :to="{ name: 'logIn' }"> ورود </v-btn>
+        <v-btn density="comfortable" variant="flat" rounded="pill" color="primary" class="login-register-btn ml-8" :to="{ name: 'register' }"> ثبت نام </v-btn>
+      </div>
     </v-toolbar>
     <v-toolbar class="mt-6" color="white">
       <div class="logo-size">
@@ -62,8 +72,6 @@
         تماس با ما
       </v-btn>
       <v-btn class="toolbar-btn nav-btn-md" href="#"> بلاگ </v-btn>
-      <v-btn class="toolbar-btn nav-btn-md" :to="{ name: 'logIn' }"> ورود </v-btn>
-      <v-btn class="toolbar-btn nav-btn-md" :to="{ name: 'register' }"> ثبت نام </v-btn>
       <v-app-bar-nav-icon class="nav-icon-xs-sm" @click="$emit('clickOnNavBtn')"> </v-app-bar-nav-icon>
     </v-toolbar>
   </v-container>
@@ -73,6 +81,8 @@
 import { defineComponent } from "vue";
 import DefaultUserImage from "@/assets/pics/user.jpg";
 import JeyDomain from "@/assets/pics/JeyDomain.svg";
+import {useUserState} from "@/stores/UserState"
+import { mapState } from "pinia";  
 export default defineComponent({
   emits: ["clickOnNavBtn"],
   data() {
@@ -101,13 +111,16 @@ export default defineComponent({
       return n;
     },
   },
+  computed:{
+   ...mapState (useUserState,{userState: "userState"})
+  }
 });
 </script>
 
 <style lang="scss">
 #nav-container{
   padding-bottom: 4px;
-  padding-top: 7px;
+  padding-top: 0px;
 }
 .navbar-container {
   .nav-btn {
@@ -151,6 +164,12 @@ export default defineComponent({
   }
   .logo-size {
     width: 170px;
+  }
+  .login-register-btn {
+    letter-spacing: 0;
+    font-size: 13px;
+    font-weight: 300;
+    --v-theme-overlay-multiplier: 0;
   }
   .toolbar-btn {
     letter-spacing: 0;
