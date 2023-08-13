@@ -4,11 +4,12 @@
       <v-row>
         <v-col sm="2" cols="6">
           <div class="logo-size">
-            <v-img
-              FIXME
+            <router-link :to="{ name: 'home' }">
+              <v-img
               src="@/assets/pics/JeyDomain.svg"
               class="mt-4 mt-sm-2">
-            </v-img>
+              </v-img>
+            </router-link>
           </div>
         </v-col>
         <v-col sm="7" cols="1">
@@ -88,5 +89,6 @@ export default defineComponent({
       display: block;
     }
   }
+  --v-theme-overlay-multiplier: 0;
 }
 </style>
