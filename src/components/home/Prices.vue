@@ -9,15 +9,15 @@
       align-tabs="center"
       style="border-bottom: 1px solid rgb(215, 215, 215)"
       class="mb-6">
-      <v-tab :value="1" class="tab-style">دامنه های تجاری</v-tab>
-      <v-tab :value="2" class="tab-style">دامنه های ارزان قیمت</v-tab>
-      <v-tab :value="3" class="tab-style">دامنه های رند</v-tab>
-      <v-tab :value="4" class="tab-style">دامنه های ملی</v-tab>
-      <v-tab :value="5" class="tab-style">دامنه های بین المللی</v-tab>
-      <v-tab :value="6" class="tab-style">دامنه های کشوری</v-tab>
+      <v-tab value="1" class="tab-style">دامنه های تجاری</v-tab>
+      <v-tab value="2" class="tab-style">دامنه های ارزان قیمت</v-tab>
+      <v-tab value="3" class="tab-style">دامنه های رند</v-tab>
+      <v-tab value="4" class="tab-style">دامنه های ملی</v-tab>
+      <v-tab value="5" class="tab-style">دامنه های بین المللی</v-tab>
+      <v-tab value="6" class="tab-style">دامنه های کشوری</v-tab>
     </v-tabs>
     <v-window v-model="tab">
-      <v-window-item v-for="n in 6" :key="n" :value="n">
+      <v-window-item value="1">
         <v-table>
           <thead id="theadborder">
             <tr>
@@ -29,76 +29,139 @@
             </tr>
           </thead>
           <tbody id="tbodyborder">
-            <tr>
-              <td dir="ltr" class="td-background">.com</td>
-              <td class="td-background td-color">۶۰۳,۰۰۰</td>
-              <td class="td-background td-color">۶۰۳,۰۰۰</td>
-              <td class="td-background td-color">۶۰۳,۰۰۰</td>
-              <td class="td-background">
-                <v-btn class="order-btn" :to="{ name: 'order-domain' }">سفارش</v-btn>
+            <tr v-for="index in tldsTypes.commercial.length" :key="index">
+              {{getTldInfo(tldsTypes.commercial[index-1])}}
+              <td dir="ltr" :class="getBackground(index)">{{`.${tldsTypes.commercial[index-1]}`}}</td>
+              <td class="td-color" :class="getBackground(index)">{{ persianNumber(currentRegistration.toLocaleString()) }}</td>
+              <td class="td-color" :class="getBackground(index)">{{ persianNumber(currentExtend.toLocaleString()) }}</td>
+              <td class="td-color" :class="getBackground(index)">{{ persianNumber(currentTransfer.toLocaleString()) }}</td>
+              <td :class="getBackground(index)">
+                <v-btn class="order-btn" href="/order/domain">سفارش</v-btn>
               </td>
             </tr>
+          </tbody>
+        </v-table>
+      </v-window-item>
+      <v-window-item value="2">
+        <v-table>
+          <thead id="theadborder">
             <tr>
-              <td dir="ltr">.ir</td>
-              <td class="td-color">۴۸,۰۰۰</td>
-              <td class="td-color">۴۸,۰۰۰</td>
-              <td class="td-color">۴۸,۰۰۰</td>
-              <td>
-                <v-btn class="order-btn" :to="{ name: 'order-domain' }">سفارش</v-btn>
+              <th class="text-center no-border">پسوند دامنه</th>
+              <th class="text-center">ثبت دامنه</th>
+              <th class="text-center">تمدید دامنه</th>
+              <th class="text-center">انتقال دامنه</th>
+              <th class="text-center">سفارش</th>
+            </tr>
+          </thead>
+          <tbody id="tbodyborder">
+            <tr v-for="index in tldsTypes.cheap.length" :key="index">
+              {{getTldInfo(tldsTypes.cheap[index-1])}}
+              <td dir="ltr" :class="getBackground(index)">{{`.${tldsTypes.cheap[index-1]}`}}</td>
+              <td class="td-color" :class="getBackground(index)">{{ persianNumber(currentRegistration.toLocaleString()) }}</td>
+              <td class="td-color" :class="getBackground(index)">{{ persianNumber(currentExtend.toLocaleString()) }}</td>
+              <td class="td-color" :class="getBackground(index)">{{ persianNumber(currentTransfer.toLocaleString()) }}</td>
+              <td :class="getBackground(index)">
+                <v-btn class="order-btn" href="/order/domain">سفارش</v-btn>
               </td>
             </tr>
+          </tbody>
+        </v-table>
+      </v-window-item>
+      <v-window-item value="3">
+        <v-table>
+          <thead id="theadborder">
             <tr>
-              <td dir="ltr" class="td-background">.com</td>
-              <td class="td-background td-color">۶۰۳,۰۰۰</td>
-              <td class="td-background td-color">۶۰۳,۰۰۰</td>
-              <td class="td-background td-color">۶۰۳,۰۰۰</td>
-              <td class="td-background">
-                <v-btn class="order-btn" :to="{ name: 'order-domain' }">سفارش</v-btn>
+              <th class="text-center no-border">پسوند دامنه</th>
+              <th class="text-center">ثبت دامنه</th>
+              <th class="text-center">تمدید دامنه</th>
+              <th class="text-center">انتقال دامنه</th>
+              <th class="text-center">سفارش</th>
+            </tr>
+          </thead>
+          <tbody id="tbodyborder">
+            <tr v-for="index in tldsTypes.round.length" :key="index">
+              {{getTldInfo(tldsTypes.round[index-1])}}
+              <td dir="ltr" :class="getBackground(index)">{{`.${tldsTypes.round[index-1]}`}}</td>
+              <td class="td-color" :class="getBackground(index)">{{ persianNumber(currentRegistration.toLocaleString()) }}</td>
+              <td class="td-color" :class="getBackground(index)">{{ persianNumber(currentExtend.toLocaleString()) }}</td>
+              <td class="td-color" :class="getBackground(index)">{{ persianNumber(currentTransfer.toLocaleString()) }}</td>
+              <td :class="getBackground(index)">
+                <v-btn class="order-btn" href="/order/domain">سفارش</v-btn>
               </td>
             </tr>
+          </tbody>
+        </v-table>
+      </v-window-item>
+      <v-window-item value="4">
+        <v-table>
+          <thead id="theadborder">
             <tr>
-              <td dir="ltr">.ir</td>
-              <td class="td-color">۴۸,۰۰۰</td>
-              <td class="td-color">۴۸,۰۰۰</td>
-              <td class="td-color">۴۸,۰۰۰</td>
-              <td>
-                <v-btn class="order-btn" :to="{ name: 'order-domain' }">سفارش</v-btn>
+              <th class="text-center no-border">پسوند دامنه</th>
+              <th class="text-center">ثبت دامنه</th>
+              <th class="text-center">تمدید دامنه</th>
+              <th class="text-center">انتقال دامنه</th>
+              <th class="text-center">سفارش</th>
+            </tr>
+          </thead>
+          <tbody id="tbodyborder">
+            <tr v-for="index in tldsTypes.national.length" :key="index">
+              {{getTldInfo(tldsTypes.national[index-1])}}
+              <td dir="ltr" :class="getBackground(index)">{{`.${tldsTypes.national[index-1]}`}}</td>
+              <td class="td-color" :class="getBackground(index)">{{ persianNumber(currentRegistration.toLocaleString()) }}</td>
+              <td class="td-color" :class="getBackground(index)">{{ persianNumber(currentExtend.toLocaleString()) }}</td>
+              <td class="td-color" :class="getBackground(index)">{{ persianNumber(currentTransfer.toLocaleString()) }}</td>
+              <td :class="getBackground(index)">
+                <v-btn class="order-btn" href="/order/domain">سفارش</v-btn>
               </td>
             </tr>
+          </tbody>
+        </v-table>
+      </v-window-item>
+      <v-window-item value="5">
+        <v-table>
+          <thead id="theadborder">
             <tr>
-              <td dir="ltr" class="td-background">.com</td>
-              <td class="td-background td-color">۶۰۳,۰۰۰</td>
-              <td class="td-background td-color">۶۰۳,۰۰۰</td>
-              <td class="td-background td-color">۶۰۳,۰۰۰</td>
-              <td class="td-background">
-                <v-btn class="order-btn" :to="{ name: 'order-domain' }">سفارش</v-btn>
+              <th class="text-center no-border">پسوند دامنه</th>
+              <th class="text-center">ثبت دامنه</th>
+              <th class="text-center">تمدید دامنه</th>
+              <th class="text-center">انتقال دامنه</th>
+              <th class="text-center">سفارش</th>
+            </tr>
+          </thead>
+          <tbody id="tbodyborder">
+            <tr v-for="index in tldsTypes.international.length" :key="index">
+              {{getTldInfo(tldsTypes.international[index-1])}}
+              <td dir="ltr" :class="getBackground(index)">{{`.${tldsTypes.international[index-1]}`}}</td>
+              <td class="td-color" :class="getBackground(index)">{{ persianNumber(currentRegistration.toLocaleString()) }}</td>
+              <td class="td-color" :class="getBackground(index)">{{ persianNumber(currentExtend.toLocaleString()) }}</td>
+              <td class="td-color" :class="getBackground(index)">{{ persianNumber(currentTransfer.toLocaleString()) }}</td>
+              <td :class="getBackground(index)">
+                <v-btn class="order-btn" href="/order/domain">سفارش</v-btn>
               </td>
             </tr>
+          </tbody>
+        </v-table>
+      </v-window-item>
+      <v-window-item value="6">
+        <v-table>
+          <thead id="theadborder">
             <tr>
-              <td dir="ltr">.ir</td>
-              <td class="td-color">۴۸,۰۰۰</td>
-              <td class="td-color">۴۸,۰۰۰</td>
-              <td class="td-color">۴۸,۰۰۰</td>
-              <td>
-                <v-btn class="order-btn" :to="{ name: 'order-domain' }">سفارش</v-btn>
-              </td>
+              <th class="text-center no-border">پسوند دامنه</th>
+              <th class="text-center">ثبت دامنه</th>
+              <th class="text-center">تمدید دامنه</th>
+              <th class="text-center">انتقال دامنه</th>
+              <th class="text-center">سفارش</th>
             </tr>
-            <tr>
-              <td dir="ltr" class="td-background">.com</td>
-              <td class="td-background td-color">۶۰۳,۰۰۰</td>
-              <td class="td-background td-color">۶۰۳,۰۰۰</td>
-              <td class="td-background td-color">۶۰۳,۰۰۰</td>
-              <td class="td-background">
-                <v-btn class="order-btn" :to="{ name: 'order-domain' }">سفارش</v-btn>
-              </td>
-            </tr>
-            <tr>
-              <td dir="ltr">.ir</td>
-              <td class="td-color">۴۸,۰۰۰</td>
-              <td class="td-color">۴۸,۰۰۰</td>
-              <td class="td-color">۴۸,۰۰۰</td>
-              <td>
-                <v-btn class="order-btn" :to="{ name: 'order-domain' }">سفارش</v-btn>
+          </thead>
+          <tbody id="tbodyborder">
+            <tr v-for="index in tldsTypes.country.length" :key="index">
+              {{getTldInfo(tldsTypes.country[index-1])}}
+              <td dir="ltr" :class="getBackground(index)">{{`.${tldsTypes.country[index-1]}`}}</td>
+              <td class="td-color" :class="getBackground(index)">{{ persianNumber(currentRegistration.toLocaleString()) }}</td>
+              <td class="td-color" :class="getBackground(index)">{{ persianNumber(currentExtend.toLocaleString()) }}</td>
+              <td class="td-color" :class="getBackground(index)">{{ persianNumber(currentTransfer.toLocaleString()) }}</td>
+              <td :class="getBackground(index)">
+                <v-btn class="order-btn" href="/order/domain">سفارش</v-btn>
               </td>
             </tr>
           </tbody>
@@ -109,11 +172,64 @@
 </template>
 
 <script lang="ts">
-export default {
+import { defineComponent } from "vue"
+
+export default defineComponent({
   data: () => ({
     tab: null,
+    tlds:[
+      {tld:"com",registration:603000,extend:603000,transfer:603000},
+      {tld:"ir",registration:48000,extend:48000},
+      {tld:"org",registration:503000,extend:503000,transfer:503000},
+      {tld:"net",registration:703000,extend:703000,transfer:703000},
+      {tld:"biz",registration:603000,extend:603000,transfer:603000},
+      {tld:"work",registration:48000,extend:48000},
+      {tld:"gg",registration:43000,extend:53000,transfer:53000},
+      {tld:"cc",registration:18000,transfer:28000},
+    ],
+    tldsTypes:{
+      commercial:["com","net","org","biz","work"],
+      cheap:[],
+      round:[],
+      national:["ir"],
+      international:["com","net","org"],
+      country:["gg","cc"]
+    },
+    tldType:"commercial",
+    currentRegistration:undefined,
+    currentExtend:undefined,
+    currentTransfer:undefined
   }),
-};
+  methods:{
+    getTldInfo(mytld){
+      const searchTld = this.tlds.find((tld) => tld.tld == mytld);
+      if(searchTld){
+        this.currentRegistration = searchTld.registration ? searchTld.registration : "-";
+        this.currentExtend = searchTld.extend ? searchTld.extend : "-";
+        this.currentTransfer = searchTld.transfer ? searchTld.transfer : "-";
+      }
+    },
+    getBackground(index){
+      if(index%2 == 0){
+        return ""
+      }else{
+        return "td-background"
+      }
+    },
+    persianNumber(n) {
+      n = n.toString();
+      const nlength = n.length;
+      const farsiNum = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+      for (let i = 0; i < 10; i++) {
+        for (let j = 0; j < nlength; j++) {
+          const istring = i.toString();
+          n = n.replace(istring, farsiNum[i]);
+        }
+      }
+      return n;
+    },
+  }
+});
 </script>
 <style lang="scss">
 .prices-container {
@@ -153,7 +269,7 @@ export default {
   #tbodyborder td {
     border-bottom: none;
     font-weight: 600;
-    font-size: 17px;
+    font-size: 16px;
   }
   .td-color {
     color: #4f80ff;

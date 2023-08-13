@@ -35,10 +35,10 @@
             <template v-slot:prepend-inner>
               <select v-model="selected" class="select-domain" dir="ltr">
                 <option
-                  :value="domains[index - 1].value"
-                  v-for="index in 4"
-                  :key="index">
-                  <v-btn>{{ domains[index - 1].tilte }}</v-btn>
+                  :value="tlds[tld-1].tld"
+                  v-for="tld in tlds.length"
+                  :key="tld">
+                  <v-btn>{{ `.${tlds[tld-1].tld}` }}</v-btn>
                 </option>
               </select>
             </template>
@@ -48,10 +48,10 @@
     </v-row>
     <div class="featured-tlds">
       <div dir="ltr" class="prices">
-        <div class="price">.com <span>۶۰۳,۰۰۰</span></div>
-        <div class="price">.org <span>۵۰۳,۰۰۰</span></div>
-        <div class="price">.net <span>۷۰۳,۰۰۰</span></div>
-        <div class="price">.ir <span>۴۸,۰۰۰</span></div>
+        <div class="price" v-for="tld in tlds.length" :key="tld">
+          {{`.${tlds[tld-1].tld}`}}
+          <span>{{ persianNumber(tlds[tld-1].registration.toLocaleString()) }}</span>
+        </div>
       </div>
     </div>
   </v-container>
@@ -62,15 +62,29 @@ import { defineComponent } from "vue";
 export default defineComponent({
   data() {
     return {
-      domains: [
-        { tilte: ".com", value: "com" },
-        { tilte: ".org", value: "org" },
-        { tilte: ".net", value: "net" },
-        { tilte: ".ir", value: "ir" },
+      tlds:[
+        {tld:"com",registration:603000},
+        {tld:"ir",registration:48000},
+        {tld:"org",registration:503000},
+        {tld:"net",registration:703000},
       ],
       selected: "com",
     };
   },
+  methods:{
+    persianNumber(n) {
+      n = n.toString();
+      const nlength = n.length;
+      const farsiNum = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+      for (let i = 0; i < 10; i++) {
+        for (let j = 0; j < nlength; j++) {
+          const istring = i.toString();
+          n = n.replace(istring, farsiNum[i]);
+        }
+      }
+      return n;
+    },
+  }
 });
 </script>
 
