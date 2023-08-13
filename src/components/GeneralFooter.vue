@@ -148,7 +148,7 @@
         <v-btn rounded="pill" variant="text" class="btn-features pl-6"  :to="{ name: 'contact-us' }"><v-icon color="primary">mdi-chevron-left</v-icon>تماس با ما</v-btn>
       </v-col>
     </v-row>
-    <div class="rights-sen">کلیه ی حقوق مادی و معنوی این سایت متعلق به شرکت داده نگار جی می باشد.<v-btn variant="text" class="rights-btn">قوانین/خط مشی ها</v-btn></div>
+    <div class="rights-sen">کلیه ی حقوق مادی و معنوی این سایت متعلق به شرکت داده نگار جی می باشد.<v-btn variant="text" class="rights-btn" :to="{ name: 'conditions' }">قوانین/خط مشی ها</v-btn></div>
   </div>
 </template>
 <script lang="ts">

@@ -75,7 +75,7 @@
     </v-row>
     <v-checkbox v-model="Checkbox" color="primary" :rules="checkboxRules">
       <template v-slot:label>همه ی 
-        <a class="link" href="#">قوانین و شراط</a>
+        <v-btn variant="text" color="primary" class="rights-btn" :to="{ name: 'conditions' }">قوانین و شرایط</v-btn>
         را خوانده وپذیرفته ام.
       </template>
     </v-checkbox>
@@ -266,6 +266,12 @@ export default defineComponent({
     text-decoration: none;
     margin: 1px 5px 0px 5px;
     color: #4f80ff;
+  }
+  .rights-btn{
+    font-family: IRANSans;
+    font-weight: 800;
+    letter-spacing: 0;
+    padding: 0px 3px;
   }
   .btn-confirm {
     font-family: IRANSans;
