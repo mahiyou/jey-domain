@@ -22,75 +22,75 @@
     </v-navigation-drawer>
 </template>
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent } from 'vue';
 
 export default defineComponent({
     data() {
         return{
             tabs: [
                 {
-                value:"dashboard",
-                title:"پیشخوان",
-                icon:"mdi-view-dashboard",
-                options:[]
+                    value:"dashboard",
+                    title:"پیشخوان",
+                    icon:"mdi-view-dashboard",
+                    options:[]
                 },
                 {
-                value:"files",
-                title:"فایل ها",
-                icon:"mdi-file-document-multiple-outline",
-                options:[]
+                    value:"files",
+                    title:"فایل ها",
+                    icon:"mdi-file-document-multiple-outline",
+                    options:[]
                 },
                 {
-                value:"support",
-                title:"پشتیبانی",
-                icon:"mdi-deskphone",
-                options:[]
+                    value:"support",
+                    title:"پشتیبانی",
+                    icon:"mdi-deskphone",
+                    options:[]
                 },
                 {
-                value:"bills",
-                title:"صورت حساب ها",
-                icon:"mdi-cash-multiple",
-                options:[]
+                    value:"bills",
+                    title:"صورت حساب ها",
+                    icon:"mdi-cash-multiple",
+                    options:[]
                 },
                 {
-                value:"services",
-                title:"سرویس ها",
-                icon:"mdi-note-text-outline",
-                options:[]
+                    value:"services",
+                    title:"سرویس ها",
+                    icon:"mdi-note-text-outline",
+                    options:[]
                 },
                 {
-                value:"accesses",
-                title:"دسترسی ها",
-                icon:"mdi-access-point",
-                options:[]
+                    value:"accesses",
+                    title:"دسترسی ها",
+                    icon:"mdi-access-point",
+                    options:[]
                 },
                 {
-                value:"settings",
-                title:"تنظیمات",
-                icon:"mdi-wrench-cog",
-                options:
-                [
-                    {
-                        value:"settings1",
-                        title:"1تنظیمات",
-                    },
-                    {
-                        value:"settings2",
-                        title:"2تنظیمات",
-                    },
-                ]
+                    value:"settings",
+                    title:"تنظیمات",
+                    icon:"mdi-wrench-cog",
+                    options:
+                        [
+                            {
+                                value:"settings1",
+                                title:"1تنظیمات",
+                            },
+                            {
+                                value:"settings2",
+                                title:"2تنظیمات",
+                            },
+                        ]
                 },
                 {
-                value:"users",
-                title:"کاربران",
-                icon:"mdi-account-circle-outline",
-                options:[]
+                    value:"users",
+                    title:"کاربران",
+                    icon:"mdi-account-circle-outline",
+                    options:[]
                 }
             ]  
-        }
+        };
 
     },
-})
+});
 </script>
 <style lang="scss">
     .panel-nav{

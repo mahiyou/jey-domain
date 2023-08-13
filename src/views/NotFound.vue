@@ -33,9 +33,9 @@ export default defineComponent({
         return {
             navigation: false,
             errorImage: errorImage,
-        }
+        };
     }
-})
+});
 </script>
 <style lang="scss">
 .not-found{

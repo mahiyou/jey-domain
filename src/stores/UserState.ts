@@ -1,8 +1,8 @@
 import {defineStore} from "pinia";
 import { call } from "@/mocks/API";
-import {login} from "@/mocks/User"
-import {register} from "@/mocks/User"
-import {UserCridentionals} from "@/mocks/User"
+import {login} from "@/mocks/User";
+import {register} from "@/mocks/User";
+import {UserCridentionals} from "@/mocks/User";
 
 
 export const useUserState = defineStore("UserState" , {
@@ -50,4 +50,4 @@ export const useUserState = defineStore("UserState" , {
             }
         }
     }
-})
+});

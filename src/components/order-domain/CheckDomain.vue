@@ -1,110 +1,110 @@
 <template>
-  <div class="check-domain-container">
-    <v-row>
-      <v-col>
-        شما می توانید در زیر وضعیت دامنه مورد نظر خود و سایر پسوندها را مشاهده
-        کنید:
-      </v-col>
-    </v-row>
-    <v-row justify="center" align="center" class="search-domain">
-      <v-col cols="11" sm="9">
-        <v-form
-          id="domain-form"
-          v-model="valid"
-          @submit.prevent="onSubmit"
-          lazy-validation
-          ref="checkDomainBox"
-          class="justify-center pt-7">
-          <v-text-field
-            placeholder="نام دامنه مورد نظر خود را وارد کنید"
-            variant="plain"
-            bg-color="white"
-            rounded="pill"
-            class="text-field"
-            v-model="domain"
-            @keydown.enter="onSubmit"
-            :rules="[validateInputDomain]">
-            <template v-slot:append-inner>
-              <v-btn
-                type="submit"
-                flat
-                color="primary"
-                density="comfortable"
-                class="btn-confirm"
-                rounded="pill"
-                @click.prevent="onSubmit"
-                :loading="loading">
-                جستجو
-              </v-btn>
-            </template>
-          </v-text-field>
-        </v-form>
-      </v-col>
-    </v-row>
-    <div
-      v-if="domainSearchResult.domain && !error"
-      class="domain-search-result">
-      <div v-if="domainSearchResult.available" class="domain-search-available">
-        <P class="mb-5">
-          {{ `دامنه ی ${domainSearchResult.domain} در دسترس است.` }}</P>
-        <div>
-          <span class="price">
-            {{
-              persianNumber(domainSearchResult.cost.amount.toLocaleString())
-            }}
-            {{ domainSearchResult.cost.currency.title }}</span>
-          <v-btn variant="flat" color="#5cb85c" rounded="pill" class="buy-btn">خرید دامنه</v-btn>
-        </div>
-      </div>
-      <div
-        v-if="!domainSearchResult.available"
-        class="domain-search-not-available">
-        <P> {{ `دامنه ی ${domainSearchResult.domain} در دسترس نیست.` }}</P>
-      </div>
-      <div class="domain-sugestion">
-        <div class="domain-sugestion-title">دامنه های پیشنهادی</div>
-        <div v-if="domainSearchResult.suggestions">
-          <v-row
-            class="sugestions"
-            v-for="(suggestion, index) of domainSearchResult.suggestions.slice(0,maxSuggestion)"
-            :key="index">
-            <v-col md="8" cols="6">
-              {{ suggestion.domain.name }}
-              <strong>.{{ suggestion.domain.tld }}</strong>
+    <div class="check-domain-container">
+        <v-row>
+            <v-col>
+                شما می توانید در زیر وضعیت دامنه مورد نظر خود و سایر پسوندها را مشاهده
+                کنید:
             </v-col>
-            <v-col md="2" cpls="3">
-              {{ suggestion.cost.amount.toLocaleString() }}
-              {{ suggestion.cost.currency.title }}
+        </v-row>
+        <v-row justify="center" align="center" class="search-domain">
+            <v-col cols="11" sm="9">
+                <v-form
+                    id="domain-form"
+                    v-model="valid"
+                    @submit.prevent="onSubmit"
+                    lazy-validation
+                    ref="checkDomainBox"
+                    class="justify-center pt-7">
+                    <v-text-field
+                        placeholder="نام دامنه مورد نظر خود را وارد کنید"
+                        variant="plain"
+                        bg-color="white"
+                        rounded="pill"
+                        class="text-field"
+                        v-model="domain"
+                        @keydown.enter="onSubmit"
+                        :rules="[validateInputDomain]">
+                        <template v-slot:append-inner>
+                            <v-btn
+                                type="submit"
+                                flat
+                                color="primary"
+                                density="comfortable"
+                                class="btn-confirm"
+                                rounded="pill"
+                                @click.prevent="onSubmit"
+                                :loading="loading">
+                                جستجو
+                            </v-btn>
+                        </template>
+                    </v-text-field>
+                </v-form>
             </v-col>
-            <v-col md="2" cols="3">
-              <v-btn
-                variant="flat"
-                color="#4f80ff"
-                rounded="pill"
-                class="buy-btn-2"
-                @click="buySuggestion(suggestion)">
-                خرید دامنه
-              </v-btn>
-            </v-col>
-          </v-row>
-        </div>
+        </v-row>
         <div
-          class="domain-sugestion-last"
-          v-if="domainSearchResult.suggestions.length > 5 && maxSuggestion">
-          <v-btn
-            variant="text"
-            color="#4f80ff"
-            class="more-domain-btn"
-            @click="maxSuggestion = undefined">
-            مشاهده ی دامنه های پیشنهادی دیگر
-          </v-btn>
+            v-if="domainSearchResult.domain && !error"
+            class="domain-search-result">
+            <div v-if="domainSearchResult.available" class="domain-search-available">
+                <P class="mb-5">
+                    {{ `دامنه ی ${domainSearchResult.domain} در دسترس است.` }}</P>
+                <div>
+                    <span class="price">
+                        {{
+                            persianNumber(domainSearchResult.cost.amount.toLocaleString())
+                        }}
+                        {{ domainSearchResult.cost.currency.title }}</span>
+                    <v-btn variant="flat" color="#5cb85c" rounded="pill" class="buy-btn">خرید دامنه</v-btn>
+                </div>
+            </div>
+            <div
+                v-if="!domainSearchResult.available"
+                class="domain-search-not-available">
+                <P> {{ `دامنه ی ${domainSearchResult.domain} در دسترس نیست.` }}</P>
+            </div>
+            <div class="domain-sugestion">
+                <div class="domain-sugestion-title">دامنه های پیشنهادی</div>
+                <div v-if="domainSearchResult.suggestions">
+                    <v-row
+                        class="sugestions"
+                        v-for="(suggestion, index) of domainSearchResult.suggestions.slice(0,maxSuggestion)"
+                        :key="index">
+                        <v-col md="8" cols="6">
+                            {{ suggestion.domain.name }}
+                            <strong>.{{ suggestion.domain.tld }}</strong>
+                        </v-col>
+                        <v-col md="2" cpls="3">
+                            {{ suggestion.cost.amount.toLocaleString() }}
+                            {{ suggestion.cost.currency.title }}
+                        </v-col>
+                        <v-col md="2" cols="3">
+                            <v-btn
+                                variant="flat"
+                                color="#4f80ff"
+                                rounded="pill"
+                                class="buy-btn-2"
+                                @click="buySuggestion(suggestion)">
+                                خرید دامنه
+                            </v-btn>
+                        </v-col>
+                    </v-row>
+                </div>
+                <div
+                    class="domain-sugestion-last"
+                    v-if="domainSearchResult.suggestions.length > 5 && maxSuggestion">
+                    <v-btn
+                        variant="text"
+                        color="#4f80ff"
+                        class="more-domain-btn"
+                        @click="maxSuggestion = undefined">
+                        مشاهده ی دامنه های پیشنهادی دیگر
+                    </v-btn>
+                </div>
+            </div>
         </div>
-      </div>
+        <div v-if="error" class="domain-search-error">
+            <P>خطایی رخ داده است. لطفا دوباره تلاش کنید.</P>
+        </div>
     </div>
-    <div v-if="error" class="domain-search-error">
-      <P>خطایی رخ داده است. لطفا دوباره تلاش کنید.</P>
-    </div>
-  </div>
 </template>
 <script lang="ts">
 import { defineComponent, ref } from "vue";
@@ -112,148 +112,148 @@ import { call } from "@/mocks/API";
 import { domainAvailabilityCheck } from "@/mocks/DomainAvailabilityCheck";
 
 interface Suggestion {
-  domain: {
-    name: string;
-    tld: string;
-  };
-  registerCost: {
-    amount: number;
-    currency: string;
-  };
+    domain: {
+        name: string;
+        tld: string;
+    };
+    registerCost: {
+        amount: number;
+        currency: string;
+    };
 }
 
 export default defineComponent({
-  setup() {
-    return {
-      checkDomainBox: ref<HTMLElement>(),
-    };
-  },
-  data() {
-    return {
-      domain: "",
-      result: false,
-      domainSearchResult: Object,
-      error: false,
-      domainRegisterCost: {
-        amount: "603000",
-        currency: "تومان",
-      },
-      loading: false,
-      valid: false,
-      suggestions: [
-        {
-          domain: {
-            name: "rion",
-            tld: "ir",
-          },
-          registerCost: {
-            amount: 48000,
-            currency: "تومان",
-          },
-        },
-        {
-          domain: {
-            name: "rion",
-            tld: "ir",
-          },
-          registerCost: {
-            amount: 48000,
-            currency: "تومان",
-          },
-        },
-        {
-          domain: {
-            name: "rion",
-            tld: "ir",
-          },
-          registerCost: {
-            amount: 48000,
-            currency: "تومان",
-          },
-        },
-        {
-          domain: {
-            name: "rion",
-            tld: "ir",
-          },
-          registerCost: {
-            amount: 48000,
-            currency: "تومان",
-          },
-        },
-        {
-          domain: {
-            name: "rion",
-            tld: "ir",
-          },
-          registerCost: {
-            amount: 48000,
-            currency: "تومان",
-          },
-        },
-        {
-          domain: {
-            name: "rion",
-            tld: "ir",
-          },
-          registerCost: {
-            amount: 48000,
-            currency: "تومان",
-          },
-        },
-      ] as Suggestion[],
-      maxSuggestion: 5 as number | undefined,
-    };
-  },
-  methods: {
-    async onSubmit() {
-      this.maxSuggestion = 5;
-      if (!this.valid || this.loading) {
-        return;
-      }
-      this.loading = true;
-      try {
-        const response = await call(domainAvailabilityCheck, [this.domain]);
-        console.log(response);
-        this.domainSearchResult = response;
-        this.error = false;
-        console.log(this.domainSearchResult);
-      } catch (e) {
-        this.error = true;
-        console.log("error", e);
-      } finally {
-        this.loading = false;
-      }
+    setup() {
+        return {
+            checkDomainBox: ref<HTMLElement>(),
+        };
     },
-    validateInputDomain(input: string) {
-      if (!/^[a-zA-Z0-9-]+\.[a-zA-Z]+/.test(input)) {
-        return "دامنه وارد شده معتبر نمی باشد";
-      }
-      return true;
+    data() {
+        return {
+            domain: "",
+            result: false,
+            domainSearchResult: Object,
+            error: false,
+            domainRegisterCost: {
+                amount: "603000",
+                currency: "تومان",
+            },
+            loading: false,
+            valid: false,
+            suggestions: [
+                {
+                    domain: {
+                        name: "rion",
+                        tld: "ir",
+                    },
+                    registerCost: {
+                        amount: 48000,
+                        currency: "تومان",
+                    },
+                },
+                {
+                    domain: {
+                        name: "rion",
+                        tld: "ir",
+                    },
+                    registerCost: {
+                        amount: 48000,
+                        currency: "تومان",
+                    },
+                },
+                {
+                    domain: {
+                        name: "rion",
+                        tld: "ir",
+                    },
+                    registerCost: {
+                        amount: 48000,
+                        currency: "تومان",
+                    },
+                },
+                {
+                    domain: {
+                        name: "rion",
+                        tld: "ir",
+                    },
+                    registerCost: {
+                        amount: 48000,
+                        currency: "تومان",
+                    },
+                },
+                {
+                    domain: {
+                        name: "rion",
+                        tld: "ir",
+                    },
+                    registerCost: {
+                        amount: 48000,
+                        currency: "تومان",
+                    },
+                },
+                {
+                    domain: {
+                        name: "rion",
+                        tld: "ir",
+                    },
+                    registerCost: {
+                        amount: 48000,
+                        currency: "تومان",
+                    },
+                },
+            ] as Suggestion[],
+            maxSuggestion: 5 as number | undefined,
+        };
     },
-    buySuggestion(suggestion: Suggestion) {
-      this.domain = suggestion.domain.name + "." + suggestion.domain.tld;
-      this.onSubmit();
-      this.checkDomainBox?.scrollIntoView();
+    methods: {
+        async onSubmit() {
+            this.maxSuggestion = 5;
+            if (!this.valid || this.loading) {
+                return;
+            }
+            this.loading = true;
+            try {
+                const response = await call(domainAvailabilityCheck, [this.domain]);
+                console.log(response);
+                this.domainSearchResult = response;
+                this.error = false;
+                console.log(this.domainSearchResult);
+            } catch (e) {
+                this.error = true;
+                console.log("error", e);
+            } finally {
+                this.loading = false;
+            }
+        },
+        validateInputDomain(input: string) {
+            if (!/^[a-zA-Z0-9-]+\.[a-zA-Z]+/.test(input)) {
+                return "دامنه وارد شده معتبر نمی باشد";
+            }
+            return true;
+        },
+        buySuggestion(suggestion: Suggestion) {
+            this.domain = suggestion.domain.name + "." + suggestion.domain.tld;
+            this.onSubmit();
+            this.checkDomainBox?.scrollIntoView();
+        },
+        persianNumber(n) {
+            n = n.toString();
+            const nlength = n.length;
+            const farsiNum = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+            for (let i = 0; i < 10; i++) {
+                for (let j = 0; j < nlength; j++) {
+                    const istring = i.toString();
+                    n = n.replace(istring, farsiNum[i]);
+                }
+            }
+            return n;
+        },
     },
-    persianNumber(n) {
-      n = n.toString();
-      const nlength = n.length;
-      const farsiNum = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
-      for (let i = 0; i < 10; i++) {
-        for (let j = 0; j < nlength; j++) {
-          const istring = i.toString();
-          n = n.replace(istring, farsiNum[i]);
-        }
-      }
-      return n;
+    computed: {
+        visibility() {
+            return this.result ? "d-block" : "d-none";
+        },
     },
-  },
-  computed: {
-    visibility() {
-      return this.result ? "d-block" : "d-none";
-    },
-  },
 });
 </script>
 <style lang="scss">

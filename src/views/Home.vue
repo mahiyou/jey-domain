@@ -1,19 +1,19 @@
 <template >
-  <v-locale-provider rtl>
-    <Navbar @clickOnNavBtn="navigation = true" />
-    <Navigation v-model="navigation" />
-    <div class="general-background">
-      <HomeSlider />
-      <DomainRegistration :backgroundColor="DomainRegistrationBgColor" :selectDomainBackGround="DomainRegistrationSelectDomainBg"/>
-      <Prices />
-      <SuitableDomain />
-      <PanelFeatures />
-      <BuyDomain />
-      <Questions />
-      <NewArticle />
-    </div>
-    <GeneralFooter />
-  </v-locale-provider>
+    <v-locale-provider rtl>
+        <Navbar @clickOnNavBtn="navigation = true" />
+        <Navigation v-model="navigation" />
+        <div class="general-background">
+            <HomeSlider />
+            <DomainRegistration :backgroundColor="DomainRegistrationBgColor" :selectDomainBackGround="DomainRegistrationSelectDomainBg"/>
+            <Prices />
+            <SuitableDomain />
+            <PanelFeatures />
+            <BuyDomain />
+            <Questions />
+            <NewArticle />
+        </div>
+        <GeneralFooter />
+    </v-locale-provider>
 </template>
 
 <script lang="ts">
@@ -31,26 +31,26 @@ import Navigation from "@/components/Navigation.vue";
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  components: {
-    Navbar,
-    HomeSlider,
-    DomainRegistration,
-    Prices,
-    SuitableDomain,
-    PanelFeatures,
-    BuyDomain,
-    Questions,
-    NewArticle,
-    GeneralFooter,
-    Navigation,
-  },
-  data() {
-    return {
-      navigation: false,
-      DomainRegistrationBgColor: "primary",
-      DomainRegistrationSelectDomainBg: "grey-lighten-4"
-    };
-  },
+    components: {
+        Navbar,
+        HomeSlider,
+        DomainRegistration,
+        Prices,
+        SuitableDomain,
+        PanelFeatures,
+        BuyDomain,
+        Questions,
+        NewArticle,
+        GeneralFooter,
+        Navigation,
+    },
+    data() {
+        return {
+            navigation: false,
+            DomainRegistrationBgColor: "primary",
+            DomainRegistrationSelectDomainBg: "grey-lighten-4"
+        };
+    },
 });
 </script>
 <style lang="scss">

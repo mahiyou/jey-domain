@@ -52,112 +52,54 @@
               href="#">
               ثبت نام
             </v-btn>
-          </template>
-        </v-text-field>
-      </v-form>
-      <v-spacer></v-spacer>
-      <div v-if="userState" class="mt-5">
-        <v-btn>
-          <v-icon size="large" color="#495057">mdi-shopping-outline</v-icon>
-          <span class="rounded-circle text-white bg-primary circle">{{
-            persianNumber(user.numberOfBasletItems)
-          }}</span>
-        </v-btn>
-        <v-btn>
-          <v-icon size="large" color="#495057">mdi-bell-outline</v-icon>
-          <span class="rounded-circle text-white bg-customYellow circle">{{
-            persianNumber(user.numberOfNotifications)
-          }}</span>
-        </v-btn>
-        <v-menu offset-y class="nav-dropdown-menu">
-          <template v-slot:activator="{ props }">
-            <v-btn v-bind="props" class="nav-btn mr-2">
-              <v-img class="rounded-circle" :src="user.avatar" width="27px" height="27px"></v-img>
-              <span class="mr-2">{{ user.name }}</span>
-              <v-icon class="mr-2">mdi-chevron-down</v-icon>
-            </v-btn>
-          </template>
-          <v-list>
-            <v-list-item v-for="(item, index) in items" :key="index" :href="item.href">
-              <v-list-item-title id="menu-item"><v-icon class="ml-2">mdi-chevron-left</v-icon>{{ item.title
-              }}</v-list-item-title>
-            </v-list-item>
-          </v-list>
-        </v-menu>
-      </div>
-      <div v-if="!userState" class="mt-5">
-        <v-btn>
-          <v-icon size="large" color="#495057">mdi-shopping-outline</v-icon>
-          <span class="rounded-circle text-white bg-primary circle">{{
-            persianNumber(user.numberOfBasletItems)
-          }}</span>
-        </v-btn>
-        <v-btn class="login-register-btn" :to="{ name: 'logIn' }"> ورود </v-btn>
-        <v-btn density="comfortable" variant="flat" rounded="pill" color="primary" class="login-register-btn ml-8"
-          :to="{ name: 'register' }"> ثبت نام </v-btn>
-      </div>
-    </v-toolbar>
-    <v-toolbar color="white">
-      <a href="/">
-        <div class="logo-size">
-          <v-img :src="JeyDomain"></v-img>
-        </div>
-      </a>
-      <v-spacer></v-spacer>
-      <v-btn class="toolbar-btn hidden-sm-and-down" :to="{ name: 'home' }"> صفحه ی اصلی </v-btn>
-      <v-btn class="toolbar-btn hidden-sm-and-down" :to="{ name: 'prices' }"> تعرفه ها </v-btn>
-      <v-btn class="toolbar-btn hidden-sm-and-down" :to="{ name: 'questions' }"> سوالات متداول </v-btn>
-      <v-btn class="toolbar-btn hidden-sm-and-down" :to="{ name: 'contact-us' }">
-        تماس با ما
-      </v-btn>
-      <v-btn class="toolbar-btn hidden-sm-and-down" :to="{ name: 'blog' }"> بلاگ </v-btn>
-      <v-app-bar-nav-icon class="hidden-md-and-up" @click="$emit('clickOnNavBtn')"> </v-app-bar-nav-icon>
-    </v-toolbar>
-  </v-container>
+            <v-btn class="toolbar-btn hidden-sm-and-down" :to="{ name: 'blog' }"> بلاگ </v-btn>
+            <v-app-bar-nav-icon class="hidden-md-and-up" @click="$emit('clickOnNavBtn')"> </v-app-bar-nav-icon>
+        </v-toolbar>
+    </v-container>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import DefaultUserImage from "@/assets/pics/user.jpg";
 import JeyDomain from "@/assets/pics/JeyDomain.svg";
-import { useUserState } from "@/stores/UserState"
+import { useUserState } from "@/stores/UserState";
 import { mapState } from "pinia";
 export default defineComponent({
-  emits: ["clickOnNavBtn"],
-  data() {
-    return {
-      JeyDomain: JeyDomain,
-      items: [
-        { title: 'پنل کاربری', href: '/user-panel' },
-        { title: 'مشاهده پروفایل', href: '' },
-        { title: 'خروج از حساب', href: '' },
-      ],
-      user: {
-        id: 1,
-        name: "کاربر تست",
-        avatar: DefaultUserImage,
-        numberOfNotifications: 3,
-        numberOfBasletItems: 7,
-      },
-    };
-  },
-  methods: {
-    persianNumber(n) {
-      n = n.toString();
-      const nlength = n.length;
-      const farsiNum = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
-      for (let i = 0; i < 10; i++) {
-        for (let j = 0; j < nlength; j++) {
-          const istring = i.toString();
-          n = n.replace(istring, farsiNum[i]);
-        }
-      }
-      return n;
+    emits: ["clickOnNavBtn"],
+    data() {
+        return {
+            JeyDomain: JeyDomain,
+            items: [
+                { title: 'پنل کاربری', href: '/user-panel' },
+                { title: 'مشاهده پروفایل', href: '' },
+                { title: 'خروج از حساب', href: '' },
+            ],
+            user: {
+                id: 1,
+                name: "کاربر تست",
+                avatar: DefaultUserImage,
+                numberOfNotifications: 3,
+                numberOfBasletItems: 7,
+            },
+        };
     },
-  },
-  computed: {
-    ...mapState(useUserState, { userState: "userState" })
-  }
+    methods: {
+        persianNumber(n) {
+            n = n.toString();
+            const nlength = n.length;
+            const farsiNum = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+            for (let i = 0; i < 10; i++) {
+                for (let j = 0; j < nlength; j++) {
+                    const istring = i.toString();
+                    n = n.replace(istring, farsiNum[i]);
+                }
+            }
+            return n;
+        },
+    },
+    computed: {
+        ...mapState(useUserState, { userState: "userState" })
+    }
 });
 </script>
 
@@ -239,7 +181,6 @@ export default defineComponent({
     font-weight: 500;
     --v-theme-overlay-multiplier: 0;
   }
-<<<<<<< HEAD
   .nav-btn-md {
     display: block;
   }
@@ -255,7 +196,5 @@ export default defineComponent({
     }
   }
   --v-theme-overlay-multiplier: 0;
-=======
->>>>>>> origin/50-user-panel
 }
 </style>

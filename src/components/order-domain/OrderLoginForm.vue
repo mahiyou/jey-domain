@@ -1,108 +1,108 @@
 <template>
-  <v-form class="order-login-form" @submit.prevent="onSubmit" v-model="valid">
-    <div class="title">ورود به پنل</div>
-      <div class="dotted-line"></div>
-    <v-row class="mt-7">
-      <v-col sm="6" cols="12">
-        <div>شماره موبایل یا ایمیل<span class="star-color">*</span></div>
-        <v-text-field
-          variant="outlined"
-          class="text-field"
-          v-model="username"
-          :rules="usernameRules"
-          required
-        />
-      </v-col>
-      <v-col sm="6" cols="12">
-        <div>رمز عبور<span class="star-color">*</span></div>
-        <v-text-field
-          variant="outlined"
-          class="text-field"
-          v-model="password"
-          :rules="passwordRules"
-          required
-        />
-      </v-col>
-    </v-row>
-    <div align="right" class="mt-4">
-      <a href="#" class="link">رمز خود را فراموش کرده اید؟</a>
-    </div>
-    <div class="text-center">
-      <v-btn
-        type="submit"
-        :loading="loading"
-        variant="flat"
-        color="#5cb85c"
-        rounded="pill"
-        width="45%"
-        class="btn-confirm"
-      >
-        <v-icon class="ml-1">mdi-check</v-icon>
-        تایید نهایی
-      </v-btn>
-    </div>
-  </v-form>
-  <v-snackbar v-model="snackbar" multi-line
+    <v-form class="order-login-form" @submit.prevent="onSubmit" v-model="valid">
+        <div class="title">ورود به پنل</div>
+        <div class="dotted-line"></div>
+        <v-row class="mt-7">
+            <v-col sm="6" cols="12">
+                <div>شماره موبایل یا ایمیل<span class="star-color">*</span></div>
+                <v-text-field
+                    variant="outlined"
+                    class="text-field"
+                    v-model="username"
+                    :rules="usernameRules"
+                    required
+                />
+            </v-col>
+            <v-col sm="6" cols="12">
+                <div>رمز عبور<span class="star-color">*</span></div>
+                <v-text-field
+                    variant="outlined"
+                    class="text-field"
+                    v-model="password"
+                    :rules="passwordRules"
+                    required
+                />
+            </v-col>
+        </v-row>
+        <div align="right" class="mt-4">
+            <a href="#" class="link">رمز خود را فراموش کرده اید؟</a>
+        </div>
+        <div class="text-center">
+            <v-btn
+                type="submit"
+                :loading="loading"
+                variant="flat"
+                color="#5cb85c"
+                rounded="pill"
+                width="45%"
+                class="btn-confirm"
+            >
+                <v-icon class="ml-1">mdi-check</v-icon>
+                تایید نهایی
+            </v-btn>
+        </div>
+    </v-form>
+    <v-snackbar v-model="snackbar" multi-line
     >خطای سرور
-    <template v-slot:actions>
-      <v-btn color="red" variant="text" @click="snackbar = false"> بستن </v-btn>
-    </template>
-  </v-snackbar>
+        <template v-slot:actions>
+            <v-btn color="red" variant="text" @click="snackbar = false"> بستن </v-btn>
+        </template>
+    </v-snackbar>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
 import { useUserState } from "@/stores/UserState";
 
 export default defineComponent({
-  setup() {
-    return {
-      store: useUserState(),
-    };
-  },
-  data() {
-    return {
-      valid: false,
-      username: "",
-      password: "",
-      snackbar: false,
-      loading: false,
-      usernameRules: [
-        (value) => {
-          if (value) return true;
-          return "وارد کردن ایمیل و یا شماره تلفن الزامی است.";
-        },
-      ],
-      passwordRules: [
-        (value) => {
-          if (value) return true;
-          return "وارد کردن رمز عبور الزامی است.";
-        },
-        (value) => {
-          if (value?.length >= 10) return true;
-          return "رمز عبور شما باید بیشتر از 10 کاراکتر باشد.";
-        },
-      ],
-    };
-  },
-  methods: {
-    async onSubmit() {
-      if (this.loading || !this.valid) {
-        return;
-      }
-      this.loading = true;
-      const loginPromis = this.store.login({
-        username: this.username,
-        password: this.password,
-      });
-      loginPromis
-        .catch(() => {
-          this.snackbar = true;
-        })
-        .finally(() => {
-          this.loading = false;
-        });
+    setup() {
+        return {
+            store: useUserState(),
+        };
     },
-  },
+    data() {
+        return {
+            valid: false,
+            username: "",
+            password: "",
+            snackbar: false,
+            loading: false,
+            usernameRules: [
+                (value) => {
+                    if (value) return true;
+                    return "وارد کردن ایمیل و یا شماره تلفن الزامی است.";
+                },
+            ],
+            passwordRules: [
+                (value) => {
+                    if (value) return true;
+                    return "وارد کردن رمز عبور الزامی است.";
+                },
+                (value) => {
+                    if (value?.length >= 10) return true;
+                    return "رمز عبور شما باید بیشتر از 10 کاراکتر باشد.";
+                },
+            ],
+        };
+    },
+    methods: {
+        async onSubmit() {
+            if (this.loading || !this.valid) {
+                return;
+            }
+            this.loading = true;
+            const loginPromis = this.store.login({
+                username: this.username,
+                password: this.password,
+            });
+            loginPromis
+                .catch(() => {
+                    this.snackbar = true;
+                })
+                .finally(() => {
+                    this.loading = false;
+                });
+        },
+    },
 });
 </script>
 <style lang="scss">

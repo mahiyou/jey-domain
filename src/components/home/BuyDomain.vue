@@ -1,53 +1,53 @@
 <template>
-  <v-container class="buy-domain-container">
-    <p class="title">چگونه می توانیم دامنه بخریم؟</p>
-    <p class="content">مراحل ثبت دامنه های ملی و بین المللی در پنل جی دامین</p>
-    <v-row>
-      <v-col md="4" cols="12">
-        <v-card class="card center">
-          <div class="img-background">
-            <v-img class="card-img" src="@/assets/pics/domainname.svg"></v-img>
-          </div>
+    <v-container class="buy-domain-container">
+        <p class="title">چگونه می توانیم دامنه بخریم؟</p>
+        <p class="content">مراحل ثبت دامنه های ملی و بین المللی در پنل جی دامین</p>
+        <v-row>
+            <v-col md="4" cols="12">
+                <v-card class="card center">
+                    <div class="img-background">
+                        <v-img class="card-img" src="@/assets/pics/domainname.svg"></v-img>
+                    </div>
 
-          <p class="card-title">انتخاب نام دامنه</p>
-          <p class="card-content">
-            پس از انتخاب نام دامنه مورد نظر خود بایستی آن را جستجو کرده تا از
-            دسترس بودن آن اطمینان یابید. در این مرحله حتما باید به پسوند انتخاب
-            شده توجه کنید.
-          </p>
-        </v-card>
-      </v-col>
-      <v-col md="4" cols="12">
-        <v-card class="card center">
-          <div class="img-background">
-            <v-img
-              class="card-img"
-              src="@/assets/pics/configuration.svg">
-            </v-img>
-          </div>
-          <p class="card-title">پیکربندی دامنه</p>
-          <p class="card-content">
-            پس از انتخاب نام دامنه مورد نظر خود بایستی آن را جستجو کرده تا از
-            دسترس بودن آن اطمینان یابید. در این مرحله حتما باید به پسوند انتخاب
-            شده توجه کنید.
-          </p>
-        </v-card>
-      </v-col>
-      <v-col md="4" cols="12">
-        <v-card class="card center">
-          <div class="img-background">
-            <v-img class="card-img" src="@/assets/pics/price.svg"></v-img>
-          </div>
-          <p class="card-title">پرداخت هزینه و ثبت دامنه</p>
-          <p class="card-content">
-            پس از انتخاب نام دامنه مورد نظر خود بایستی آن را جستجو کرده تا از
-            دسترس بودن آن اطمینان یابید. در این مرحله حتما باید به پسوند انتخاب
-            شده توجه کنید.
-          </p>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+                    <p class="card-title">انتخاب نام دامنه</p>
+                    <p class="card-content">
+                        پس از انتخاب نام دامنه مورد نظر خود بایستی آن را جستجو کرده تا از
+                        دسترس بودن آن اطمینان یابید. در این مرحله حتما باید به پسوند انتخاب
+                        شده توجه کنید.
+                    </p>
+                </v-card>
+            </v-col>
+            <v-col md="4" cols="12">
+                <v-card class="card center">
+                    <div class="img-background">
+                        <v-img
+                            class="card-img"
+                            src="@/assets/pics/configuration.svg">
+                        </v-img>
+                    </div>
+                    <p class="card-title">پیکربندی دامنه</p>
+                    <p class="card-content">
+                        پس از انتخاب نام دامنه مورد نظر خود بایستی آن را جستجو کرده تا از
+                        دسترس بودن آن اطمینان یابید. در این مرحله حتما باید به پسوند انتخاب
+                        شده توجه کنید.
+                    </p>
+                </v-card>
+            </v-col>
+            <v-col md="4" cols="12">
+                <v-card class="card center">
+                    <div class="img-background">
+                        <v-img class="card-img" src="@/assets/pics/price.svg"></v-img>
+                    </div>
+                    <p class="card-title">پرداخت هزینه و ثبت دامنه</p>
+                    <p class="card-content">
+                        پس از انتخاب نام دامنه مورد نظر خود بایستی آن را جستجو کرده تا از
+                        دسترس بودن آن اطمینان یابید. در این مرحله حتما باید به پسوند انتخاب
+                        شده توجه کنید.
+                    </p>
+                </v-card>
+            </v-col>
+        </v-row>
+    </v-container>
 </template>
 <style lang="scss">
 .buy-domain-container {

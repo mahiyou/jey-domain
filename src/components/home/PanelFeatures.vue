@@ -1,23 +1,23 @@
 <template>
-  <div class="panel-features-container">
-    <v-row align="center">
-      <v-col md="4" cols="12">
-        <p class="title">امکانات پنل مدیریت دامنه</p>
-      </v-col>
-      <v-col md="4" sm="6" cols="12" class="py-0">
-        <div><v-icon class="icon">mdi-check-circle</v-icon>امکان قفل دامین برای امنیت هرچه بیشتر</div>
-        <div><v-icon class="icon">mdi-check-circle</v-icon>ثبت دامین به نام متقاضی و با مالکیت 100 درصد</div>
-        <div><v-icon class="icon">mdi-check-circle</v-icon>امکان تغییر Name Server های دامین توسط کاربر</div>
-        <div><v-icon class="icon">mdi-check-circle</v-icon>امکان ثبت دامنه در تمامی ساعات شبانه روز</div>
-      </v-col>
-      <v-col md="4" sm="6" cols="12" class="py-0">
-        <div><v-icon class="icon">mdi-check-circle</v-icon>امکان عدم نمایش اطلاعات مالک دامنه در Whois</div>
-        <div><v-icon class="icon">mdi-check-circle</v-icon>امکان ثبت و ایجاد Name Server های اختصاصی</div>
-        <div><v-icon class="icon">mdi-check-circle</v-icon>امکان ثبت دامنه فارسی IDN</div>
-        <div><v-icon class="icon">mdi-check-circle</v-icon>ارائه ی کنترل پنل مدیریت دامین</div>
-      </v-col>
-    </v-row>
-  </div>
+    <div class="panel-features-container">
+        <v-row align="center">
+            <v-col md="4" cols="12">
+                <p class="title">امکانات پنل مدیریت دامنه</p>
+            </v-col>
+            <v-col md="4" sm="6" cols="12" class="py-0">
+                <div><v-icon class="icon">mdi-check-circle</v-icon>امکان قفل دامین برای امنیت هرچه بیشتر</div>
+                <div><v-icon class="icon">mdi-check-circle</v-icon>ثبت دامین به نام متقاضی و با مالکیت 100 درصد</div>
+                <div><v-icon class="icon">mdi-check-circle</v-icon>امکان تغییر Name Server های دامین توسط کاربر</div>
+                <div><v-icon class="icon">mdi-check-circle</v-icon>امکان ثبت دامنه در تمامی ساعات شبانه روز</div>
+            </v-col>
+            <v-col md="4" sm="6" cols="12" class="py-0">
+                <div><v-icon class="icon">mdi-check-circle</v-icon>امکان عدم نمایش اطلاعات مالک دامنه در Whois</div>
+                <div><v-icon class="icon">mdi-check-circle</v-icon>امکان ثبت و ایجاد Name Server های اختصاصی</div>
+                <div><v-icon class="icon">mdi-check-circle</v-icon>امکان ثبت دامنه فارسی IDN</div>
+                <div><v-icon class="icon">mdi-check-circle</v-icon>ارائه ی کنترل پنل مدیریت دامین</div>
+            </v-col>
+        </v-row>
+    </div>
 </template>
 <style lang="scss">
 .panel-features-container {

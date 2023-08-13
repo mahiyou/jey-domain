@@ -12,16 +12,17 @@ export interface UserCridentionals{
     password: string,
 }
 
-export function register(userCridentionals:UserCridentionals , email:string , name:string , lastname:string , phone:string){
+export function register(_userCridentionals: UserCridentionals , email:string , name:string , lastname:string , phone:string){
     return{
         id: 1,
         name: name,
         lastname: lastname,
         phone:phone,
         email:email,
-    }
+    };
 }
-export function login(userCridentionals:UserCridentionals) : UserInfo{
+
+export function login(userCridentionals: UserCridentionals) : UserInfo{// eslint-disable-line @typescript-eslint/no-unused-vars
     return{
         id: 1,
         name: "mahi",
@@ -29,9 +30,10 @@ export function login(userCridentionals:UserCridentionals) : UserInfo{
         avatar:"",
         phone:"",
         email:"",
-    }
+    };
 }
-export function updateProfile(userCridentionals:UserCridentionals , changes: {email?: string, name?: string, lastname?: string, phone?: string}): UserInfo {
+
+export function updateProfile(userCridentionals: UserCridentionals , changes: {email?: string, name?: string, lastname?: string, phone?: string}): UserInfo {// eslint-disable-line @typescript-eslint/no-unused-vars
     return{
         id: 1,
         name: "mahi2",
@@ -39,5 +41,5 @@ export function updateProfile(userCridentionals:UserCridentionals , changes: {em
         avatar:"",
         phone:"",
         email:"",
-    }
+    };
 }

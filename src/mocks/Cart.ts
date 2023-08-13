@@ -30,20 +30,18 @@ export interface RegisterCartItem extends CartItem {
 export function getCartItems(): CartItem[] {
     const cartItems = [];
     for(let i=0, m=Math.random() * 10; i<m ; i++){
-        cartItems.push(generateRegister(i+1))
+        cartItems.push(generateRegister(i+1));
     }
     return cartItems;
 }
-export function deletCartItem(id:number){
+export function deletCartItem(id:number){ // eslint-disable-line @typescript-eslint/no-unused-vars
 
 }
-export function applyDiscount(discountCode:string){
-    //1 added beacus we do not want 0 discount
-    return Math.floor(Math.random() * 10 + 1)
+export function applyDiscount(discountCode:string){ // eslint-disable-line @typescript-eslint/no-unused-vars
+    return Math.floor(Math.random() * 10 + 1);
 }
 function generateRegister(id:number): RegisterCartItem {
     const cost = {
-        //1 added beacus we do not want 0 discount
         amount: Math.floor(Math.random() * 10 + 1),
         currency: {title:"هزار تومان"},
     };

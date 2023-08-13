@@ -42,7 +42,7 @@
                 </v-container>
             </div>
             <DomainRegistration :backgroundColor="DomainRegistrationBgColor"
-                :selectDomainBackGround="DomainRegistrationSelectDomainBg" />
+                                :selectDomainBackGround="DomainRegistrationSelectDomainBg" />
             <Prices />
             <BuyDomain />
             <v-container class="domain-prices-container">
@@ -79,7 +79,7 @@
                         <v-col md="10" sm="9" cols="12">
                             <p class="title">دامنه های حروف فارسی و یا IDN</p>
                             <p class="justify-center">چنانچه علاقه مند به خرید دامنه با حروف فارسی و پسوند <span
-                                    dir="ltr">.com , .net</span> هستید، جی دامین این امکان را با همکاری شرکن هگزونت آلماه
+                                dir="ltr">.com , .net</span> هستید، جی دامین این امکان را با همکاری شرکن هگزونت آلماه
                                 برایتان مهیا کرده است. دامین های IDN مانند نمونه زیر میباشد: <span dir="ltr"> www.جی
                                     دامین.com</span></p>
                         </v-col>
@@ -136,7 +136,7 @@
                         </v-col>
                         <v-col md="2" cols="12" align="center">
                             <v-btn variant="flat" rounded="pill" color="primary" class="suport-btn"
-                                :to="{ name: 'contact-us' }">پشتیبانی</v-btn>
+                                   :to="{ name: 'contact-us' }">پشتیبانی</v-btn>
                         </v-col>
                     </v-row>
                 </div>
@@ -172,9 +172,9 @@ export default defineComponent({
             navigation: false,
             DomainRegistrationBgColor: "#fafbff",
             DomainRegistrationSelectDomainBg: "primary"
-        }
+        };
     }
-})
+});
 </script>
 <style lang="scss">
 .general-background {

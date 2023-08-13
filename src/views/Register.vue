@@ -3,12 +3,12 @@
         <Navbar @clickOnNavBtn="navigation = true" />
         <Navigation v-model="navigation" />
         <GeneralHeader>
-        <template v-slot:title>
-            <p>ثبت نام</p>
-        </template>
-        <template v-slot:content>
-            <p>صفحه اصلی > ثبت نام</p>
-        </template>
+            <template v-slot:title>
+                <p>ثبت نام</p>
+            </template>
+            <template v-slot:content>
+                <p>صفحه اصلی > ثبت نام</p>
+            </template>
         </GeneralHeader>
         <RegisterForm />
         <GeneralFooter />
@@ -24,17 +24,17 @@ import RegisterForm from "@/components/register/RegisterForm.vue";
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  components: {
-    Navbar,
-    GeneralHeader,
-    RegisterForm,
-    Navigation,
-    GeneralFooter,
-  },
-  data() {
-    return {
-      navigation: false,
-    };
-  },
-})
+    components: {
+        Navbar,
+        GeneralHeader,
+        RegisterForm,
+        Navigation,
+        GeneralFooter,
+    },
+    data() {
+        return {
+            navigation: false,
+        };
+    },
+});
 </script>
