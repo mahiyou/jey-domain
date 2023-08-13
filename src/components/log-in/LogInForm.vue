@@ -17,8 +17,8 @@
           </div>
           <v-text-field
             variant="outlined"
-            v-model="email"
-            :rules="emailRules"
+            v-model="username"
+            :rules="usernameRules"
             required>
             <template v-slot:append-inner>
               <v-icon color="#a2a2a2" class="text-field-icon">mdi-email-outline</v-icon>
@@ -86,15 +86,16 @@
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
-
+import {useUserState} from "@/stores/UserState"
+import { mapState } from "pinia";
 export default defineComponent({
   data() {
     return {
       valid: false,
-      email: "",
+      username: "",
       password: "",
       loading: false,
-      emailRules: [
+      usernameRules: [
         (value) => {
           if (value) return true;
           return "وارد کردن ایمیل و یا شماره تلفن الزامی است.";
@@ -121,6 +122,8 @@ export default defineComponent({
       setTimeout(() => {
         this.loading = false;
       }, 2000);
+      const store = useUserState()
+      store.login({username:this.username , password:this.password});
     },
   },
 });
