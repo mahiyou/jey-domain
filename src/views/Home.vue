@@ -16,7 +16,7 @@
   </v-locale-provider>
 </template>
 
-<script FIXME>
+<script lang="ts">
 import Toolbar from "@/components/Navbar.vue";
 import HomeSlider from "@/components/home/HomeSlider.vue";
 import DomainRegistration from "@/components/home/DomainRegistration.vue";

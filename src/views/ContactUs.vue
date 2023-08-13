@@ -17,7 +17,7 @@
   </v-locale-provider>
 </template>
 
-<script>
+<script lang="ts">
 import Toolbar from "@/components/Navbar.vue";
 import GeneralHeader from "@/components/GeneralHeader.vue";
 import SendMessage from "@/components/contact-us/SendMessage.vue";

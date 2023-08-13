@@ -97,7 +97,7 @@
   }
 }
 </style>
-<script>
+<script lang="ts">
 import CheckDomain from "@/components/order-domain/CheckDomain.vue";
 import ConfigurationDomain from "@/components/order-domain/ConfigurationDomain.vue";
 import ConfirmDomain from "@/components/order-domain/ConfirmDomain.vue";
