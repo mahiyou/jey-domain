@@ -136,9 +136,6 @@ export default defineComponent({
     .v-field__prepend-inner {
       padding-top: 0px;
     }
-    .v-field__append-inner {
-      padding-top: 0px;
-    }
   }
   .featured-tlds {
     width: 100%;

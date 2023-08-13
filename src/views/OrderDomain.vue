@@ -1,6 +1,6 @@
 <template>
   <v-locale-provider rtl>
-    <Toolbar @clickOnNavBtn="navigation = true" />
+    <Navbar @clickOnNavBtn="navigation = true" />
     <Navigation v-model="navigation" />
     <GeneralHeader>
       <template v-slot:title>
@@ -17,7 +17,7 @@
   </v-locale-provider>
 </template>
 <script lang="ts">
-import Toolbar from "@/components/Navbar.vue";
+import Navbar from "@/components/Navbar.vue";
 import GeneralHeader from "@/components/GeneralHeader.vue";
 import OrderNavigation from "@/components/order-domain/OrderNavigation.vue";
 import Navigation from "@/components/Navigation.vue";
@@ -26,7 +26,7 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   components: {
-    Toolbar,
+    Navbar,
     GeneralHeader,
     OrderNavigation,
     Navigation,

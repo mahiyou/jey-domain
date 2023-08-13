@@ -1,6 +1,6 @@
 <template >
   <v-locale-provider rtl>
-    <Toolbar @clickOnNavBtn="navigation = true" />
+    <Navbar @clickOnNavBtn="navigation = true" />
     <Navigation v-model="navigation" />
     <div class="general-background">
       <HomeSlider />
@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import Toolbar from "@/components/Navbar.vue";
+import Navbar from "@/components/Navbar.vue";
 import HomeSlider from "@/components/home/HomeSlider.vue";
 import DomainRegistration from "@/components/home/DomainRegistration.vue";
 import Prices from "@/components/home/Prices.vue";
@@ -32,7 +32,7 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   components: {
-    Toolbar,
+    Navbar,
     HomeSlider,
     DomainRegistration,
     Prices,

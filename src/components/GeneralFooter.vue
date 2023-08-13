@@ -39,11 +39,24 @@
       </v-col>
       
       <v-col sm="4" cols="6">
-        <a href="https://trustseal.enamad.ir/?id=22081&Code=ulnW1nDLAeYM3cL2l9U3"><v-img src="@/assets/pics/Enamad.png" class="footer-img2"></v-img></a>
-      </v-col>
+        <a href="https://trustseal.enamad.ir/?id=22081&Code=ulnW1nDLAeYM3cL2l9U3"><v-img src="@/assets/pics/Enamad.png" class="footer-img2"></v-img></a>      </v-col>
     </v-row>
   </div>
 </template>
+<script lang="ts">
+import { defineComponent } from "vue";
+import darkJeyDomain from "@/assets/pics/dark-JeyDomain.svg";
+import Enamad from "@/assets/pics/Enamad.png";
+
+export default defineComponent({
+  data(){
+    return{
+      darkJeyDomain:darkJeyDomain,
+      Enamad:Enamad
+    }
+  }
+})
+</script>
 <style lang="scss">
 .f-container {
   background: #242849;
