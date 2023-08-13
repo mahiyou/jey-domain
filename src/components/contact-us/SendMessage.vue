@@ -4,7 +4,7 @@
       <v-col md="5" cols="12">
         <div class="form-style">
           <div class="title">پیامی برای ما بگذارید!</div>
-          <form>
+          <v-form>
             <div>
               <p class="input-title">نام و نام خانوادگی</p>
               <input class="inputs" type="text" />
@@ -24,7 +24,7 @@
               </textarea>
             </div>
             <input class="submit-btn" type="submit" value="ارسال پیام" />
-          </form>
+          </v-form>
         </div>
       </v-col>
       <v-col md="7" cols="12">
