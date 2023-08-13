@@ -1,38 +1,43 @@
 <template >
-    <v-locale-provider rtl>
-      <Toolbar @clickOnNavBtn="navigation = true;"/>
-      <Navigation v-model="navigation"/>
-      <Header />
-      <div style="background: #fafbff">
-        <SendMessage />
+  <v-locale-provider rtl>
+    <Toolbar @clickOnNavBtn="navigation = true" />
+    <Navigation v-model="navigation" />
+    <GeneralHeader>
+      <template v-slot:title>
+        <p>تماس با ما</p>
+      </template>
+      <template v-slot:content>
+        <p>به متن های برخورده اید که با نام لورم ایپسوم شناخته می‌شوند.</p>
+      </template>
+    </GeneralHeader>
+    <div style="background: #fafbff">
+      <SendMessage />
     </div>
-      <Footer />
+    <GeneralFooter />
   </v-locale-provider>
 </template>
 
 <script>
-import Toolbar from "@/components/Toolbar.vue";
-import Header from "@/components/contact-us/Header.vue";
+import Toolbar from "@/components/Navbar.vue";
+import GeneralHeader from "@/components/GeneralHeader.vue";
 import SendMessage from "@/components/contact-us/SendMessage.vue";
 import Navigation from "@/components/Navigation.vue";
-import Footer from "@/components/Footer.vue";
+import GeneralFooter from "@/components/GeneralFooter.vue";
 
-
-
-import { defineComponent } from "vue"
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  components:{
+  components: {
     Toolbar,
-    Header,
+    GeneralHeader,
     SendMessage,
     Navigation,
-    Footer,
+    GeneralFooter,
   },
-  data(){
-    return{
-      navigation : false
-    }
-  }
-})
+  data() {
+    return {
+      navigation: false,
+    };
+  },
+});
 </script>

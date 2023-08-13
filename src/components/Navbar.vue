@@ -5,6 +5,7 @@
         <v-col sm="2" cols="6">
           <div class="logo-size">
             <v-img
+              FIXME
               src="@/assets/pics/JeyDomain.svg"
               class="mt-4 mt-sm-2"
             ></v-img>
@@ -14,22 +15,26 @@
           <div class="visible">
             <v-row>
               <v-col cols="2">
-                <v-btn class="toolbar-btn" href="#"> صفحه ی اصلی </v-btn></v-col
-              >
-              <v-col cols="2"
-                ><v-btn class="toolbar-btn" href="#"> تعرفه ها </v-btn>
+                <v-btn class="toolbar-btn" :to="{ name: 'home' }">
+                  صفحه ی اصلی
+                </v-btn>
+              </v-col>
+              <v-col cols="2">
+                <v-btn class="toolbar-btn" href="#"> تعرفه ها </v-btn>
               </v-col>
               <v-col cols="2">
                 <v-btn class="toolbar-btn" href="#">
                   سوالات متداول
-                </v-btn></v-col
-              >
+                </v-btn>
+              </v-col>
               <v-col cols="2">
-                <v-btn class="toolbar-btn" href="#"> درباره ی ما </v-btn></v-col
-              >
+                <v-btn class="toolbar-btn" :to="{ name: 'contact-us' }">
+                  تماس با ما
+                </v-btn>
+              </v-col>
               <v-col cols="2">
-                <v-btn class="toolbar-btn" href="#"> بلاگ </v-btn></v-col
-              >
+                <v-btn class="toolbar-btn" href="#"> بلاگ </v-btn>
+              </v-col>
             </v-row>
           </div>
         </v-col>
@@ -40,7 +45,15 @@
           ></v-app-bar-nav-icon>
           <div class="float-left visible">
             <v-btn class="toolbar-btn" href="#"> ورود </v-btn>
-            <v-btn class="toolbar-btn" color="primary" rounded="xl" variant="flat" href="#"> ثبت نام </v-btn>
+            <v-btn
+              class="toolbar-btn"
+              color="primary"
+              rounded="xl"
+              variant="flat"
+              href="#"
+            >
+              ثبت نام
+            </v-btn>
           </div>
         </v-col>
       </v-row>
@@ -48,30 +61,32 @@
   </v-container>
 </template>
 <script>
-import { defineComponent } from "vue"
+import { defineComponent } from "vue";
 
-  export default defineComponent({
-    emits: ["clickOnNavBtn"]
-  })
+export default defineComponent({
+  emits: ["clickOnNavBtn"],
+});
 </script>
 <style lang="scss">
 .toolbar-container {
-  .logo-size{
-    width: 110px
+  .logo-size {
+    width: 110px;
   }
   .toolbar-btn {
     letter-spacing: 0;
     font-size: 12px;
   }
-  .visible {
+  .visible { // FIXME
     display: block;
-    @media (max-width: 850px) {
-      display: none;
-    }
   }
   .nav-icon-visible {
     display: none;
-    @media (max-width: 850px) {
+  }
+  @media (max-width: 960px) {
+    .visible {
+      display: none;
+    }
+    .nav-icon-visible {
       display: block;
     }
   }

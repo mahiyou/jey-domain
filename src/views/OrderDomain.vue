@@ -2,29 +2,62 @@
   <v-locale-provider rtl>
     <Toolbar @clickOnNavBtn="navigation = true" />
     <Navigation v-model="navigation" />
-    <Header :step="step"/>
+    <GeneralHeader>
+      <template v-slot:title>
+        <p>{{ texts[step].title }}</p>
+      </template>
+      <template v-slot:content>
+        <p>{{ texts[step].subtitle }}</p>
+      </template>
+    </GeneralHeader>
     <div style="background: #fafbff">
-      <OrderNavigation v-model="step"/>
+      <OrderNavigation v-model="step" />
     </div>
-    <Footer />
+    <GeneralFooter />
   </v-locale-provider>
 </template>
-<script>
-import Toolbar from "@/components/Toolbar.vue";
-import Header from "@/components/order-domain/Header.vue";
+<script lang="ts">
+import Toolbar from "@/components/Navbar.vue";
+import GeneralHeader from "@/components/GeneralHeader.vue";
 import OrderNavigation from "@/components/order-domain/OrderNavigation.vue";
 import Navigation from "@/components/Navigation.vue";
-import Footer from "@/components/Footer.vue";
+import GeneralFooter from "@/components/GeneralFooter.vue";
 
 import { defineComponent } from "vue";
 
 export default defineComponent({
   components: {
     Toolbar,
-    Header,
+    GeneralHeader,
     OrderNavigation,
     Navigation,
-    Footer,
+    GeneralFooter,
+  },
+  setup() {
+    return {
+      texts: {
+        checkDomain: {
+          title: "بررسی دامنه",
+          subtitle:
+            "به متن های برخورده اید که با نام لورم ایپسوم شناخته می‌شوند.",
+        },
+        configuration: {
+          title: "پیکربندی دامنه",
+          subtitle:
+            "به متن های برخورده اید که با نام لورم ایپسوم شناخته می‌شوند.",
+        },
+        confirmDomain: {
+          title: "تایید دامنه",
+          subtitle:
+            "به متن های برخورده اید که با نام لورم ایپسوم شناخته می‌شوند.",
+        },
+        completeOrder: {
+          title: "تکمیل سفارش",
+          subtitle:
+            "به متن های برخورده اید که با نام لورم ایپسوم شناخته می‌شوند.",
+        },
+      },
+    };
   },
   data() {
     return {

@@ -2,8 +2,8 @@
   <v-locale-provider rtl>
     <Toolbar @clickOnNavBtn="navigation = true;"/>
     <Navigation v-model="navigation"/>
-    <div style="background: #fafbff">
-      <Header />
+    <div style="background: #fafbff" FIXME>
+      <HomeSlider />
       <DomainRegistration />
       <Prices />
       <SuitableDomain />
@@ -12,21 +12,21 @@
       <Questions />
       <NewArticle />
     </div>
-    <Footer />
+    <GeneralFooter />
   </v-locale-provider>
 </template>
 
-<script>
-import Toolbar from "@/components/Toolbar.vue";
-import Header from "@/components/Header.vue";
-import DomainRegistration from "@/components/DomainRegistration.vue";
-import Prices from "@/components/Prices.vue";
-import SuitableDomain from "@/components/SuitableDomain.vue";
-import PanelFeatures from "@/components/PanelFeatures.vue";
-import BuyDomain from "@/components/BuyDomain.vue";
-import Questions from "@/components/Questions.vue";
-import NewArticle from "@/components/NewArticle.vue";
-import Footer from "@/components/Footer.vue";
+<script FIXME>
+import Toolbar from "@/components/Navbar.vue";
+import HomeSlider from "@/components/home/HomeSlider.vue";
+import DomainRegistration from "@/components/home/DomainRegistration.vue";
+import Prices from "@/components/home/Prices.vue";
+import SuitableDomain from "@/components/home/SuitableDomain.vue";
+import PanelFeatures from "@/components/home/PanelFeatures.vue";
+import BuyDomain from "@/components/home/BuyDomain.vue";
+import Questions from "@/components/home/Questions.vue";
+import NewArticle from "@/components/home/NewArticle.vue";
+import GeneralFooter from "@/components/GeneralFooter.vue";
 import Navigation from "@/components/Navigation.vue";
 
 
@@ -35,7 +35,7 @@ import { defineComponent } from "vue"
 export default defineComponent({
   components:{
     Toolbar,
-    Header,
+    HomeSlider,
     DomainRegistration,
     Prices,
     SuitableDomain,
@@ -43,7 +43,7 @@ export default defineComponent({
     BuyDomain,
     Questions,
     NewArticle,
-    Footer,
+    GeneralFooter,
     Navigation
   },
   data(){
