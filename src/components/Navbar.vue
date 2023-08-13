@@ -1,6 +1,6 @@
 <template>
   <v-container class="navbar-container" id="nav-container">
-    <v-toolbar color="white">
+    <v-toolbar class="nav-btn-md  mb-6" color="white">
       <div class="mt-5">
         <v-icon size="small" color="#faa930">mdi-bullseye</v-icon>
         <v-btn class="nav-btn" :to="{ name: '' }">پشتیبانی آنلاین</v-btn>
@@ -58,11 +58,10 @@
         <v-btn density="comfortable" variant="flat" rounded="pill" color="primary" class="login-register-btn ml-8" :to="{ name: 'register' }"> ثبت نام </v-btn>
       </div>
     </v-toolbar>
-    <v-toolbar class="mt-6" color="white">
+    <v-toolbar color="white">
       <div class="logo-size">
         <v-img
-          :src="JeyDomain"
-          class="mt-4 mt-sm-2"></v-img>
+          :src="JeyDomain"></v-img>
       </div>
       <v-spacer></v-spacer>
       <v-btn class="toolbar-btn nav-btn-md" :to="{ name: 'home' }"> صفحه ی اصلی </v-btn>
@@ -119,7 +118,7 @@ export default defineComponent({
 
 <style lang="scss">
 #nav-container{
-  padding-bottom: 4px;
+  padding-bottom: 0px;
   padding-top: 0px;
 }
 .navbar-container {
