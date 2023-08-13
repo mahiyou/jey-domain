@@ -70,6 +70,12 @@ const routes = [
           import(/* webpackChunkName: "home" */ "@/views/Post.vue"),
       },
       {
+        path: "/user-panel",
+        name: "user-panel",
+        component: () =>
+          import(/* webpackChunkName: "home" */ "@/views/UserPanel.vue"),
+      },
+      {
         path: '/:pathMatch(.*)*', 
         name: "notFound",
         component: () =>
