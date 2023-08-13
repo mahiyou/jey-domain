@@ -4,10 +4,10 @@
         <v-col md="6" cols="12">
             <v-row>
                 <v-col sm="1" class="pl-0 logo-visibility">
-                    <v-img :src="logoJeyDomain" width="40px"></v-img>
+                    <v-img src="@/assets/pics/jeyDomain-logo.svg" width="40px"></v-img>
                 </v-col>
                 <v-col md="4" sm="3" cols="6" class="pl-0">
-                    <a href="/"><v-img :src="jeyDomain" width="170px" class="footer-img1"> </v-img></a>
+                    <a href="/"><v-img src="@/assets/pics/jeyDomain.svg" width="170px" class="footer-img1"> </v-img></a>
                 </v-col>
                 <v-col md="7" sm="8" cols="6">
                     <div class="footer-sen">
@@ -99,13 +99,13 @@
                             <v-col cols="6" class="mt-1" dir="ltr"><span class="text-primary">Jey </span>server</v-col>
                         </v-row>
                     </v-btn>
-                    <v-btn href="#" variant="flat" rounded="pill" color="#fafbff" class="btn-sites mb-4">
+                    <v-btn href="https://jeodns.ir" variant="flat" rounded="pill" color="#fafbff" class="btn-sites mb-4">
                         <v-row>
                             <v-col cols="6" class="pr-0 pl-9">جئو آیپی</v-col>
                             <v-col cols="6" class="mt-1" dir="ltr"><span class="text-primary">Jeo </span>IP</v-col>
                         </v-row>
                     </v-btn>
-                    <v-btn href="#" variant="flat" rounded="pill" color="#fafbff" class="btn-sites">
+                    <v-btn href="https://jeodns.com" variant="flat" rounded="pill" color="#fafbff" class="btn-sites">
                         <v-row>
                             <v-col cols="6" class="px-0">جئو دی ان اس</v-col>
                             <v-col cols="6" class="mt-1"><span class="text-primary">Jeo </span>DNS</v-col>
@@ -113,90 +113,72 @@
                     </v-btn>
                 </v-col>
                 <v-col sm="4" cols="5">
-                    <a href="https://trustseal.enamad.ir/?id=22081&Code=ulnW1nDLAeYM3cL2l9U3"><v-img :src="Enamad" height="110px" class="footer-img2"></v-img></a>
+                    <a href="https://trustseal.enamad.ir/?id=22081&Code=ulnW1nDLAeYM3cL2l9U3"><v-img src="@/assets/pics/Enamad.png" height="110px" class="footer-img2"></v-img></a>
                 </v-col>
             </v-row>
         </v-col>
     </v-row>
-    <v-row class="mt-12 mb-12 features-btn-visibility-big-screen">
+    <v-row class="mt-12 mb-12 features-btn-visibility-big-screen footer-links">
         <v-col cols="3">
-            <div class="features-title pr-5">دامنه</div>
-            <v-btn rounded="pill" variant="text" class="btn-features pl-6"><v-icon color="primary">mdi-chevron-left</v-icon>سرور مجازی ابری آلمان</v-btn>
-            <v-btn rounded="pill" variant="text" class="btn-features pl-6"><v-icon color="primary">mdi-chevron-left</v-icon>سرور مجازی ابری فنلاند</v-btn>
-            <v-btn rounded="pill" variant="text" class="btn-features pl-6"><v-icon color="primary">mdi-chevron-left</v-icon>سرور اختصاصی آلمان</v-btn>
-            <v-btn rounded="pill" variant="text" class="btn-features pl-6"><v-icon color="primary">mdi-chevron-left</v-icon>سرور اختصاصی فرانسه</v-btn>
+          <div class="features-title pr-5">دامنه</div>
+          <v-btn rounded="pill" variant="text" class="btn-features pl-6"><v-icon color="primary">mdi-chevron-left</v-icon>سرور مجازی ابری آلمان</v-btn>
+          <v-btn rounded="pill" variant="text" class="btn-features pl-6"><v-icon color="primary">mdi-chevron-left</v-icon>سرور مجازی ابری فنلاند</v-btn>
+          <v-btn rounded="pill" variant="text" class="btn-features pl-6"><v-icon color="primary">mdi-chevron-left</v-icon>سرور اختصاصی آلمان</v-btn>
+          <v-btn rounded="pill" variant="text" class="btn-features pl-6"><v-icon color="primary">mdi-chevron-left</v-icon>سرور اختصاصی فرانسه</v-btn>
         </v-col>
         <v-col cols="3">
-            <div class="features-title pr-5">هاست</div>
-            <v-btn rounded="pill" variant="text" class="btn-features pl-6"><v-icon color="primary">mdi-chevron-left</v-icon>هاست اشتراکی لینوکس</v-btn>
-            <v-btn rounded="pill" variant="text" class="btn-features pl-6"><v-icon color="primary">mdi-chevron-left</v-icon>هاست اختصاصی لینوکس</v-btn>
-            <v-btn rounded="pill" variant="text" class="btn-features pl-6"><v-icon color="primary">mdi-chevron-left</v-icon>هاست دانلود</v-btn>
-            <v-btn rounded="pill" variant="text" class="btn-features pl-6"><v-icon color="primary">mdi-chevron-left</v-icon>نمایندگی هاست اشتراکی لینوکس</v-btn>
+          <div class="features-title pr-5">هاست</div>
+          <a :href="getJeyserverURL('hosting/linux/standard')"><v-icon color="primary">mdi-chevron-left</v-icon> هاست اشتراکی لینوکس</a>
+          <a :href="getJeyserverURL('hosting/linux/dedicated')"><v-icon color="primary">mdi-chevron-left</v-icon> هاست اختصاصی لینوکس</a>
+          <a :href="getJeyserverURL('hosting/linux/file')"><v-icon color="primary">mdi-chevron-left</v-icon> هاست دانلود</a>
+          <a :href="getJeyserverURL('reseller/hosting/linux')"><v-icon color="primary">mdi-chevron-left</v-icon> نمایندگی هاست اشتراکی لینوکس</a>
         </v-col>
         <v-col cols="3">
-            <div class="features-title pr-5">سرور</div>
-            <v-btn rounded="pill" variant="text" class="btn-features pl-6"><v-icon color="primary">mdi-chevron-left</v-icon>سرور مجازی ابری آلمان</v-btn>
-            <v-btn rounded="pill" variant="text" class="btn-features pl-6"><v-icon color="primary">mdi-chevron-left</v-icon>سرور مجازی ابری فنلاند</v-btn>
-            <v-btn rounded="pill" variant="text" class="btn-features pl-6"><v-icon color="primary">mdi-chevron-left</v-icon>سرور اختصاصی آلمان</v-btn>
-            <v-btn rounded="pill" variant="text" class="btn-features pl-6"><v-icon color="primary">mdi-chevron-left</v-icon>سرور اختصاصی فرانسه</v-btn>
+          <div class="features-title pr-5">سرور</div>
+          <a :href="getJeyserverURL('server/vps/cloud#server_vps_cloud_de')"><v-icon color="primary">mdi-chevron-left</v-icon> سرور مجازی ابری آلمان</a>
+          <a :href="getJeyserverURL('server/vps/cloud#server_vps_cloud_fi')"><v-icon color="primary">mdi-chevron-left</v-icon> سرور مجازی ابری فلاند</a>
+          <a :href="getJeyserverURL('server/dedicated/germany')"><v-icon color="primary">mdi-chevron-left</v-icon> سرور اختصاصی آلمان</a>
+          <a :href="getJeyserverURL('server/dedicated/frace')"><v-icon color="primary">mdi-chevron-left</v-icon> سرور اختصاصی فرانسه</a>
         </v-col>
         <v-col cols="3">
-            <div class="features-title pr-5">جی دامین</div>
-            <v-btn rounded="pill" variant="text" class="btn-features pl-6"><v-icon color="primary">mdi-chevron-left</v-icon>پشتیبانی</v-btn>
-            <v-btn rounded="pill" variant="text" class="btn-features pl-6" :to="{ name: 'questions' }"><v-icon color="primary">mdi-chevron-left</v-icon>سوالات متداول</v-btn>
-            <v-btn rounded="pill" variant="text" class="btn-features pl-6" :to="{ name: 'blog' }"><v-icon color="primary">mdi-chevron-left</v-icon>بلاگ</v-btn>
-            <v-btn rounded="pill" variant="text" class="btn-features pl-6"  :to="{ name: 'contact-us' }"><v-icon color="primary">mdi-chevron-left</v-icon>تماس با ما</v-btn>
+          <div class="features-title pr-5">جی دامین</div>
+          <router-link to=""><v-icon color="primary">mdi-chevron-left</v-icon>پشتیبانی</router-link>
+          <router-link :to="{ name: 'questions' }"><v-icon color="primary">mdi-chevron-left</v-icon> سوالات متداول</router-link>
+          <router-link :to="{ name: 'blog' }"><v-icon color="primary">mdi-chevron-left</v-icon> بلاگ</router-link>
+          <router-link :to="{ name: 'contact-us' }"><v-icon color="primary">mdi-chevron-left</v-icon>تماس با ما</router-link>
         </v-col>
     </v-row>
-    <v-row class="mt-12 mb-12 features-btn-visibility-big-screen">
-      <v-col cols="3">
-        <div class="features-title pr-5">دامنه</div>
-        <v-btn rounded="pill" variant="text" class="btn-features pl-6"><v-icon color="primary">mdi-chevron-left</v-icon>سرور مجازی ابری آلمان</v-btn>
-        <v-btn rounded="pill" variant="text" class="btn-features pl-6"><v-icon color="primary">mdi-chevron-left</v-icon>سرور مجازی ابری فنلاند</v-btn>
-        <v-btn rounded="pill" variant="text" class="btn-features pl-6"><v-icon color="primary">mdi-chevron-left</v-icon>سرور اختصاصی آلمان</v-btn>
-        <v-btn rounded="pill" variant="text" class="btn-features pl-6"><v-icon color="primary">mdi-chevron-left</v-icon>سرور اختصاصی فرانسه</v-btn>
-      </v-col>
-      <v-col cols="3">
-        <div class="features-title pr-5">هاست</div>
-        <v-btn rounded="pill" variant="text" class="btn-features pl-6"><v-icon color="primary">mdi-chevron-left</v-icon>هاست اشتراکی لینوکس</v-btn>
-        <v-btn rounded="pill" variant="text" class="btn-features pl-6"><v-icon color="primary">mdi-chevron-left</v-icon>هاست اختصاصی لینوکس</v-btn>
-        <v-btn rounded="pill" variant="text" class="btn-features pl-6"><v-icon color="primary">mdi-chevron-left</v-icon>هاست دانلود</v-btn>
-        <v-btn rounded="pill" variant="text" class="btn-features pl-6"><v-icon color="primary">mdi-chevron-left</v-icon>نمایندگی هاست اشتراکی لینوکس</v-btn>
-      </v-col>
-      <v-col cols="3">
-        <div class="features-title pr-5">سرور</div>
-        <v-btn rounded="pill" variant="text" class="btn-features pl-6"><v-icon color="primary">mdi-chevron-left</v-icon>سرور مجازی ابری آلمان</v-btn>
-        <v-btn rounded="pill" variant="text" class="btn-features pl-6"><v-icon color="primary">mdi-chevron-left</v-icon>سرور مجازی ابری فنلاند</v-btn>
-        <v-btn rounded="pill" variant="text" class="btn-features pl-6"><v-icon color="primary">mdi-chevron-left</v-icon>سرور اختصاصی آلمان</v-btn>
-        <v-btn rounded="pill" variant="text" class="btn-features pl-6"><v-icon color="primary">mdi-chevron-left</v-icon>سرور اختصاصی فرانسه</v-btn>
-      </v-col>
-      <v-col cols="3">
-        <div class="features-title pr-5">جی دامین</div>
-        <v-btn rounded="pill" variant="text" class="btn-features pl-6"><v-icon color="primary">mdi-chevron-left</v-icon>پشتیبانی</v-btn>
-        <v-btn rounded="pill" variant="text" class="btn-features pl-6" :to="{ name: 'questions' }"><v-icon color="primary">mdi-chevron-left</v-icon>سوالات متداول</v-btn>
-        <v-btn rounded="pill" variant="text" class="btn-features pl-6" :to="{ name: 'blog' }"><v-icon color="primary">mdi-chevron-left</v-icon>بلاگ</v-btn>
-        <v-btn rounded="pill" variant="text" class="btn-features pl-6"  :to="{ name: 'contact-us' }"><v-icon color="primary">mdi-chevron-left</v-icon>تماس با ما</v-btn>
-      </v-col>
-    </v-row>
-    <div class="rights-sen">کلیه ی حقوق مادی و معنوی این سایت متعلق به شرکت داده نگار جی می باشد.<v-btn variant="text" class="rights-btn" :to="{ name: 'conditions' }">قوانین/خط مشی ها</v-btn></div>
+    <div class="rights-sen">
+      کلیه ی حقوق مادی و معنوی این سایت متعلق به شرکت داده نگار جی می باشد.
+      <router-link :to="{ name: 'conditions' }">قوانین/خط مشی ها</router-link>
+    </div>
   </div>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
-import jeyDomain from "@/assets/pics/jeyDomain.svg";
-import logoJeyDomain from "@/assets/pics/jeyDomain-logo.svg";
-import Enamad from "@/assets/pics/Enamad.png";
 
 export default defineComponent({
     data() {
-        return {
-            jeyDomain: jeyDomain,
-            logoJeyDomain: logoJeyDomain,
-            Enamad: Enamad,
-        };
+        return {};
     },
+    methods: {
+      getJeyserverURL(path: string): string {
+        return `https://www.jeyserver.com/fa/${path}`;
+      }
+    }
 });
 </script>
+<style lang="scss" scoped>
+.footer-links {
+  a,router-link {
+    text-decoration: none;
+    padding: 12px 0;
+    margin: 5px 0;
+    display: block;
+    color: inherit;
+  }
+}
+</style>
 <style lang="scss">
 .f-container {
   padding: 65px 45px 0px 45px;
