@@ -64,7 +64,7 @@
             <ConfirmDomain />
           </v-window-item>
           <v-window-item value="completeOrder">
-            <div>complete order</div>
+            <CompleteOrder />
           </v-window-item>
         </v-window>
       </v-col>
@@ -101,6 +101,7 @@
 import CheckDomain from "@/components/order-domain/CheckDomain.vue";
 import ConfigurationDomain from "@/components/order-domain/ConfigurationDomain.vue";
 import ConfirmDomain from "@/components/order-domain/ConfirmDomain.vue";
+import CompleteOrder from "@/components/order-domain/CompleteOrder.vue";
 import { defineComponent } from "vue";
 import { useDisplay } from "vuetify";
 
@@ -115,7 +116,8 @@ export default defineComponent({
     CheckDomain,
     ConfigurationDomain,
     ConfirmDomain,
-  },
+    CompleteOrder
+},
   props: {
     modelValue: {
       type: String,

@@ -112,14 +112,6 @@
         </v-btn>
       </template>
     </v-snackbar>
-    <v-snackbar v-model="serverErrorSnackbar" multi-line
-      >خطای سرور
-      <template v-slot:actions>
-        <v-btn color="red" variant="text" @click="serverErrorSnackbar = false">
-          بستن
-        </v-btn>
-      </template>
-    </v-snackbar>
     <v-snackbar v-model="passwordSnackbar" multi-line
       >تکرار رمز عبور مطابقت ندارد 
       <template v-slot:actions>
