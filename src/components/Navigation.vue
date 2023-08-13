@@ -7,9 +7,9 @@
       <v-list density="compact" nav class="px-0">
         <v-row>
           <v-col cols="9">        
-            <div class="img-logo">
+            <a href="/"><div class="img-logo">
               <v-img :src="JeyDomain"></v-img>
-            </div>
+            </div></a>
           </v-col>
           <v-col cols="3" class="mt-2">
             <v-btn variant="text" icon="mdi-close" @click="onUpdate(false)"></v-btn>
@@ -31,7 +31,7 @@
           prepend-icon="mdi-chat-question-outline"
           title="سوالات متداول"
           value="questions"
-          href="#">
+          :to="{ name: 'questions' }">
         </v-list-item>
         <v-list-item
           prepend-icon="mdi-account-box-outline"
