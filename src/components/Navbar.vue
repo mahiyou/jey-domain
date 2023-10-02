@@ -13,8 +13,8 @@
           </div>
         </v-col>
         <v-col sm="7" cols="1">
-          <div class="visible">
-            <v-row>
+          <div>
+            <v-row class="hidden-sm-and-down">
               <v-col cols="2">
                 <v-btn class="toolbar-btn" :to="{ name: 'home' }">
                   صفحه ی اصلی
@@ -32,27 +32,22 @@
                 </v-btn>
               </v-col>
               <v-col cols="2">
-                <v-btn class="toolbar-btn" href="#"> بلاگ </v-btn>
+                <v-btn class="toolbar-btn" :to="{ name: 'blog' }"> بلاگ </v-btn>
               </v-col>
             </v-row>
           </div>
         </v-col>
         <v-col sm="3" cols="5">
-          <v-app-bar-nav-icon
-            class="float-left nav-icon-visible"
-            @click="$emit('clickOnNavBtn')">
-          </v-app-bar-nav-icon>
-          <div class="float-left visible">
-            <v-btn class="toolbar-btn" href="#"> ورود </v-btn>
+          <div class="float-left">
+            <v-btn class="toolbar-btn hidden-sm-and-down" href="#"> ورود </v-btn>
             <v-btn
-              class="toolbar-btn"
+              class="toolbar-btn hidden-sm-and-down"
               color="primary"
               rounded="xl"
               variant="flat"
               href="#">
               ثبت نام
             </v-btn>
-            <v-btn color="secondary" class="toolbar-btn hidden-sm-and-down" :to="{ name: 'blog' }"> بلاگ </v-btn>
             <v-app-bar-nav-icon class="hidden-md-and-up" @click="$emit('clickOnNavBtn')"> </v-app-bar-nav-icon>
           </div>
         </v-col>
@@ -110,12 +105,6 @@ export default defineComponent({
   }
 }
 .navbar-container { 
-  .nav-btn {
-    --v-theme-overlay-multiplier: 0;
-    font-size: 12.5px;
-    margin-right: -10px;
-    --v-theme-overlay-multiplier: 0;
-  }
   .circle {
     width: 20px;
     height: 20px;
@@ -148,37 +137,10 @@ export default defineComponent({
       }
     }
   }
-  .logo-size {
-    width: 170px;
-  }
-  .login-register-btn {
-    font-size: 13px;
-    font-weight: 300;
-    --v-theme-overlay-multiplier: 0;
-  }
   .toolbar-btn {
     font-size: 13px;
     margin: auto 15px;
     font-weight: 600;
-    --v-theme-overlay-multiplier: 0;
-  }
-  .nav-btn-md {
-    display: block;
-  }
-  .nav-icon-xs-sm {
-    display: none;
-  }
-  @media (max-width: 960px) {
-    .nav-btn-md {
-      display: none;
-    }
-    .nav-icon-xs-sm {
-      display: block;
-    }
-  }
-  --v-theme-overlay-multiplier: 0;
-  .overlay-btn{
-    --v-theme-overlay-multiplier: 0;
   }
 }
 </style>
