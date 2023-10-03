@@ -1,177 +1,112 @@
 <template>
-    <v-container class="domain-container" :class="`bg-${backgroundColor}`">
-        <p class="sentence1">
-            همین حالا <span style="color: #ffa200">دامنه</span> مورد نظرتان را ثبت
-            کنید!
-        </p>
-        <p class="mb-8">
-            نام انتخابی خود برای دامنه را در کادر زیر وارد و جستجو نمایید. پس از چند لحظه می توانید وضعیت دامنه را با پسوندهای مختلف مشاهده نمایید.
-        </p>
-        <v-row class="justify-center">
-            <v-col md="9" cols="12">
-                <v-form>
-                    <select v-model="selected" class="select-domain" :class="`bg-${selectDomainBackGround}`">
-                        <option
-                            :value="tlds[tld-1].tld"
-                            v-for="tld in tlds.length"
-                            :key="tld"> 
-                            <v-btn>{{ `${tlds[tld-1].tld}.` }}</v-btn>
-                        </option>
-                    </select>
-                    <v-text-field
-                        bg-color="white"
-                        variant="plain"
-                        density="compact"
-                        class="text-field"
-                        placeholder="دامنه مورد نظر">
-                        <template v-slot:append-inner>
-                            <v-btn
-                                type="submit"
-                                variant="flat"
-                                color="#ffa200"
-                                rounded="pill"
-                                density="comfortable"
-                                float="left"
-                                height="44px"
-                                class="btn-confirm"
-                                prepend-icon="mdi-magnify">
-                                جستجو
-                            </v-btn>
-                        </template>
-                        <template v-slot:prepend-inner>
-                        </template>
-                    </v-text-field>              
+    <v-container class="domain-container">
+        <v-card :color="color" class="py-10" rounded="xl">
+            <v-card-item  class="text-center">
+                <v-card-title>
+                    همین حالا <span class="text-secondary">دامنه</span> مورد نظرتان را ثبت
+                    کنید!
+                </v-card-title>
+
+                <v-card-subtitle>
+                    نام انتخابی خود برای دامنه را در کادر زیر وارد و جستجو نمایید. پس از چند لحظه می توانید وضعیت دامنه را با پسوندهای مختلف مشاهده نمایید.
+                </v-card-subtitle>
+            </v-card-item>
+            <v-card-text>
+                <v-form @submit="(e) => $emit('submit', e)" v-model="valid" class="search-domain-form">
+                    <DomainInput
+                        :tlds="tlds.map((t) => t.suffix)"
+                        :modelValue="modelValue"
+                        @update:modelValue="(v) => $emit('update:modelValue', v)"
+                        :disabled="!valid || disabled"
+                        :loading="loading"/>
                 </v-form>
-            </v-col>
-        </v-row>
-        <div class="featured-tlds">
-            <div dir="ltr" class="prices">
-                <div class="price" v-for="tld in tlds.length" :key="tld">
-                    {{`.${tlds[tld-1].tld}`}}
-                    <span>{{ persianNumber(tlds[tld-1].registration.toLocaleString()) }}</span>
+                <div v-if="offers" class="featured-tlds">
+                    <div class="prices">
+                        <div class="price" v-for="tld in offers" :key="tld.suffix">
+                            <strong class="suffix">{{ `.${tld.suffix}` }}</strong>
+                            <span class="cost">{{ formatMoney(tld.costs.register, "IRT") }}</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </v-card-text>
+        </v-card>
     </v-container>
 </template>
 <script lang="ts">
-import { persianNumber } from "@/utilities";
+import { formatMoney } from "@/utilities";
 import { defineComponent } from "vue";
+import DomainInput from "@/components/DomainInput.vue";
+import type { PropType } from "vue";
+import type { ITLD } from "@/mocks/API";
 
 export default defineComponent({
-    props:{
-        backgroundColor: String,
-        selectDomainBackGround: String,
+    components: {
+        DomainInput
     },
-    setup(){
-        return{
-            persianNumber
+    props: {
+        color: {
+            type: String,
+            default: "primary"
+        },
+        selectDomainBackGround: String,
+        modelValue: String,
+        loading: Boolean,
+        disabled: Boolean,
+        tlds: {
+            type: Array as PropType<ITLD[]>,
+            required: true,
+        },
+        offers: {
+            type: Array as PropType<ITLD[]>,
         }
+    },
+    emits: ["submit", "update:modelValue"],
+    setup() {
+        return {
+            formatMoney
+        };
     },
     data() {
         return {
-            tlds:[
-                {tld:"com",registration:603000},
-                {tld:"ir",registration:48000},
-                {tld:"org",registration:503000},
-                {tld:"net",registration:703000},
-            ],
-            selected: "com",
+            valid: false,
         };
-    },
+    }
 });
 </script>
 
 <style lang="scss">
 .domain-container {
-  max-width: 90%;
-  border-radius: 15px;
-  padding: 40px;
-  text-align: center;
-  margin-bottom: 20px;
-  .sentence1 {
-    font-weight: 900;
-    font-size: 20px;
-    margin-bottom: 15px;
-  }
-  .select-domain {
-    appearance: auto;
-    padding: 14px;
-    border-radius: 0px 40px 40px 0px;
-    width: 90px;
-    float: right;
-    color: black;
-    text-align: center;
-    height: 55.5px;
-    font-size: 18px;
-    border: 1px solid #4f80ff;
-    border-left: none;
-  }
-  .btn-confirm {
-    color: white;
-    padding: 10px;
-    font-weight: 800;
-    font-size: 14px;
-    margin: 5px 7px;
-    width: 110px;
-  }
-  .text-field {
-    .v-field {
-      border: 1px solid #4f80ff;
-      border-right: none;
-      border-radius:50px 0px 0px 50px;
-      input {
-        text-align: center;
+    .search-domain-form {
+        max-width: 600px;
+        margin:0 auto;
+        .v-input--error:not(.v-input--disabled) .v-input__details .v-messages {
+            color: rgb(var(--v-theme-secondary));
+        }
+    }
+    .featured-tlds {
+        width: 100%;
+    }
+    .prices {
+        width: 480px;
+        overflow-x: scroll;
+        white-space: nowrap;
+        height: 3em;
+        font-size: 15px;
         direction: ltr;
-        padding: 12px;
-      }
+        text-align: center;
+        margin:0 auto;
     }
-  }
-  .v-input--density-compact {
-    --v-input-padding-top: 0px;
-    --v-field-padding-top: 0px;
-    --v-field-padding-top--plain-underlined:0px
-  }
-  .v-field.v-field--variant-plain {
-    .v-field__prepend-inner {
-      padding-top: 0px;
+    .price {
+        display: inline-block;
+        border-right: 1px solid;
+        padding: 0 10px;
+        &:last-child {
+            border-right: 0;
+            padding-right: 0;
+        }
+        .suffix {
+            margin-right: 1em;
+        }
     }
-  }
-  .featured-tlds {
-    width: 100%;
-    overflow: auto;
-  }
-  .prices {
-    width: 480px;
-    height: 3em;
-    word-spacing: 12px;
-    font-size: 15px;
-    margin: auto;
-  }
-  .price {
-    display: inline-block;
-    border-right: 1px solid;
-    padding: 0 10px;
-    &:last-child {
-      border-right: 0;
-      padding-right: 0;
-    }
-  }
-  @media (max-width: 600px) {
-    .select-domain {
-      width: 70px;
-      font-size: 15px;
-    }      
-    .btn-confirm {
-      padding: 0px;
-      font-size: 13px;
-      width: 90px;
-    } 
-  }
-  @media (max-width: 500px) {
-    max-width: 100%;
-    border-radius: 0px;
-    padding: 30px 20px;
-  }
 }
 </style>

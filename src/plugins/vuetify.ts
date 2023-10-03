@@ -20,8 +20,12 @@ export default createVuetify({
                 colors: {
                     "on-surface":'#242849',
                     primary: '#4f80ff',
-                    secondary: '#242849',
+                    secondary: '#ffa200',
+                    "on-secondary": '#ffffff',
                     customYellow: '#faa930',
+                    background: "#fafbff",
+                    "on-background": "#242849"
+
                 },
                 
             },

@@ -1,7 +1,7 @@
 <template>
     <Navbar @clickOnNavBtn="navigation = true" />
     <Navigation v-model="navigation" />
-    <v-main class="general-background">
+    <v-main>
         <router-view/>
     </v-main>
     <GeneralFooter />
@@ -27,11 +27,4 @@ export default defineComponent({
     },
 });
 </script>
-<style lang="scss">
-  .general-background{
-    background: #fafbff;
-    color: #242849;
-  }
-</style>
-
   

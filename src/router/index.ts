@@ -28,63 +28,63 @@ const routes = [
                 component: HomeView,
             },
             {
-                path: "/contact-us",
+                path: "contact-us",
                 name: "contact-us",
                 component: ContactusView,
             },
             {
-                path: "/order/domain/:step",
+                path: "order/domain/:step",
                 name: "order-domain",
                 component: OrderDomain,
 
             },
             {
-                path: "/register",
+                path: "register",
                 name: "register",
                 component: Register,
             },
             {
-                path: "/log-in",
+                path: "login",
                 name: "logIn",
                 component: LogIn
             },
             {
-                path: "/questions",
+                path: "faq",
                 name: "questions",
                 component: Questions
             },
             {
-                path: "/conditions",
+                path: "terms",
                 name: "conditions",
                 component: Conditions
             },
             {
-                path: "/prices",
+                path: "prices",
                 name: "prices",
                 component: Prices
             },
             {
-                path: "/blog",
+                path: "blog",
                 name: "blog",
                 component: Blog
             },
             {
-                path: "/post/:postId",
+                path: "blog/post/:postId",
                 name: "post",
                 component: Post
             },
             {
-                path: "",
+                path: "/user-panel/",
                 name: "user-panel",
                 component: UserPanelLayout,
                 children: [
                     {
-                        path: "/user-panel/dashboard",
+                        path: "dashboard",
                         name: "dashboard",
                         component: Dashboard
                     },
                     {
-                        path: "/user-panel/files",
+                        path: "files",
                         name: "files",
                         component: Files
                     },

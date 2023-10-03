@@ -39,7 +39,7 @@
     </div>
     <DomainRegistration :backgroundColor="DomainRegistrationBgColor"
                         :selectDomainBackGround="DomainRegistrationSelectDomainBg" />
-    <Prices />
+    <CustomerSlabs />
     <BuyDomain />
     <v-container class="domain-prices-container">
         <div class="domain-type">
@@ -141,16 +141,16 @@
 <script lang="ts">
 import GeneralHeader from "@/components/GeneralHeader.vue";
 import DomainRegistration from "@/components/home/DomainRegistration.vue";
-import Prices from "@/components/home/Prices.vue";
+import CustomerSlabs from "@/components/CustomerSlabs/index.vue";
 import BuyDomain from "@/components/home/BuyDomain.vue";
-import Questions from "@/components/home/Questions.vue";
+import Questions from "@/components/home/FaqList.vue";
 import { defineComponent } from "vue";
 
 export default defineComponent({
     components: {
         GeneralHeader,
         DomainRegistration,
-        Prices,
+        CustomerSlabs,
         BuyDomain,
         Questions,
     },

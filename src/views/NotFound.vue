@@ -57,7 +57,7 @@
         }
         .back-btn{
             font-size: 12px;
-            }
+        }
     }
 
 }

@@ -1,4 +1,4 @@
-export function persianNumber(n: number): string {
+export function persianNumber(n: number | string): string {
 	let result = n.toString();
 	const farsiNum = "۰۱۲۳۴۵۶۷۸۹";
 
@@ -8,4 +8,11 @@ export function persianNumber(n: number): string {
 	}
 
 	return result;
+}
+
+export function formatMoney(amount: number, currency: string): string {
+	if (currency === "IRT") {
+		return persianNumber(amount.toLocaleString()) + " تومان"; 
+	}
+	return amount.toLocaleString() + " " + currency;
 }

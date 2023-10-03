@@ -1,5 +1,5 @@
 <template>
-  <div class="f-container">
+  <div class="footer">
     <v-row>
         <v-col md="6" cols="12">
             <v-row>
@@ -180,7 +180,8 @@ export default defineComponent({
 }
 </style>
 <style lang="scss">
-.f-container {
+.footer {
+  background-color: rgb(var(--v-theme-surface));
   padding: 65px 45px 0px 45px;
   border-top: 10px solid #4f80ff;
   color: #242849;
