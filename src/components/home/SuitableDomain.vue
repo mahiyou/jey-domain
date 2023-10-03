@@ -35,7 +35,6 @@
 </template>
 <style lang="scss">
 .suitable-domain-container {
-  max-width: 90%;
   text-align: center;
   margin-bottom: 40px;
   .title {
@@ -64,10 +63,6 @@
     .paragraph1 {
       padding-top: 0px;
     }
-  }
-  @media (max-width: 500px) {
-    max-width: 100%;
-    padding: 20px;
   }
 }
 </style>

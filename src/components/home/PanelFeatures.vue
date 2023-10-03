@@ -1,5 +1,6 @@
 <template>
     <div class="panel-features-container">
+      <v-container>
         <v-row align="center">
             <v-col md="4" cols="12">
                 <p class="title">امکانات پنل مدیریت دامنه</p>
@@ -17,11 +18,11 @@
                 <div><v-icon class="icon">mdi-check-circle</v-icon>ارائه ی کنترل پنل مدیریت دامین</div>
             </v-col>
         </v-row>
+      </v-container>
     </div>
 </template>
 <style lang="scss">
 .panel-features-container {
-  width: 100%;
   text-align: center;
   background: #4f80ff;
   color: white;
@@ -40,8 +41,6 @@
     margin-left: 8px;
   }
   @media (max-width: 600px) {
-    max-width: 100%;
-    padding: 50px 20px;
     .title {
       margin-bottom: 15px;
     }

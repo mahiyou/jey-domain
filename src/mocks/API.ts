@@ -30,6 +30,22 @@ export interface IFAQ {
     answer: string;
 }
 
+export interface IPostSummarized {
+    post:
+    {
+        id: number;
+        permalink: string;
+        title: string;
+        description: string,
+        author: {
+            id: number;
+            name: string;
+        };
+        picture: string;
+        date: number;
+    },
+}
+
 export function call<T extends Function>(fn: T, args: Parameters<T>): Promise<ReturnType<T>> {
     return new Promise((resolve, reject) => {
         setTimeout(() => {

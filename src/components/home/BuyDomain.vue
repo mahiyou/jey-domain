@@ -63,7 +63,6 @@ export default defineComponent({
 </script>
 <style lang="scss">
 .buy-domain-container {
-  max-width: 90%;
   text-align: center;
   margin-bottom: 50px;
   .card {
@@ -101,9 +100,6 @@ export default defineComponent({
     .card {
       max-width: 350px;
     }
-  }
-  @media (max-width: 500px) {
-    max-width: 100%;
   }
 }
 </style>

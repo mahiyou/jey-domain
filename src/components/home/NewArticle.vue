@@ -1,27 +1,27 @@
 <template>
-    <v-container class="new-articles-container">
+    <v-container class="new-posts-container">
         <v-row>
             <v-col md="6" cols="12">
                 <p class="title">جدیدترین مقالات</p>
                 <p class="content">
                     اگر شما یک طراح هستین و یا با طراحی های گرافیکی سروکار دارید.
                 </p>
-                <a href="#" class="link">
+                <a href="#" class="link hidden-sm-and-down">
                     <v-card class="card">
-                        <v-img :src="articles[0].picture" width="540px">
+                        <v-img :src="posts[0].post.picture" width="540px">
                             <v-card class="inside-card">
-                                <p class="mb-3">{{ articles[0].title }}</p>
+                                <p class="mb-3">{{ posts[0].post.title }}</p>
                                 <v-row>
                                     <v-col cols="6">
                                         <p class="text-grey-darken-1">
                                             <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-account-outline</v-icon>
-                                            {{ articles[0].author.name }}
+                                            {{ posts[0].post.author.name }}
                                         </p>
                                     </v-col>
                                     <v-col cols="6">
                                         <p class="text-grey-darken-1">
                                             <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-calendar-month-outline</v-icon>
-                                            {{ articles[0].date }}
+                                            {{ getDate(posts[0].post.date) }}
                                         </p>
                                     </v-col>
                                 </v-row>
@@ -32,26 +32,26 @@
             </v-col>
             <v-col md="6" cols="12">
                 <a href="#" class="link">
-                    <v-card class="side-card card-responsive-mood">
+                    <v-card class="side-card hidden-md-and-up">
                         <v-row>
                             <v-col sm="4" cols="12">
-                                <v-img :src="articles[0].picture"></v-img>
+                                <v-img :src="posts[0].post.picture"></v-img>
                             </v-col>
                             <v-col sm="8" cols="12">
                                 <p class="mb-4">
-                                    {{ articles[0].title }}
+                                    {{ posts[0].post.title }}
                                 </p>
                                 <v-row>
                                     <v-col cols="6">
                                         <p class="text-grey-darken-1">
                                             <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-account-outline</v-icon>
-                                            {{ articles[0].author.name }}
+                                            {{ posts[0].post.author.name }}
                                         </p>
                                     </v-col>
                                     <v-col cols="6">
                                         <p class="text-grey-darken-1">
                                             <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-calendar-month-outline</v-icon>
-                                            {{ articles[0].date }}
+                                            {{ getDate(posts[0].post.date) }}
                                         </p>
                                     </v-col>
                                 </v-row>
@@ -59,29 +59,25 @@
                         </v-row>
                     </v-card>
                 </a>
-                <a
-                    href="#"
-                    class="link"
-                    v-for="article in articles.length - 1"
-                    :key="article">
+                <a href="#" class="link" v-for="article in 3" :key="article">
                     <v-card class="side-card">
                         <v-row>
-                            <v-col sm="4" cols="12">
-                                <v-img :src="articles[article].picture"></v-img>
+                            <v-col sm="4" cols="12" class="my-auto">
+                                <v-img :src="posts[article].post.picture"></v-img>
                             </v-col>
                             <v-col sm="8" cols="12">
-                                <p class="mb-4">{{ articles[article].title }}</p>
+                                <p class="mb-4">{{ posts[article].post.title }}</p>
                                 <v-row>
                                     <v-col cols="6">
                                         <p class="text-grey-darken-1">
                                             <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-account-outline</v-icon>
-                                            {{ articles[article].author.name }}
+                                            {{ posts[article].post.author.name }}
                                         </p>
                                     </v-col>
                                     <v-col cols="6">
                                         <p class="text-grey-darken-1">
                                             <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-calendar-month-outline</v-icon>
-                                            {{ articles[article].date }}
+                                            {{ getDate(posts[article].post.date) }}
                                         </p>
                                     </v-col>
                                 </v-row>
@@ -94,109 +90,85 @@
     </v-container>
 </template>
 <script lang="ts">
-import { defineComponent} from "vue";
-import DefaultBlogImage from "@/assets/pics/blog1.png";
+import { defineComponent } from "vue";
+import type { IPostSummarized } from '@/mocks/API';
+import type { PropType } from 'vue';
+import DateObject from "react-date-object";
+import persian from "react-date-object/calendars/persian";
+import persian_fa from "react-date-object/locales/persian_fa";
 export default defineComponent({
-    data(){
-        return{
-            articles:[
-                {
-                    id:1,
-                    permalink:"",
-                    title:"۱. لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است.",
-                    author:{id:1 ,name:"کاربر تست"},
-                    picture: DefaultBlogImage,
-                    date:"۲۶ خرداد ۱۴۰۲"
-                },
-                {
-                    id:2,
-                    permalink:"",
-                    title:"۲. لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است.",
-                    author:{id:"2" ,name:"کاربر تست"},
-                    picture: DefaultBlogImage,
-                    date:"۲۶ خرداد ۱۴۰۲"
-                },
-                {
-                    id:3,
-                    permalink:"",
-                    title:"۳. لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است.",
-                    author:{id:"2" ,name:"کاربر تست"},
-                    picture: DefaultBlogImage,
-                    date:"۲۶ خرداد ۱۴۰۲"
-                },
-                {
-                    id:4,
-                    permalink:"",
-                    title:"۴. لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است.",
-                    author:{id:"2" ,name:"کاربر تست"},
-                    picture: DefaultBlogImage,
-                    date:"۲۶ خرداد ۱۴۰۲"
-                }
-            ]
-        };
+    props: {
+        posts: {
+            type: Array as PropType<IPostSummarized[]>,
+            required: true,
+        },
+    },
+    methods: {
+        getDate(rawDate: number): DateObject {
+            const date = new DateObject({
+                calendar: persian,
+                locale: persian_fa,
+                date: rawDate
+            });
+            return date;
+        }
     }
 });
 </script>
 <style lang="scss">
-.new-articles-container {
-  max-width: 90%;
-  margin-bottom: 50px;
-  .title {
-    font-weight: 900;
-    font-size: 28px;
-    margin-bottom: 12px;
-  }
-  .content {
-    font-size: 14px;
-    margin-bottom: 32px;
-  }
-  .card {
-    box-shadow: none;
-    margin: auto;
-  }
-  .side-card {
-    margin: 16px;
-    max-width: 700px;
-    padding: 14px;
-    box-shadow: none;
-    font-size: 14px;
-  }
-  .inside-card {
-    width: 65%;
-    bottom: 0px;
-    box-shadow: none;
-    font-size: 14px;
-    position: absolute;
-    bottom: 0px;
-    padding: 20px;
-    border-radius: 0px;
-  }
-  .link {
-    text-decoration: none;
-  }
-  .card-responsive-mood {
-    display: none;
-  }
-  @media (max-width: 960px) {
-    .side-card {
-      margin: auto;
-      margin-bottom: 10px;
-    }
-    .card {
-      display: none;
-    }
-    .card-responsive-mood {
-      display: block;
-    }
-  }
-  @media (max-width: 600px) {
+.new-posts-container {
+    margin-bottom: 50px;
+
     .title {
-      text-align: center;
+        font-weight: 900;
+        font-size: 28px;
+        margin-bottom: 12px;
     }
-  }
-  @media (max-width: 500px) {
-    max-width: 100%;
-    padding: 20px;
-  }
+
+    .content {
+        font-size: 14px;
+        margin-bottom: 32px;
+    }
+
+    .card {
+        box-shadow: none;
+        margin: auto;
+    }
+
+    .side-card {
+        margin: 16px;
+        max-width: 700px;
+        padding: 14px;
+        box-shadow: none;
+        font-size: 14px;
+    }
+
+    .inside-card {
+        width: 65%;
+        bottom: 0px;
+        box-shadow: none;
+        font-size: 14px;
+        position: absolute;
+        bottom: 0px;
+        padding: 20px;
+        border-radius: 0px;
+    }
+
+    .link {
+        text-decoration: none;
+    }
+
+    @media (max-width: 960px) {
+        .side-card {
+            margin: auto;
+            margin-bottom: 10px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .title {
+            text-align: center;
+        }
+    }
 }
 </style>

@@ -6,7 +6,7 @@
     <PanelFeatures />
     <BuyDomain />
     <FaqList :items="faq" />
-    <NewArticle />
+    <NewArticle :posts="posts"/>
 </template>
 
 <script lang="ts">
@@ -19,7 +19,7 @@ import BuyDomain from "@/components/home/BuyDomain.vue";
 import FaqList from "@/components/home/FaqList.vue";
 import NewArticle from "@/components/home/NewArticle.vue";
 import { defineComponent } from "vue";
-import { IFAQ, ISlabs, ITLD } from "@/mocks/API";
+import { IFAQ, ISlabs, ITLD, IPostSummarized } from "@/mocks/API";
 
 export default defineComponent({
     components: {
@@ -150,12 +150,68 @@ export default defineComponent({
                     question: "پاسخ محاسبه 5+6*5 چقدر می‌شود؟",
                     answer: "کاری نداره که 55"
                 }
-            ] as Array<IFAQ>
+            ] as Array<IFAQ>,
+            posts: [
+                {
+                    post: {
+                        id: 1,
+                        permalink: "",
+                        title: "۱. لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است.",
+                        description: "۱. لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است.",
+                        author: { id: 1, name: "کاربر تست" },
+                        picture: "https://www.jeyserver.com/packages/blog/storage/public/files/3287dc7390dc3017bc0de096840c7a36.jpg",
+                        date: 1696345697934,
+                    },
+                },
+                {
+                    post: {
+                        id: 1,
+                        permalink: "",
+                        title: "2. لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است.",
+                        description: "۱. لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است.",
+                        author: { id: 1, name: "کاربر تست" },
+                        picture: "https://www.jeyserver.com/packages/blog/storage/public/files/3287dc7390dc3017bc0de096840c7a36.jpg",
+                        date: 1696345697934,
+                    },
+                },
+                {
+                    post: {
+                        id: 1,
+                        permalink: "",
+                        title: "3. لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است.",
+                        description: "۱. لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است.",
+                        author: { id: 1, name: "کاربر تست" },
+                        picture: "https://www.jeyserver.com/packages/blog/storage/public/files/3287dc7390dc3017bc0de096840c7a36.jpg",
+                        date: 1696345697934,
+                    },
+                },
+                {
+                    post: {
+                        id: 1,
+                        permalink: "",
+                        title: "4. لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است.",
+                        description: "۱. لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است.",
+                        author: { id: 1, name: "کاربر تست" },
+                        picture: "https://www.jeyserver.com/packages/blog/storage/public/files/3287dc7390dc3017bc0de096840c7a36.jpg",
+                        date: 1696345697934,
+                    },
+                },
+                {
+                    post: {
+                        id: 1,
+                        permalink: "",
+                        title: "5. لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است.",
+                        description: "۱. لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است.",
+                        author: { id: 1, name: "کاربر تست" },
+                        picture: "https://www.jeyserver.com/packages/blog/storage/public/files/3287dc7390dc3017bc0de096840c7a36.jpg",
+                        date: 1696345697934,
+                    },
+                },
+            ] as Array<IPostSummarized>
         };
         data.tlds = data.slabs[0].tlds;
         return data;
     },
 });
 </script>
-<style lang="scss">
-</style>
+<style lang="scss"></style>
