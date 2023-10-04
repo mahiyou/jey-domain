@@ -1,30 +1,7 @@
-export interface IPost {
-    post:
-    {
-        id: number;
-        permalink: string;
-        title: string;
-        description: string,
-        content: string;
-        author: {
-            id: number;
-            name: string;
-        };
-        picture: any;
-        date: number;
-        postCategory: string[]; 
-    },
-    comments:object[];
-    categories:object[];
-    relatedPosts:IPost[];
-}
+import {IPost, BlogTab} from "@/mocks/API"
 
-export interface Tab{
-    name:string,
-    value:string,
-}
 
-export function getBlogIndex():[Tab[],IPost[]]{
+export function getBlogIndex():[BlogTab[],IPost[]]{
     return[
         [
             {

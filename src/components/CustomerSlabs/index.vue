@@ -48,7 +48,8 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import PriceTable, { ITldGroups, ITldGroup } from "./PriceTable.vue";
+import PriceTable from "./PriceTable.vue";
+import { ITldGroups } from "@/mocks/API";
 import type { PropType } from "vue";
 import type { ISlab, ISlabs } from "../../mocks/API";
 export default defineComponent({
@@ -127,7 +128,7 @@ export default defineComponent({
         },
     },
     data: () => ({
-        tab: null,
+        tab: "bronze",
     }),
 });
 </script>

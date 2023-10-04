@@ -25,6 +25,13 @@ export interface ISlab {
 
 }
 
+export interface ITldGroup {
+    title: string;
+    tlds: ITLD[];
+}
+
+export type ITldGroups = Record<string, ITldGroup>;
+
 export interface IFAQ {
     question: string;
     answer: string;
@@ -37,13 +44,25 @@ export interface IPostSummarized {
         permalink: string;
         title: string;
         description: string,
+        content: string,
         author: {
             id: number;
             name: string;
         };
         picture: string;
         date: number;
+        postCategory: string[];
     },
+}
+export interface IPost extends IPostSummarized {
+    comments: [];
+    categories: [];
+    relatedPosts: IPost[];
+}
+
+export interface BlogTab{
+    name:string,
+    value:string,
 }
 
 export function call<T extends Function>(fn: T, args: Parameters<T>): Promise<ReturnType<T>> {

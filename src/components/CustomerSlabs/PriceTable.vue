@@ -20,7 +20,6 @@
                             <td v-text="formatMoney(tld.costs.register, 'IRT')" />
                             <td v-text="formatMoney(tld.costs.renew, 'IRT')" />
                             <td v-text="tld.costs.transfer ? formatMoney(tld.costs.transfer, 'IRT') : '-'" />
-
                         </tr>
                     </tbody>
                 </v-table>
@@ -31,14 +30,9 @@
 <script lang="ts">
 import { formatMoney } from "../../utilities";
 import { PropType, defineComponent } from "vue";
-import { ITLD } from "../../mocks/API";
+import { ITldGroups } from "../../mocks/API";
 
-export interface ITldGroup {
-    title: string;
-    tlds: ITLD[];
-}
 
-export type ITldGroups = Record<string,ITldGroup>;
 
 export default defineComponent({
     setup() {
