@@ -72,7 +72,7 @@ export default defineComponent({
             const res = await call(getData, []);
             this.slabs = res.slabs;
             this.tlds = res.slabs[0].tlds;
-            this.posts = res.posts.posts;
+            this.posts = res.posts;
         }
         catch {
             this.error = true;
@@ -81,11 +81,6 @@ export default defineComponent({
             this.loading = false;
         }
     },
-    computed: {
-        customerSlabsLoading() {
-            return this.loading ? true : false
-        }
-    }
 });
 </script>
 <style lang="scss">

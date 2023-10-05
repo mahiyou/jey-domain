@@ -8,20 +8,20 @@
                 </p>
                 <a href="#" class="link hidden-sm-and-down">
                     <v-card class="card">
-                        <v-img :src="posts[0].post.picture" width="540px">
+                        <v-img :src="posts[0].picture" width="540px">
                             <v-card class="inside-card">
-                                <p class="mb-3">{{ posts[0].post.title }}</p>
+                                <p class="mb-3">{{ posts[0].title }}</p>
                                 <v-row>
                                     <v-col cols="6">
                                         <p class="text-grey-darken-1">
                                             <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-account-outline</v-icon>
-                                            {{ posts[0].post.author.name }}
+                                            {{ posts[0].author.name }}
                                         </p>
                                     </v-col>
                                     <v-col cols="6">
                                         <p class="text-grey-darken-1">
                                             <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-calendar-month-outline</v-icon>
-                                            {{ getDate(posts[0].post.date) }}
+                                            {{ getDate(posts[0].date) }}
                                         </p>
                                     </v-col>
                                 </v-row>
@@ -35,23 +35,23 @@
                     <v-card class="side-card hidden-md-and-up">
                         <v-row>
                             <v-col sm="4" cols="12">
-                                <v-img :src="posts[0].post.picture"></v-img>
+                                <v-img :src="posts[0].picture"></v-img>
                             </v-col>
                             <v-col sm="8" cols="12">
                                 <p class="mb-4">
-                                    {{ posts[0].post.title }}
+                                    {{ posts[0].title }}
                                 </p>
                                 <v-row>
                                     <v-col cols="6">
                                         <p class="text-grey-darken-1">
                                             <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-account-outline</v-icon>
-                                            {{ posts[0].post.author.name }}
+                                            {{ posts[0].author.name }}
                                         </p>
                                     </v-col>
                                     <v-col cols="6">
                                         <p class="text-grey-darken-1">
                                             <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-calendar-month-outline</v-icon>
-                                            {{ getDate(posts[0].post.date) }}
+                                            {{ getDate(posts[0].date) }}
                                         </p>
                                     </v-col>
                                 </v-row>
@@ -63,21 +63,21 @@
                     <v-card class="side-card">
                         <v-row>
                             <v-col sm="4" cols="12" class="my-auto">
-                                <v-img :src="posts[article].post.picture"></v-img>
+                                <v-img :src="posts[article].picture"></v-img>
                             </v-col>
                             <v-col sm="8" cols="12">
-                                <p class="mb-4">{{ posts[article].post.title }}</p>
+                                <p class="mb-4">{{ posts[article].title }}</p>
                                 <v-row>
                                     <v-col cols="6">
                                         <p class="text-grey-darken-1">
                                             <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-account-outline</v-icon>
-                                            {{ posts[article].post.author.name }}
+                                            {{ posts[article].author.name }}
                                         </p>
                                     </v-col>
                                     <v-col cols="6">
                                         <p class="text-grey-darken-1">
                                             <v-icon class="ml-1 mb-1" color="#4f80ff">mdi-calendar-month-outline</v-icon>
-                                            {{ getDate(posts[article].post.date) }}
+                                            {{ getDate(posts[article].date) }}
                                         </p>
                                     </v-col>
                                 </v-row>

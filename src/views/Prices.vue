@@ -8,6 +8,12 @@
         </template>
     </GeneralHeader>
     <div class="bg-white mb-10">
+        <div class="text-center ma-10"><v-progress-circular v-if="loading" indeterminate
+                color="primary"></v-progress-circular>
+        </div>
+        <div v-if="error" class="domain-search-error">
+            <P>خطای سرور رخ داده است. لطفا دوباره تلاش کنید.</P>
+        </div>
         <v-container class="domain-prices-container">
             <v-row class="mb-2">
                 <v-col md="7" cols="12">
@@ -31,15 +37,14 @@
                     </div>
                 </v-col>
                 <v-col md="5" cols="12">
-                    <v-img src="@/assets/pics/world.svg" width="430px" class="center">
+                    <v-img src="@/assets/pics/world.svg" width="430px" class="ma-auto">
                     </v-img>
                 </v-col>
             </v-row>
         </v-container>
     </div>
-    <DomainRegistration :backgroundColor="DomainRegistrationBgColor"
-                        :selectDomainBackGround="DomainRegistrationSelectDomainBg" />
-    <CustomerSlabs />
+    <DomainRegistration v-if="!loading && !error" color="primary" :tlds="tlds" :offers="tlds" v-model="domain" />
+    <CustomerSlabs v-if="!loading && !error" :slabs="slabs" />
     <BuyDomain />
     <v-container class="domain-prices-container">
         <div class="domain-type">
@@ -64,8 +69,8 @@
                     <p class="title">دامنه های بین المللی</p>
                     <p class="justify-center">تمامی دامین های بین المللی خود را با همکاری شرکت هگزونت (hexonet) که
                         شرکتی با سابقه و آلمانی می باشد به ثبت میرساند. پیشنهاد می شود همواره دامین اصلی کسب و کار
-                        خود را از بین دامین های بین المللی انتخاب کنید. پسوند های بین المللی شامل <span
-                            dir="ltr">.org , .net , .com</span> و... می باشد.</p>
+                        خود را از بین دامین های بین المللی انتخاب کنید. پسوند های بین المللی شامل <span dir="ltr">.org ,
+                            .net , .com</span> و... می باشد.</p>
                 </v-col>
             </v-row>
             <v-row class="bg-white mb-md-8 mb-15 px-3" justify="center" align="center">
@@ -74,8 +79,8 @@
                 </v-col>
                 <v-col md="10" sm="9" cols="12">
                     <p class="title">دامنه های حروف فارسی و یا IDN</p>
-                    <p class="justify-center">چنانچه علاقه مند به خرید دامنه با حروف فارسی و پسوند <span
-                        dir="ltr">.com , .net</span> هستید، جی دامین این امکان را با همکاری شرکن هگزونت آلماه
+                    <p class="justify-center">چنانچه علاقه مند به خرید دامنه با حروف فارسی و پسوند <span dir="ltr">.com ,
+                            .net</span> هستید، جی دامین این امکان را با همکاری شرکن هگزونت آلماه
                         برایتان مهیا کرده است. دامین های IDN مانند نمونه زیر میباشد: <span dir="ltr"> www.جی
                             دامین.com</span></p>
                 </v-col>
@@ -121,9 +126,9 @@
                 فارسی مانند (com.علی) فقط برای دامنه های این لیست ممکن است.</p>
         </div>
     </v-container>
-    <Questions />
+    <Questions :items="faq" />
     <v-container class="domain-prices-container">
-        <div class="more-questions">
+        <div class="more-questions mt-4">
             <p class="title">هنوز هم سوال دارید؟</p>
             <v-row>
                 <v-col md="10" cols="12">
@@ -132,7 +137,7 @@
                 </v-col>
                 <v-col md="2" cols="12" align="center">
                     <v-btn variant="flat" rounded="pill" color="primary" class="suport-btn"
-                            :to="{ name: 'contact-us' }">پشتیبانی</v-btn>
+                        :to="{ name: 'contact-us' }">پشتیبانی</v-btn>
                 </v-col>
             </v-row>
         </div>
@@ -144,6 +149,8 @@ import DomainRegistration from "@/components/home/DomainRegistration.vue";
 import CustomerSlabs from "@/components/CustomerSlabs/index.vue";
 import BuyDomain from "@/components/home/BuyDomain.vue";
 import Questions from "@/components/home/FaqList.vue";
+import { IFAQ, ISlabs, ITLD, IPostSummarized, call } from "@/mocks/API";
+import { getData } from "@/mocks/Home"
 import { defineComponent } from "vue";
 
 export default defineComponent({
@@ -156,31 +163,58 @@ export default defineComponent({
     },
     data() {
         return {
+            domain: "",
             DomainRegistrationBgColor: "#fafbff",
-            DomainRegistrationSelectDomainBg: "primary"
+            DomainRegistrationSelectDomainBg: "primary",
+            loading: true,
+            error: false,
+            tlds: [] as ITLD[],
+            slabs: [] as ISlabs,
+            faq: [
+                {
+                    question: "دامنه چیست و چرا به آن نیاز دارم؟",
+                    answer: "لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است."
+                },
+                {
+                    question: "منظور از پسوند دامنه چیست؟ کدام پسوند برای من مناسبتر است؟",
+                    answer: "لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است."
+                },
+                {
+                    question: "منظور از پسوند دامنه چیست؟ کدام پسوند برای من مناسبتر است؟",
+                    answer: "لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است."
+                },
+                {
+                    question: "منظور از پسوند دامنه چیست؟ کدام پسوند برای من مناسبتر است؟",
+                    answer: "لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است."
+                }
+            ] as Array<IFAQ>,
         };
-    }
+    },
+    async mounted() {
+        try {
+            const res = await call(getData, []);
+            this.slabs = res.slabs;
+            this.tlds = res.slabs[0].tlds;
+        }
+        catch {
+            this.error = true;
+        }
+        finally {
+            this.loading = false;
+        }
+    },
 });
 </script>
 <style lang="scss">
 .domain-prices-container {
     color: #242849;
+
     .header-title {
         font-size: 30px;
         font-weight: 900;
         margin-bottom: 20px;
         padding-top: 40px;
     }
-
-    .header-content {
-        font-size: 14px;
-        line-height: 30px;
-    }
-
-    .center {
-        margin: auto;
-    }
-
     .steps {
         margin-bottom: 70px;
 
