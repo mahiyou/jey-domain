@@ -1,4 +1,4 @@
-import { ISlabs, BlogTab, IPostSummarized } from "@/mocks/API"
+import { ISlabs, IPostSummarized } from "@/mocks/API"
 interface IGenaralDate {
     slabs: ISlabs,
     posts: IPostSummarized[],

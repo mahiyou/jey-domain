@@ -39,6 +39,7 @@ export const useCartStore = defineStore("CartStore", {
 
     state: () => {
         return {
+            sugestedDomain: "" as string,
             items: [] as Array<RegisterCartItem>,
         };
     },
@@ -49,7 +50,17 @@ export const useCartStore = defineStore("CartStore", {
         },
         deleteCartItem(index: number) {
             this.items.splice(index, 1);
+        },
+        setSugestedDomain(domain: string) {
+            console.log('pin-'+domain)
+            this.sugestedDomain = domain;
+            
         }
     },
+    getters: {
+        getSugestedDomain: (state): string => {
+            return state.sugestedDomain
+        }
+    }
 
 });

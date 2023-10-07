@@ -143,11 +143,11 @@ export default defineComponent({
             loading: false,
             Checkbox: false,
             usernameRules: [
-                (value) => {
+                (value:string) => {
                     if (value) return true;
                     return "وارد کردن ایمیل الزامی است.";
                 },
-                (value) => {
+                (value:string) => {
                     if (
                         !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
                             value
@@ -159,17 +159,17 @@ export default defineComponent({
                 },
             ],
             passwordRules: [
-                (value) => {
+                (value:string) => {
                     if (value) return true;
                     return "وارد کردن رمز عبور الزامی است.";
                 },
-                (value) => {
+                (value:string) => {
                     if (value?.length >= 10) return true;
                     return "رمز عبور شما باید بیشتر از 10 کاراکتر باشد.";
                 },
             ],
             checkboxRules: [
-                (value) => {
+                (value:boolean) => {
                     if (value) return true;
                     return "برای ثبت نام در سایت باید قوانین را بپذیرید.";
                 },

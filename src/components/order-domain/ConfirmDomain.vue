@@ -52,7 +52,7 @@
                     <div align="center">
                         <v-form v-model="valid" lazy-validation @submit.prevent="onSubmit">
                             <v-text-field variant="outlined" class="text-field" v-model="discountCode"
-                                :rules="discountRules" />
+                                :rules="[discountValidate]" />
                             <v-btn type="submit" variant="outlined" :loading="loading" width="100%" height="38px"
                                 class="btn-discount">
                                 اعمال کد تخفیف
@@ -130,12 +130,6 @@ export default defineComponent({
             discount: 0,
             discountCode: "",
             currency: "",
-            discountRules: [
-                (value) => {
-                    if (value?.length <= 5) return true;
-                    return "کد تخفف باید کمتر از ۵ کاراکتر باشد.";
-                },
-            ],
         };
     },
     methods: {
@@ -182,8 +176,12 @@ export default defineComponent({
                 }
             }, 2000);
         },
-        backToConfiguration(){
-            
+        backToConfiguration() {
+
+        },
+        discountValidate(value: string) {
+            if (value?.length <= 5) return true;
+            return "کد تخفف باید کمتر از ۵ کاراکتر باشد.";
         }
     },
     async mounted() {

@@ -110,17 +110,17 @@ export default defineComponent({
             snackbar: false,
             loading: false,
             usernameRules: [
-                (value) => {
+                (value:string) => {
                     if (value) return true;
                     return "وارد کردن ایمیل و یا شماره تلفن الزامی است.";
                 },
             ],
             passwordRules: [
-                (value) => {
+                (value:string) => {
                     if (value) return true;
                     return "وارد کردن رمز عبور الزامی است.";
                 },
-                (value) => {
+                (value:string) => {
                     if (value?.length >= 10) return true;
                     return "رمز عبور شما باید بیشتر از 10 کاراکتر باشد.";
                 },

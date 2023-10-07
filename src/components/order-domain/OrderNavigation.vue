@@ -3,7 +3,7 @@
         <v-row>
             <v-col sm="4" cols="12">
                 <v-tabs center-active :align-tabs="alignTabs" :model-value="modelValue" @update:model-value="onTabChanged"
-                    :direction="tabsDirection" hide-slider color="primary" class="nav-tabs" disabled="true">
+                    :direction="tabsDirection" hide-slider color="primary" class="nav-tabs" disabled:string="true">
                     <v-tab value="checkDomain" class="order-tabs-handler" :border="false" rounded="lg" variant="flat">
                         <span class="num-border">۱</span>
                         بررسی دامنه
@@ -118,7 +118,7 @@ export default defineComponent({
             return this.display.name.value == "xs" ? "horizontal" : "vertical";
         },
         alignTabs() {
-            return this.display.name.value == "xs" ? "center" : "undefined";
+            return this.display.name.value == "xs" ? "center" : undefined;
         },
     },
 });

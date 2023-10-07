@@ -54,22 +54,23 @@
             <v-row class="mt-3">
                 <v-col sm="6" cols="12">
                     <div>نام<span class="star-color">*</span></div>
-                    <v-text-field variant="outlined" class="text-field" v-model="name" :rules="nameRules" required />
+                    <v-text-field variant="outlined" class="text-field" v-model="name" :rules="[nameValidation]" required />
                 </v-col>
                 <v-col sm="6" cols="12">
                     <div>نام خانوادگی<span class="star-color">*</span></div>
-                    <v-text-field variant="outlined" class="text-field" v-model="lastName" :rules="lastNameRules"
+                    <v-text-field variant="outlined" class="text-field" v-model="lastName" :rules="[lastNameValidation]"
                         required />
                 </v-col>
             </v-row>
             <v-row class="mt-6">
                 <v-col sm="6" cols="12">
                     <div>شرکت</div>
-                    <v-text-field variant="outlined" class="text-field" v-model="company" />
+                    <v-text-field variant="outlined" class="text-field" v-model="company"
+                        :rules="[companyNameValidation]" />
                 </v-col>
                 <v-col sm="6" cols="12">
                     <div>ایمیل<span class="star-color">*</span></div>
-                    <v-text-field variant="outlined" class="text-field" v-model="email" :rules="emailRules" required />
+                    <v-text-field variant="outlined" class="text-field" v-model="email" :rules="[emailValidation]" required />
                 </v-col>
             </v-row>
             <div class="text-center">
@@ -84,7 +85,7 @@
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
-import { useCartStore, WhoisData, CartItemType} from "@/stores/Cart";
+import { useCartStore, WhoisData, CartItemType } from "@/stores/Cart";
 
 export default defineComponent({
     setup() {
@@ -109,45 +110,7 @@ export default defineComponent({
             lastName: "",
             company: "",
             email: "",
-            nameRules: [
-                (value) => {
-                    if (value) return true;
-                    return "وارد کردن نام الزامی است.";
-                },
-                (value) => {
-                    if (value?.length <= 20) return true;
-                    return "نام شما باید کمتر از 20 کاراکتر باشد.";
-                },
-            ],
             nameServerRules: [],
-            lastNameRules: [
-                (value) => {
-                    if (value) return true;
-                    return "وارد کردن نام خانوادگی الزامی است.";
-                },
-                (value) => {
-                    if (value?.length <= 20) return true;
-                    return "نام خانوادگی شما باید کمتر از 20 کاراکتر باشد.";
-                },
-            ],
-            companyRules: [
-                (value) => {
-                    if (value?.length <= 30) return true;
-                    return "نام شرکت شما باید کمتر از 30 کاراکتر باشد.";
-                },
-            ],
-            emailRules: [
-                (value) => {
-                    if (
-                        !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
-                            value
-                        )
-                    ) {
-                        return "ایمیل وارد شده معتبر نمی باشد";
-                    }
-                    return true;
-                },
-            ],
         };
     },
     methods: {
@@ -158,13 +121,13 @@ export default defineComponent({
             this.loading = true;
             setTimeout(() => {
                 this.orderNextStep(12,
-                {
-                    name: this.name,
-                    lastName: this.lastName,
-                    company: this.company,
-                    email: this.email,
-                },
-                [this.nameServer1, this.nameServer2, this.nameServer3, this.nameServer4]);
+                    {
+                        name: this.name,
+                        lastName: this.lastName,
+                        company: this.company,
+                        email: this.email,
+                    },
+                    [this.nameServer1, this.nameServer2, this.nameServer3, this.nameServer4]);
                 this.$emit('tabValue', {
                     tab: 'confirmDomain',
                     cartItem: this.cartItemDomain,
@@ -182,6 +145,40 @@ export default defineComponent({
                 whoisData: whoisData,
                 nameServers: nameServers
             })
+        },
+        nameValidation(value: string) {
+            if (!value) {
+                return "وارد کردن نام الزامی است.";
+            }
+            else if (value.length > 20) {
+                return "نام شما باید کمتر از 20 کاراکتر باشد.";
+            } else {
+                return true
+            };
+        },
+        lastNameValidation(value: string) {
+            if (!value) {
+                return "وارد کردن نام خانوادگی الزامی است.";
+            }
+            else if (value.length > 20) {
+                return "نام خانوادگی شما باید کمتر از 20 کاراکتر باشد.";
+            } else {
+                return true
+            };
+        },
+        companyNameValidation(value: string) {
+            if (value?.length <= 30) return true;
+            return "نام شرکت شما باید کمتر از 30 کاراکتر باشد.";
+        },
+        emailValidation(value: string) {
+            if (
+                !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+                    value
+                )
+            ) {
+                return "ایمیل وارد شده معتبر نمی باشد";
+            }
+            return true;
         }
     },
 });

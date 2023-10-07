@@ -14,6 +14,7 @@
 <script lang="ts">
 import GeneralHeader from "@/components/GeneralHeader.vue";
 import OrderNavigation from "@/components/order-domain/OrderNavigation.vue";
+import { Interface } from "readline";
 import { defineComponent } from "vue";
 
 export default defineComponent({
@@ -22,6 +23,12 @@ export default defineComponent({
         OrderNavigation,
     },
     setup() {
+        interface text {
+            title: string,
+            subtitle: string
+        }
+        type stepTexts = Record<string, text>;
+        
         return {
             texts: {
                 checkDomain: {
@@ -44,7 +51,7 @@ export default defineComponent({
                     subtitle:
                         "به متن های برخورده اید که با نام لورم ایپسوم شناخته می‌شوند.",
                 },
-            },
+            } as stepTexts,
         };
     },
     data() {
