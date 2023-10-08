@@ -104,7 +104,7 @@
                 </v-form>
             </v-col>
         </v-row>
-        <v-snackbar v-model="serverErrorSnackbar" multi-line
+        <v-snackbar v-model="serverErrorSnackbar" class="my-15" multi-line
         >خطای سرور
             <template v-slot:actions>
                 <v-btn color="red" variant="text" @click="serverErrorSnackbar = false">
@@ -112,7 +112,7 @@
                 </v-btn>
             </template>
         </v-snackbar>
-        <v-snackbar v-model="passwordSnackbar" multi-line
+        <v-snackbar v-model="passwordSnackbar" class="my-15" multi-line
         >تکرار رمز عبور مطابقت ندارد 
             <template v-slot:actions>
                 <v-btn color="red" variant="text" @click="passwordSnackbar = false">

@@ -14,7 +14,6 @@
 <script lang="ts">
 import GeneralHeader from "@/components/GeneralHeader.vue";
 import OrderNavigation from "@/components/order-domain/OrderNavigation.vue";
-import { Interface } from "readline";
 import { defineComponent } from "vue";
 
 export default defineComponent({

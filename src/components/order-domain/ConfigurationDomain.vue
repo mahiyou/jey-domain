@@ -81,7 +81,7 @@
                 </v-btn>
             </div>
         </v-form>
-        <v-snackbar v-model="snackBar" multi-line>اطلاعات کامل نیست
+        <v-snackbar v-model="snackBar" multi-line class="my-15">اطلاعات کامل نیست
             <template v-slot:actions>
                 <v-btn color="red" variant="text" @click="snackBar = false">
                     بستن

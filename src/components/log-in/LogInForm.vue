@@ -82,7 +82,7 @@
                 </v-form>
             </v-col>
         </v-row>
-        <v-snackbar v-model="snackbar" multi-line
+        <v-snackbar v-model="snackbar" multi-line class="my-15"
         >خطای سرور
             <template v-slot:actions>
                 <v-btn color="red" variant="text" @click="snackbar = false">

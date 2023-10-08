@@ -25,17 +25,17 @@
             </v-btn>
         </div>
     </v-form>
-    <v-snackbar v-model="snackbar" multi-line>خطای سرور هنگام ورود کاربر
+    <v-snackbar v-model="snackbar" multi-line class="my-15">خطای سرور هنگام ورود کاربر
         <template v-slot:actions>
             <v-btn color="red" variant="text" @click="snackbar = false"> بستن </v-btn>
         </template>
     </v-snackbar>
-    <v-snackbar v-model="requestToSnackbar" multi-line>اطلاعات سبد خرید شما به سرور ارسال نشد.
+    <v-snackbar v-model="requestToSnackbar" multi-line class="my-15">اطلاعات سبد خرید شما به سرور ارسال نشد.
         <template v-slot:actions>
             <v-btn color="red" variant="text" @click="requestToSnackbar = false"> بستن </v-btn>
         </template>
     </v-snackbar>
-    <v-snackbar v-model="logInSnakbar" multi-line>با موفقیت وارد شدید.
+    <v-snackbar v-model="logInSnakbar" multi-line class="my-15">با موفقیت وارد شدید.
         <template v-slot:actions>
             <v-btn color="green" variant="text" @click="logInSnakbar = false"> بستن </v-btn>
         </template>

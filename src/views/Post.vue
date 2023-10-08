@@ -9,7 +9,7 @@
     </GeneralHeader>
     <div class="text-center ma-10"><v-progress-circular v-if="loadingGetData" indeterminate color="primary"></v-progress-circular>
     </div>
-    <v-snackbar v-model="serverSnackbar" multi-line> خطای سرور برای ارسال اطلاعات
+    <v-snackbar v-model="serverSnackbar" class="my-15" multi-line> خطای سرور برای ارسال اطلاعات
         <template v-slot:actions>
             <v-btn color="red" variant="text" @click="serverSnackbar = false">
                 بستن

@@ -94,7 +94,7 @@
                 </v-btn>
             </div>
         </div>
-        <v-snackbar v-model="snackbar" multi-line>خطای سرور
+        <v-snackbar v-model="snackbar" multi-line class="my-15">خطای سرور
             <template v-slot:actions>
                 <v-btn color="red" variant="text" @click="snackbar = false">
                     بستن
