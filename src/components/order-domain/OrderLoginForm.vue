@@ -5,11 +5,13 @@
         <v-row class="mt-7">
             <v-col sm="6" cols="12">
                 <div>شماره موبایل یا ایمیل<span class="star-color">*</span></div>
-                <v-text-field variant="outlined" class="text-field" v-model="username" :rules="usernameRules" required />
+                <v-text-field variant="outlined" class="text-field" v-model="username" :rules="[usernameValidation]"
+                    required />
             </v-col>
             <v-col sm="6" cols="12">
                 <div>رمز عبور<span class="star-color">*</span></div>
-                <v-text-field variant="outlined" class="text-field" v-model="password" :rules="passwordRules" required />
+                <v-text-field variant="outlined" class="text-field" v-model="password" :rules="[passwordVlidation]"
+                    required />
             </v-col>
         </v-row>
         <div align="right" class="mt-4">
@@ -43,12 +45,15 @@
 import { defineComponent } from "vue";
 import { useUserState } from "@/stores/UserState";
 import { useCartStore } from "@/stores/Cart";
+import { passwordVlidation, usernameValidation } from "@/utilities";
 
 export default defineComponent({
     setup() {
         return {
             userStore: useUserState(),
-            cartStore: useCartStore()
+            cartStore: useCartStore(),
+            passwordVlidation,
+            usernameValidation
         };
     },
     data() {
@@ -60,22 +65,6 @@ export default defineComponent({
             requestToSnackbar: false,
             logInSnakbar: false,
             loading: false,
-            usernameRules: [
-                (value) => {
-                    if (value) return true;
-                    return "وارد کردن ایمیل و یا شماره تلفن الزامی است.";
-                },
-            ],
-            passwordRules: [
-                (value) => {
-                    if (value) return true;
-                    return "وارد کردن رمز عبور الزامی است.";
-                },
-                (value) => {
-                    if (value?.length >= 10) return true;
-                    return "رمز عبور شما باید بیشتر از 10 کاراکتر باشد.";
-                },
-            ],
         };
     },
     methods: {
@@ -101,7 +90,7 @@ export default defineComponent({
                     this.loading = false;
                 });
         },
-        async sendRequestToServer(){
+        async sendRequestToServer() {
             try {
                 const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/order/domain?ajax=1`, {
                     method: "POST",
@@ -116,7 +105,7 @@ export default defineComponent({
             } catch (e) {
                 this.requestToSnackbar = true;
             }
-        }
+        },
     },
 });
 </script>

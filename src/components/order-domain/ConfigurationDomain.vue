@@ -65,12 +65,12 @@
             <v-row class="mt-6">
                 <v-col sm="6" cols="12">
                     <div>شرکت</div>
-                    <v-text-field variant="outlined" class="text-field" v-model="company"
-                        :rules="[companyNameValidation]" />
+                    <v-text-field variant="outlined" class="text-field" v-model="company"/>
                 </v-col>
                 <v-col sm="6" cols="12">
                     <div>ایمیل<span class="star-color">*</span></div>
-                    <v-text-field variant="outlined" class="text-field" v-model="email" :rules="[emailValidation]" required />
+                    <v-text-field variant="outlined" class="text-field" v-model="email" :rules="[emailValidation]"
+                        required />
                 </v-col>
             </v-row>
             <div class="text-center">
@@ -81,22 +81,34 @@
                 </v-btn>
             </div>
         </v-form>
+        <v-snackbar v-model="snackBar" multi-line>اطلاعات کامل نیست
+            <template v-slot:actions>
+                <v-btn color="red" variant="text" @click="snackBar = false">
+                    بستن
+                </v-btn>
+            </template>
+        </v-snackbar>
     </v-containr>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
-import { useCartStore, WhoisData, CartItemType } from "@/stores/Cart";
+import { useCartStore, WhoisData, CartItemType, CartItem, Cost } from "@/stores/Cart";
+import { nameValidation, lastNameValidation, emailValidation } from "@/utilities";
+import {PropType} from 'vue'
 
 export default defineComponent({
     setup() {
         return {
-            store: useCartStore()
+            store: useCartStore(),
+            nameValidation,
+            lastNameValidation,
+            emailValidation
         };
     },
     props: {
-        cartItem: Object,
+        cartItem: Object as PropType<CartItem>,
         cartItemDomain: String,
-        cost: Object,
+        cost: Object as PropType<Cost>,
     },
     data() {
         return {
@@ -111,6 +123,7 @@ export default defineComponent({
             company: "",
             email: "",
             nameServerRules: [],
+            snackBar: false,
         };
     },
     methods: {
@@ -137,7 +150,13 @@ export default defineComponent({
             }, 2000);
         },
         orderNextStep(duration: number, whoisData: WhoisData, nameServers: string[]) {
+
+            if (!this.cartItemDomain || !this.cost) {
+                this.snackBar = true;
+                return;
+            }
             this.store.addCartItem({
+
                 domain: this.cartItemDomain,
                 cost: this.cost,
                 type: CartItemType.REGISTER,
@@ -146,40 +165,6 @@ export default defineComponent({
                 nameServers: nameServers
             })
         },
-        nameValidation(value: string) {
-            if (!value) {
-                return "وارد کردن نام الزامی است.";
-            }
-            else if (value.length > 20) {
-                return "نام شما باید کمتر از 20 کاراکتر باشد.";
-            } else {
-                return true
-            };
-        },
-        lastNameValidation(value: string) {
-            if (!value) {
-                return "وارد کردن نام خانوادگی الزامی است.";
-            }
-            else if (value.length > 20) {
-                return "نام خانوادگی شما باید کمتر از 20 کاراکتر باشد.";
-            } else {
-                return true
-            };
-        },
-        companyNameValidation(value: string) {
-            if (value?.length <= 30) return true;
-            return "نام شرکت شما باید کمتر از 30 کاراکتر باشد.";
-        },
-        emailValidation(value: string) {
-            if (
-                !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
-                    value
-                )
-            ) {
-                return "ایمیل وارد شده معتبر نمی باشد";
-            }
-            return true;
-        }
     },
 });
 </script>

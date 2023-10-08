@@ -107,7 +107,7 @@
 import { defineComponent } from "vue";
 import { applyDiscount } from "@/mocks/Cart";
 import { persianNumber } from "@/utilities";
-import { useCartStore } from "@/stores/Cart";
+import { useCartStore, RegisterCartItem } from "@/stores/Cart";
 
 export default defineComponent({
     setup() {
@@ -121,7 +121,7 @@ export default defineComponent({
     },
     data() {
         return {
-            cartItems: undefined,
+            cartItems: [] as Array<RegisterCartItem>,
             error: false,
             snackbar: false,
             loading: false,
