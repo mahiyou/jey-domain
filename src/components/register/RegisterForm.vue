@@ -13,12 +13,12 @@
                         های گوگل یا لینکدین و یا فیسبوک خود وارد شوید.
                     </div>
                     <div align="right" class="text-field-title">
-                        ایمیل<span class="star-color">*</span>
+                     ایمیل یا شماره موبایل<span class="star-color">*</span>
                     </div>
                     <v-text-field
                         variant="outlined"
                         v-model="username"
-                        :rules="usernameRules"
+                        :rules="[usernameValidation]"
                         required>
                         <template v-slot:append-inner>
                             <v-icon
@@ -33,7 +33,7 @@
                     <v-text-field
                         variant="outlined"
                         v-model="password"
-                        :rules="passwordRules"
+                        :rules="[passwordVlidation]"
                         required>
                         <template v-slot:append-inner>
                             <v-icon
@@ -47,7 +47,7 @@
                     <v-text-field
                         variant="outlined"
                         v-model="passwordConfirm"
-                        :rules="passwordRules"
+                        :rules="[passwordVlidation]"
                         required>
                         <template v-slot:append-inner>
                             <v-icon
@@ -59,7 +59,7 @@
                         v-model="Checkbox"
                         class="mt-2"
                         color="primary"
-                        :rules="checkboxRules">
+                        :rules="[checkboxValidation]">
                         <template v-slot:label>همه ی <v-btn variant="text" color="primary" class="rights-btn" :to="{ name: 'conditions' }">قوانین و شرایط</v-btn>
                             را خوانده وپذیرفته ام.
                         </template>
@@ -104,7 +104,7 @@
                 </v-form>
             </v-col>
         </v-row>
-        <v-snackbar v-model="serverErrorSnackbar" multi-line
+        <v-snackbar v-model="serverErrorSnackbar" class="my-15" multi-line
         >خطای سرور
             <template v-slot:actions>
                 <v-btn color="red" variant="text" @click="serverErrorSnackbar = false">
@@ -112,7 +112,7 @@
                 </v-btn>
             </template>
         </v-snackbar>
-        <v-snackbar v-model="passwordSnackbar" multi-line
+        <v-snackbar v-model="passwordSnackbar" class="my-15" multi-line
         >تکرار رمز عبور مطابقت ندارد 
             <template v-slot:actions>
                 <v-btn color="red" variant="text" @click="passwordSnackbar = false">
@@ -125,11 +125,15 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import {useUserState} from "@/stores/UserState";
+import { passwordVlidation, usernameValidation, checkboxValidation } from "@/utilities";
 
 export default defineComponent({
     setup(){
         return{
-            store : useUserState()
+            store : useUserState(),
+            passwordVlidation,
+            usernameValidation,
+            checkboxValidation
         };
     },
     data() {
@@ -142,38 +146,6 @@ export default defineComponent({
             passwordConfirm: "",
             loading: false,
             Checkbox: false,
-            usernameRules: [
-                (value:string) => {
-                    if (value) return true;
-                    return "وارد کردن ایمیل الزامی است.";
-                },
-                (value:string) => {
-                    if (
-                        !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
-                            value
-                        )
-                    ) {
-                        return "ایمیل وارد شده معتبر نمی باشد";
-                    }
-                    return true;
-                },
-            ],
-            passwordRules: [
-                (value:string) => {
-                    if (value) return true;
-                    return "وارد کردن رمز عبور الزامی است.";
-                },
-                (value:string) => {
-                    if (value?.length >= 10) return true;
-                    return "رمز عبور شما باید بیشتر از 10 کاراکتر باشد.";
-                },
-            ],
-            checkboxRules: [
-                (value:boolean) => {
-                    if (value) return true;
-                    return "برای ثبت نام در سایت باید قوانین را بپذیرید.";
-                },
-            ],
         };
     },
     methods: {

@@ -26,7 +26,7 @@
         <v-tabs v-model="tab"  align-tabs="center" show-arrows class="article-tab">  
             <v-tab v-for="tabindex in tabs" :value="tabindex" :key="tabindex.value">{{ tabindex.name }}</v-tab>
         </v-tabs>
-        <v-snackbar v-model="serverSnackbar" multi-line>خطای سرور
+        <v-snackbar v-model="serverSnackbar" multi-line class="my-15">خطای سرور
             <template v-slot:actions>
                 <v-btn color="red" variant="text" @click="serverSnackbar = false">
                     بستن

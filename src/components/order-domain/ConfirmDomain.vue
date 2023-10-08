@@ -94,7 +94,7 @@
                 </v-btn>
             </div>
         </div>
-        <v-snackbar v-model="snackbar" multi-line>خطای سرور
+        <v-snackbar v-model="snackbar" multi-line class="my-15">خطای سرور
             <template v-slot:actions>
                 <v-btn color="red" variant="text" @click="snackbar = false">
                     بستن
@@ -107,7 +107,7 @@
 import { defineComponent } from "vue";
 import { applyDiscount } from "@/mocks/Cart";
 import { persianNumber } from "@/utilities";
-import { useCartStore } from "@/stores/Cart";
+import { useCartStore, RegisterCartItem } from "@/stores/Cart";
 
 export default defineComponent({
     setup() {
@@ -121,7 +121,7 @@ export default defineComponent({
     },
     data() {
         return {
-            cartItems: undefined,
+            cartItems: [] as Array<RegisterCartItem>,
             error: false,
             snackbar: false,
             loading: false,
