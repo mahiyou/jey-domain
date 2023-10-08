@@ -54,22 +54,23 @@
             <v-row class="mt-3">
                 <v-col sm="6" cols="12">
                     <div>نام<span class="star-color">*</span></div>
-                    <v-text-field variant="outlined" class="text-field" v-model="name" :rules="nameRules" required />
+                    <v-text-field variant="outlined" class="text-field" v-model="name" :rules="[nameValidation]" required />
                 </v-col>
                 <v-col sm="6" cols="12">
                     <div>نام خانوادگی<span class="star-color">*</span></div>
-                    <v-text-field variant="outlined" class="text-field" v-model="lastName" :rules="lastNameRules"
+                    <v-text-field variant="outlined" class="text-field" v-model="lastName" :rules="[lastNameValidation]"
                         required />
                 </v-col>
             </v-row>
             <v-row class="mt-6">
                 <v-col sm="6" cols="12">
                     <div>شرکت</div>
-                    <v-text-field variant="outlined" class="text-field" v-model="company" />
+                    <v-text-field variant="outlined" class="text-field" v-model="company"/>
                 </v-col>
                 <v-col sm="6" cols="12">
                     <div>ایمیل<span class="star-color">*</span></div>
-                    <v-text-field variant="outlined" class="text-field" v-model="email" :rules="emailRules" required />
+                    <v-text-field variant="outlined" class="text-field" v-model="email" :rules="[emailValidation]"
+                        required />
                 </v-col>
             </v-row>
             <div class="text-center">
@@ -80,22 +81,34 @@
                 </v-btn>
             </div>
         </v-form>
+        <v-snackbar v-model="snackBar" multi-line class="my-15">اطلاعات کامل نیست
+            <template v-slot:actions>
+                <v-btn color="red" variant="text" @click="snackBar = false">
+                    بستن
+                </v-btn>
+            </template>
+        </v-snackbar>
     </v-containr>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
-import { useCartStore, WhoisData, CartItemType} from "@/stores/Cart";
+import { useCartStore, WhoisData, CartItemType, CartItem, Cost } from "@/stores/Cart";
+import { nameValidation, lastNameValidation, emailValidation } from "@/utilities";
+import {PropType} from 'vue'
 
 export default defineComponent({
     setup() {
         return {
-            store: useCartStore()
+            store: useCartStore(),
+            nameValidation,
+            lastNameValidation,
+            emailValidation
         };
     },
     props: {
-        cartItem: Object,
+        cartItem: Object as PropType<CartItem>,
         cartItemDomain: String,
-        cost: Object,
+        cost: Object as PropType<Cost>,
     },
     data() {
         return {
@@ -109,45 +122,8 @@ export default defineComponent({
             lastName: "",
             company: "",
             email: "",
-            nameRules: [
-                (value) => {
-                    if (value) return true;
-                    return "وارد کردن نام الزامی است.";
-                },
-                (value) => {
-                    if (value?.length <= 20) return true;
-                    return "نام شما باید کمتر از 20 کاراکتر باشد.";
-                },
-            ],
             nameServerRules: [],
-            lastNameRules: [
-                (value) => {
-                    if (value) return true;
-                    return "وارد کردن نام خانوادگی الزامی است.";
-                },
-                (value) => {
-                    if (value?.length <= 20) return true;
-                    return "نام خانوادگی شما باید کمتر از 20 کاراکتر باشد.";
-                },
-            ],
-            companyRules: [
-                (value) => {
-                    if (value?.length <= 30) return true;
-                    return "نام شرکت شما باید کمتر از 30 کاراکتر باشد.";
-                },
-            ],
-            emailRules: [
-                (value) => {
-                    if (
-                        !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
-                            value
-                        )
-                    ) {
-                        return "ایمیل وارد شده معتبر نمی باشد";
-                    }
-                    return true;
-                },
-            ],
+            snackBar: false,
         };
     },
     methods: {
@@ -158,13 +134,13 @@ export default defineComponent({
             this.loading = true;
             setTimeout(() => {
                 this.orderNextStep(12,
-                {
-                    name: this.name,
-                    lastName: this.lastName,
-                    company: this.company,
-                    email: this.email,
-                },
-                [this.nameServer1, this.nameServer2, this.nameServer3, this.nameServer4]);
+                    {
+                        name: this.name,
+                        lastName: this.lastName,
+                        company: this.company,
+                        email: this.email,
+                    },
+                    [this.nameServer1, this.nameServer2, this.nameServer3, this.nameServer4]);
                 this.$emit('tabValue', {
                     tab: 'confirmDomain',
                     cartItem: this.cartItemDomain,
@@ -174,7 +150,13 @@ export default defineComponent({
             }, 2000);
         },
         orderNextStep(duration: number, whoisData: WhoisData, nameServers: string[]) {
+
+            if (!this.cartItemDomain || !this.cost) {
+                this.snackBar = true;
+                return;
+            }
             this.store.addCartItem({
+
                 domain: this.cartItemDomain,
                 cost: this.cost,
                 type: CartItemType.REGISTER,
@@ -182,7 +164,7 @@ export default defineComponent({
                 whoisData: whoisData,
                 nameServers: nameServers
             })
-        }
+        },
     },
 });
 </script>

@@ -78,8 +78,10 @@
 import { defineComponent, ref } from "vue";
 import { persianNumber } from "@/utilities";
 import { call } from "@/mocks/API";
-import { domainAvailabilityCheck } from "@/mocks/DomainAvailabilityCheck";
+import { domainAvailabilityCheck, DomainAvailableResponse, DomainNotAvailableResponse } from "@/mocks/DomainAvailabilityCheck";
 import { useCartStore, Cost, CartItemType } from "@/stores/Cart";
+
+
 
 export default defineComponent({
     setup() {
@@ -93,7 +95,7 @@ export default defineComponent({
         return {
             domain: "",
             result: false,
-            domainSearchResult: Object,
+            domainSearchResult: {} as DomainAvailableResponse | DomainNotAvailableResponse,
             error: false,
             loading: false,
             valid: false,
@@ -136,6 +138,9 @@ export default defineComponent({
             return this.result ? "d-block" : "d-none";
         },
     },
+    mounted(){
+        this.domain = this.store.getSugestedDomain
+    }
 });
 </script>
 <style lang="scss">

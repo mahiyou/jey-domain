@@ -27,14 +27,22 @@
 			text="جستجو"
 			class="v-domain-input-submit"
 			:loading="loading"
-			:disabled="disabled" />
+			:disabled="disabled"
+			:to="{name: 'order-domain', params: {step: 'checkDomain'}}"/>
+
 	</v-input>
 </template>
 <script lang="ts">
 import { PropType } from 'vue';
 import { defineComponent } from 'vue';
+import { useCartStore } from "@/stores/Cart";
 
 export default defineComponent({
+	setup(){
+        return{
+            cartStore: useCartStore(),
+        }
+    },
 	props: {
 		tlds: {
 			type: Array as PropType<string[]>,
@@ -53,13 +61,14 @@ export default defineComponent({
 		},
 		onNameUpdate(e: Event) {
 			const newValue = (e.target as HTMLInputElement).value;
-			console.log(newValue + "." + this.tld);
 			this.$emit("update:modelValue", newValue + "." + this.tld);
+			this.cartStore.setSugestedDomain(newValue + "." + this.tld);
 		},
 		onTldUpdate(e: Event) {
 			const newValue = (e.target as HTMLSelectElement).value;
 			console.log(this.name + "." + newValue);
 			this.$emit("update:modelValue", this.name + "." + newValue);
+			this.cartStore.setSugestedDomain(this.name + "." + newValue);
 		},
 		rule() {
 			if (!this.modelValue || !/^[a-z0-9\-]+[a-z0-9](?:\.[a-z]+)+$/i.test(this.modelValue)) {
@@ -71,7 +80,7 @@ export default defineComponent({
 	computed: {
 		name(): string {
 			if (!this.modelValue) {
-				return "2";
+				return "jeydomain";
 			}
 			const dot = this.modelValue.indexOf(".");
 			return this.modelValue.substring(0, dot >= 0 ? dot : undefined);

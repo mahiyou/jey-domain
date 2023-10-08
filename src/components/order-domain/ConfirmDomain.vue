@@ -52,7 +52,7 @@
                     <div align="center">
                         <v-form v-model="valid" lazy-validation @submit.prevent="onSubmit">
                             <v-text-field variant="outlined" class="text-field" v-model="discountCode"
-                                :rules="discountRules" />
+                                :rules="[discountValidate]" />
                             <v-btn type="submit" variant="outlined" :loading="loading" width="100%" height="38px"
                                 class="btn-discount">
                                 اعمال کد تخفیف
@@ -94,7 +94,7 @@
                 </v-btn>
             </div>
         </div>
-        <v-snackbar v-model="snackbar" multi-line>خطای سرور
+        <v-snackbar v-model="snackbar" multi-line class="my-15">خطای سرور
             <template v-slot:actions>
                 <v-btn color="red" variant="text" @click="snackbar = false">
                     بستن
@@ -107,7 +107,7 @@
 import { defineComponent } from "vue";
 import { applyDiscount } from "@/mocks/Cart";
 import { persianNumber } from "@/utilities";
-import { useCartStore } from "@/stores/Cart";
+import { useCartStore, RegisterCartItem } from "@/stores/Cart";
 
 export default defineComponent({
     setup() {
@@ -121,7 +121,7 @@ export default defineComponent({
     },
     data() {
         return {
-            cartItems: undefined,
+            cartItems: [] as Array<RegisterCartItem>,
             error: false,
             snackbar: false,
             loading: false,
@@ -130,12 +130,6 @@ export default defineComponent({
             discount: 0,
             discountCode: "",
             currency: "",
-            discountRules: [
-                (value) => {
-                    if (value?.length <= 5) return true;
-                    return "کد تخفف باید کمتر از ۵ کاراکتر باشد.";
-                },
-            ],
         };
     },
     methods: {
@@ -182,8 +176,12 @@ export default defineComponent({
                 }
             }, 2000);
         },
-        backToConfiguration(){
-            
+        backToConfiguration() {
+
+        },
+        discountValidate(value: string) {
+            if (value?.length <= 5) return true;
+            return "کد تخفف باید کمتر از ۵ کاراکتر باشد.";
         }
     },
     async mounted() {
