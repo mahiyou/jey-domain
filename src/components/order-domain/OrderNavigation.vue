@@ -2,8 +2,8 @@
     <v-container class="order-nav-container">
         <v-row>
             <v-col sm="4" cols="12">
-                <v-tabs center-active :align-tabs="alignTabs" :model-value="modelValue" @update:model-value="onTabChanged"
-                    :direction="tabsDirection" hide-slider color="primary" class="nav-tabs" disabled="true">
+                <v-tabs center-active :align-tabs="alignTabs" :model-value="modelValue" @update:model-value="() => onTabChanged"
+                    :direction="tabsDirection" hide-slider color="primary" class="nav-tabs" disabled:string="true">
                     <v-tab value="checkDomain" class="order-tabs-handler" :border="false" rounded="lg" variant="flat">
                         <span class="num-border">۱</span>
                         بررسی دامنه
@@ -78,6 +78,13 @@ import ConfirmDomain from "@/components/order-domain/ConfirmDomain.vue";
 import CompleteOrder from "@/components/order-domain/CompleteOrder.vue";
 import { defineComponent } from "vue";
 import { useDisplay } from "vuetify";
+import { Cost } from "@/stores/Cart";
+
+interface tabValue{
+    tab: string
+    cartItem: string
+    cost: Cost
+}
 
 export default defineComponent({
     setup() {
@@ -100,17 +107,16 @@ export default defineComponent({
     },
     data() {
         return {
-            cartItem: undefined,
+            cartItem: '',
             cost: { amount: 0, currency: { title: "تومان" } }
         }
 
     },
     methods: {
-        onTabChanged(newTab) {
+        onTabChanged(newTab:tabValue) {
             this.$emit("update:modelValue", newTab.tab);
             this.cartItem = newTab.cartItem;
             this.cost = newTab.cost;
-
         },
     },
     computed: {
@@ -118,7 +124,7 @@ export default defineComponent({
             return this.display.name.value == "xs" ? "horizontal" : "vertical";
         },
         alignTabs() {
-            return this.display.name.value == "xs" ? "center" : "undefined";
+            return this.display.name.value == "xs" ? "center" : undefined;
         },
     },
 });

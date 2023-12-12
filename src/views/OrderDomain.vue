@@ -22,6 +22,12 @@ export default defineComponent({
         OrderNavigation,
     },
     setup() {
+        interface text {
+            title: string,
+            subtitle: string
+        }
+        type stepTexts = Record<string, text>;
+        
         return {
             texts: {
                 checkDomain: {
@@ -44,7 +50,7 @@ export default defineComponent({
                     subtitle:
                         "به متن های برخورده اید که با نام لورم ایپسوم شناخته می‌شوند.",
                 },
-            },
+            } as stepTexts,
         };
     },
     data() {

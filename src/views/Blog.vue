@@ -24,9 +24,9 @@
             <v-progress-circular indeterminate color="primary"></v-progress-circular>
         </div> 
         <v-tabs v-model="tab"  align-tabs="center" show-arrows class="article-tab">  
-            <v-tab v-for="tabindex in tabs" :value="tabindex" :key="tabindex">{{ tabindex.name }}</v-tab>
+            <v-tab v-for="tabindex in tabs" :value="tabindex" :key="tabindex.value">{{ tabindex.name }}</v-tab>
         </v-tabs>
-        <v-snackbar v-model="serverSnackbar" multi-line>خطای سرور
+        <v-snackbar v-model="serverSnackbar" multi-line class="my-15">خطای سرور
             <template v-slot:actions>
                 <v-btn color="red" variant="text" @click="serverSnackbar = false">
                     بستن
@@ -34,11 +34,11 @@
             </template>
         </v-snackbar>
         <v-window v-model="tab">
-            <v-window-item v-for="tabindex in tabs" :key="tabindex" :value="tabindex">
+            <v-window-item v-for="tabindex in tabs" :key="tabindex.value" :value="tabindex">
                 <v-row class="mb-10">
                     <template v-for="(post, key) in getPostsForTab(tabindex)" :key="key">
                         <v-col v-if="!key" cols="12">
-                            <a :href="'/post/'+ post.post.id" class="link">
+                            <a :href="'blog/post/'+ post.post.id" class="link">
                                 <div class="card">
                                     <v-row justify="center">
                                         <v-col md="6" sm="9" cols="12" class="px-6"><v-img class="img" :src="post.post.picture" ></v-img></v-col>
@@ -51,7 +51,7 @@
                             </a>
                         </v-col>
                         <v-col v-else md="4" sm="9" cols="12" class="card px-10">  
-                            <a :href="'/post/'+ post.post.id" class="link">
+                            <a :href="'blog/post/'+ post.post.id" class="link">
                                 <v-img class="img" :src="post.post.picture"></v-img>
                                 <div>
                                     <p class="title sub-card-title">{{ post.post.title }}</p>
@@ -81,7 +81,7 @@
 </template>
 <script lang="ts">
 import GeneralHeader from "@/components/GeneralHeader.vue";
-import { call } from "@/mocks/API";
+import { call, IBlogTab, IPostInfo} from "@/mocks/API";
 import {getBlogIndex} from "@/mocks/Blog";
 import { defineComponent } from "vue";
 export default defineComponent({
@@ -91,28 +91,28 @@ export default defineComponent({
     data() {
         return {
             tab:undefined,
-            posts:undefined,
-            tabs:undefined,
+            posts:[] as IPostInfo[],
+            tabs:[] as IBlogTab[],
             serverSnackbar:false,
             error:false,
         };
     },
     methods: {
-        getPostsForTab(tab) {
+        getPostsForTab(tab:IBlogTab) {
             if(this.posts){
                 if (tab.value === "all") {
                     return this.posts;
                 }
-                return this.posts.filter((p) => p.post.postCategory.includes(tab.value));  
+                return this.posts.filter((p:IPostInfo) => p.post.postCategory.includes(tab.value));  
             }   
         },
     },
     async mounted(){
         try {
             const response = await call(getBlogIndex,[]);
-            this.posts = response[1];
-            this.tabs = response[0];
-            this.tab = response[0][0];
+            this.posts = response.posts;
+            this.tabs = response.tabs;
+            this.tab = response.tabs[0];
         } catch (e) {
             this.serverSnackbar = true;
             this.error = true;

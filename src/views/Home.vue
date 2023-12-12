@@ -1,12 +1,17 @@
 <template >
+    <div class="text-center ma-10"><v-progress-circular v-if="loading" indeterminate color="primary"></v-progress-circular>
+    </div>
+    <div v-if="error" class="domain-search-error">
+        <P>خطای سرور رخ داده است. لطفا دوباره تلاش کنید.</P>
+    </div>
     <HomeSlider />
-    <DomainRegistration color="primary" :tlds="tlds" :offers="tlds" v-model="domain" />
-    <CustomerSlabs :slabs="slabs" />
+    <DomainRegistration v-if="!loading && !error" color="primary" :tlds="tlds" :offers="tlds" v-model="domain" />
+    <CustomerSlabs v-if="!loading && !error" :slabs="slabs" />
     <SuitableDomain />
     <PanelFeatures />
     <BuyDomain />
     <FaqList :items="faq" />
-    <NewArticle :posts="posts"/>
+    <NewArticle v-if="!loading && !error" :posts="posts" />
 </template>
 
 <script lang="ts">
@@ -19,8 +24,8 @@ import BuyDomain from "@/components/home/BuyDomain.vue";
 import FaqList from "@/components/home/FaqList.vue";
 import NewArticle from "@/components/home/NewArticle.vue";
 import { defineComponent } from "vue";
-import { IFAQ, ISlabs, ITLD, IPostSummarized } from "@/mocks/API";
-
+import { IFAQ, ISlabs, ITLD, IPostSummarized, call } from "@/mocks/API";
+import { getData } from "@/mocks/Home"
 export default defineComponent({
     components: {
         HomeSlider,
@@ -34,184 +39,58 @@ export default defineComponent({
     },
     data() {
         const data = {
-            domain: "",
+            domain:"",
+            loading: true,
+            error: false,
             tlds: [] as ITLD[],
-            slabs: [
-                {
-                    slug: "bronze",
-                    tlds: [
-                        {
-                            suffix: "ir",
-                            costs: {
-                                register: 5560000,
-                                renew: 5560000,
-                                transfer: 5560000,
-                            }
-                        },
-                        {
-                            suffix: "co.ir",
-                            costs: {
-                                register: 5560000,
-                                renew: 5560000,
-                                transfer: 5560000,
-                            }
-                        },
-                        {
-                            suffix: "com",
-                            costs: {
-                                register: 5560000,
-                                renew: 5560000,
-                                transfer: 5560000,
-                            }
-                        },
-                        {
-                            suffix: "net",
-                            costs: {
-                                register: 5560000,
-                                renew: 5560000,
-                                transfer: 5560000,
-                            }
-                        },
-                        {
-                            suffix: "org",
-                            costs: {
-                                register: 5560000,
-                                renew: 5560000,
-                                transfer: 5560000,
-                            }
-                        },
-                    ]
-                },
-                {
-                    slug: "silver",
-                    tlds: [
-                        {
-                            suffix: "com",
-                            costs: {
-                                register: 5060000,
-                                renew: 5060000,
-                                transfer: 5060000,
-                            }
-                        },
-                        {
-                            suffix: "net",
-                            costs: {
-                                register: 5060000,
-                                renew: 5060000,
-                                transfer: 5060000,
-                            }
-                        },
-                        {
-                            suffix: "org",
-                            costs: {
-                                register: 5060000,
-                                renew: 5060000,
-                                transfer: 5060000,
-                            }
-                        },
-                    ]
-                },
-                {
-                    slug: "golden",
-                    tlds: [
-                        {
-                            suffix: "com",
-                            costs: {
-                                register: 4060000,
-                                renew: 4060000,
-                                transfer: 4060000,
-                            }
-                        },
-                        {
-                            suffix: "net",
-                            costs: {
-                                register: 4060000,
-                                renew: 4060000,
-                                transfer: 4060000,
-                            }
-                        },
-                        {
-                            suffix: "org",
-                            costs: {
-                                register: 4060000,
-                                renew: 4060000,
-                                transfer: 4060000,
-                            }
-                        },
-                    ]
-                }
-            ] as ISlabs,
+            slabs: [] as ISlabs,
+            posts: [] as IPostSummarized[],
             faq: [
                 {
-                    question: "سوالی دارم",
-                    answer: "بپرس"
+                    question: "دامنه چیست و چرا به آن نیاز دارم؟",
+                    answer: "لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است."
                 },
                 {
-                    question: "پاسخ محاسبه 5+6*5 چقدر می‌شود؟",
-                    answer: "کاری نداره که 55"
+                    question: "منظور از پسوند دامنه چیست؟ کدام پسوند برای من مناسبتر است؟",
+                    answer: "لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است."
+                },
+                {
+                    question: "منظور از پسوند دامنه چیست؟ کدام پسوند برای من مناسبتر است؟",
+                    answer: "لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است."
+                },
+                {
+                    question: "منظور از پسوند دامنه چیست؟ کدام پسوند برای من مناسبتر است؟",
+                    answer: "لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است."
                 }
             ] as Array<IFAQ>,
-            posts: [
-                {
-                    post: {
-                        id: 1,
-                        permalink: "",
-                        title: "۱. لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است.",
-                        description: "۱. لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است.",
-                        author: { id: 1, name: "کاربر تست" },
-                        picture: "https://www.jeyserver.com/packages/blog/storage/public/files/3287dc7390dc3017bc0de096840c7a36.jpg",
-                        date: 1696345697934,
-                    },
-                },
-                {
-                    post: {
-                        id: 1,
-                        permalink: "",
-                        title: "2. لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است.",
-                        description: "۱. لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است.",
-                        author: { id: 1, name: "کاربر تست" },
-                        picture: "https://www.jeyserver.com/packages/blog/storage/public/files/3287dc7390dc3017bc0de096840c7a36.jpg",
-                        date: 1696345697934,
-                    },
-                },
-                {
-                    post: {
-                        id: 1,
-                        permalink: "",
-                        title: "3. لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است.",
-                        description: "۱. لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است.",
-                        author: { id: 1, name: "کاربر تست" },
-                        picture: "https://www.jeyserver.com/packages/blog/storage/public/files/3287dc7390dc3017bc0de096840c7a36.jpg",
-                        date: 1696345697934,
-                    },
-                },
-                {
-                    post: {
-                        id: 1,
-                        permalink: "",
-                        title: "4. لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است.",
-                        description: "۱. لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است.",
-                        author: { id: 1, name: "کاربر تست" },
-                        picture: "https://www.jeyserver.com/packages/blog/storage/public/files/3287dc7390dc3017bc0de096840c7a36.jpg",
-                        date: 1696345697934,
-                    },
-                },
-                {
-                    post: {
-                        id: 1,
-                        permalink: "",
-                        title: "5. لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است.",
-                        description: "۱. لورم ایپسوم یا طرح‌نما متنی ساختگی و بدون معنی است.",
-                        author: { id: 1, name: "کاربر تست" },
-                        picture: "https://www.jeyserver.com/packages/blog/storage/public/files/3287dc7390dc3017bc0de096840c7a36.jpg",
-                        date: 1696345697934,
-                    },
-                },
-            ] as Array<IPostSummarized>
         };
-        data.tlds = data.slabs[0].tlds;
+
         return data;
+    },
+    async mounted() {
+        try {
+            const res = await call(getData, []);
+            this.slabs = res.slabs;
+            this.tlds = res.slabs[0].tlds;
+            this.posts = res.posts;
+        }
+        catch {
+            this.error = true;
+        }
+        finally {
+            this.loading = false;
+        }
     },
 });
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+.domain-search-error {
+    padding: 30px;
+    text-align: center;
+    margin: 40px;
+    border: 1px dashed #dd3f4e;
+    color: #dd3f4e;
+    font-size: 14px;
+    font-weight: 800;
+}
+</style>

@@ -25,7 +25,6 @@ export default createVuetify({
                     customYellow: '#faa930',
                     background: "#fafbff",
                     "on-background": "#242849"
-
                 },
                 
             },
