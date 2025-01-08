@@ -4,7 +4,7 @@
       <v-toolbar density="compact" color="surface">
         <v-toolbar-title>
           <router-link :to="{ name: 'home' }">
-            <v-img src="@/assets/pics/JeyDomain.svg" max-width="150" />
+            <v-img src="@/assets/pics/jey-domain-logo.svg" max-width="150" />
           </router-link>
         </v-toolbar-title>
         <v-toolbar-items class="hidden-sm-and-down">

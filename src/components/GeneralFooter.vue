@@ -4,10 +4,10 @@
       <v-col md="6" cols="12">
         <v-row>
           <v-col sm="1" class="pl-0 logo-visibility">
-            <v-img src="@/assets/pics/jeydomainlogo.svg" width="40px"></v-img>
+            <v-img src="@/assets/pics/footer-logo.svg" width="40px"></v-img>
           </v-col>
           <v-col md="4" sm="3" cols="6" class="pl-0">
-            <a href="/"><v-img src="@/assets/pics/footer-logo.svg" width="170px" class="footer-img1"> </v-img></a>
+            <a href="/"><v-img src="@/assets/pics/jey-domain-logo.svg" width="170px" class="footer-img1"> </v-img></a>
           </v-col>
           <v-col md="7" sm="8" cols="6">
             <div class="footer-sen">

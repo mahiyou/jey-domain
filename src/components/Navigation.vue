@@ -3,7 +3,7 @@
         <v-list density="compact" nav>
             <div class="my-5">
                 <router-link :to="{ name: 'home' }">
-                    <v-img class="img-logo" src="@/assets/pics/JeyDomain.svg" height="30" />
+                    <v-img class="img-logo" src="@/assets/pics/jey-domain-logo.svg" height="30" />
                 </router-link>
             </div>
             <v-list-item
